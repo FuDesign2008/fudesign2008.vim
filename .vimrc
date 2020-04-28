@@ -91,6 +91,9 @@ augroup END
     "autocmd vimrc FileType text,wiki,markdown,mkd setlocal spell
     "set hidden                      " allow buffer switching without saving
 
+
+    set cryptmethod=blowfish2
+
     " Setting up the directories {
         set backup                      " backups are nice ...
         if has('persistent_undo')
