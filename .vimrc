@@ -679,24 +679,27 @@ augroup END
     "
         if !g:is_win
             function! ConfigPlanPlugin()
+                let philosophyDir = '~/workspace/github2008/philosophy/'
                 let g:p_edit_files = {
-                    \ 'read': expand('~/workspace/github2008/philosophy/read'),
-                    \ 'write': expand('~/workspace/github2008/philosophy/write'),
-                    \ 'edu': expand('~/workspace/github2008/philosophy/edu'),
-                    \ 'beijing': expand('~/workspace/github2008/philosophy/beijing'),
-                    \ 'interp': expand('~/workspace/github2008/philosophy/interp'),
-                    \ 'small-family': expand('~/workspace/github2008/philosophy/small-family'),
-                        \ 'kaixin': expand('~/workspace/github2008/philosophy/small-family/kaixin'),
-                        \ 'fang': expand('~/workspace/github2008/philosophy/small-family/fang'),
-                        \ 'che': expand('~/workspace/github2008/philosophy/small-family/che'),
-                        \ 'holiday': expand('~/workspace/github2008/philosophy/small-family/holiday'),
-                    \ 'log': expand('~/workspace/github2008/philosophy/log'),
-                    \ 'vlog': expand('~/workspace/github2008/philosophy/investing/log'),
-                    \ 'projects': expand('~/workspace/github2008/philosophy/projects'),
-                    \ 'pwd' : expand('~/Dropbox/common/pwd.md'),
-                    \ 'yin' : expand('~/Dropbox/common/yin.md'),
-                    \ 'youdao': expand('~/Dropbox/common/youdao.md')
+                    \ 'read': expand(philosophyDir . 'read'),
+                    \ 'write': expand(philosophyDir . 'write'),
+                    \ 'edu': expand(philosophyDir .'edu'),
+                    \ 'beijing': expand(philosophyDir . 'beijing'),
+                    \ 'interp': expand(philosophyDir . 'interp'),
+                    \ 'small-family': expand(philosophyDir . 'small-family'),
+                        \ 'kaixin': expand(philosophyDir . 'small-family/kaixin'),
+                        \ 'fang': expand(philosophyDir . 'small-family/fang'),
+                        \ 'che': expand(philosophyDir . 'small-family/che'),
+                        \ 'holiday': expand(philosophyDir . 'small-family/holiday'),
+                    \ 'log': expand(philosophyDir . 'log'),
+                    \ 'vlog': expand(philosophyDir . 'investing/log'),
+                    \ 'projects': expand(philosophyDir . 'projects'),
+                    \ 'pwd' : expand(philosophyDir . 'pwd/pwd.md'),
+                    \ 'yin' : expand(philosophyDir . 'pwd/yin.md'),
+                    \ 'company': expand(philosophyDir . 'pwd/company.md')
                     \}
+
+                unlet philosophyDir
 
                 let l:cur_year = strftime('%Y')
                 "01-12
