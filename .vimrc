@@ -1631,7 +1631,7 @@ augroup END
      " }
 
      " jamessan/vim-gnupg{
-        " let g:GPGPreferArmor=1
+        let g:GPGPreferArmor=1
         let g:GPGDefaultRecipients=['fudesign2008@163.com']
      " }
 
