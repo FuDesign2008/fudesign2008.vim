@@ -1630,6 +1630,11 @@ augroup END
         autocmd vimrc FileType javascript set dictionary+=$HOME/.vim/vim-node-dict/dict/node.dict
      " }
 
+     " jamessan/vim-gnupg{
+        let g:GPGPreferArmor=1
+        let g:GPGDefaultRecipients=['fudesign2008@163.com']
+     " }
+
      " indent_guides {
         "if !exists('g:spf13_no_indent_guides_autocolor')
             "let g:indent_guides_auto_colors = 1
