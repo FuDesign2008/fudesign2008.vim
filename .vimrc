@@ -694,9 +694,9 @@ augroup END
                     \ 'log': expand(philosophyDir . 'log'),
                     \ 'vlog': expand(philosophyDir . 'investing/log'),
                     \ 'projects': expand(philosophyDir . 'projects'),
-                    \ 'pwd' : expand(philosophyDir . 'pwd/pwd.md'),
-                    \ 'yin' : expand(philosophyDir . 'pwd/yin.md'),
-                    \ 'company': expand(philosophyDir . 'pwd/company.md')
+                    \ 'pwd' : expand(philosophyDir . 'pwd/pwd.gpg'),
+                    \ 'yin' : expand(philosophyDir . 'pwd/yin.gpg'),
+                    \ 'company': expand(philosophyDir . 'pwd/company.gpg')
                     \}
 
                 unlet philosophyDir
@@ -1631,7 +1631,7 @@ augroup END
      " }
 
      " jamessan/vim-gnupg{
-        let g:GPGPreferArmor=1
+        " let g:GPGPreferArmor=1
         let g:GPGDefaultRecipients=['fudesign2008@163.com']
      " }
 
