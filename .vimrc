@@ -996,38 +996,52 @@ augroup END
     "
     " @param {String} fileName
     " @param {Integer} limitTimes
-    " @return {String}
+    " @return {Object}
     function! FindFileUp(fileName, limitTimes)
         let l:tempDir = fnamemodify(getcwd(), ':p:h')
         let l:tempFile = ''
-        let l:counter = a:limitTimes
+        let l:counter = 0
         let l:isExist = 0
+        let l:result = {}
 
-        while l:counter > 0
+        while l:counter <= a:limitTimes
             let l:tempFile = l:tempDir . '/' . a:fileName
             let l:isExist = filereadable(l:tempFile)
             if l:isExist
-                return l:tempFile
+                let l:result['file'] = l:tempFile
+                let l:result['distance']  =  l:counter
+                return l:result
             endif
             let l:tempDir = fnamemodify(l:tempDir, ':p:h:h')
-            let l:counter = l:counter - 1
+            let l:counter = l:counter + 1
         endwhile
 
-        return ''
+        return l:result
     endfunction
 
     " @param {List<String>} fileNames
     " @param {Integer} limitTimes
     " @return {String}
     function! FindFilesUp(fileNames, limitTimes)
-        let l:found = ''
+        let l:minDistance = -1
+        let l:closestItem = {}
+
         for l:item in a:fileNames
             let l:found = FindFileUp(l:item, a:limitTimes)
-            if len(l:found) > 0
-                return l:found
+            let l:distance = get(l:found, 'distance', -1)
+            if l:distance > -1
+                if l:minDistance < 0
+                    let l:minDistance = l:distance
+                    let l:closestItem = l:found
+                elseif l:minDistance > l:distance
+                    let l:minDistance = l:distance
+                    let l:closestItem = l:found
+                endif
             endif
         endfor
-        return ''
+
+        let l:theFile = get(l:closestItem, 'file', '')
+        return l:theFile
     endfunction
 
     " support https://github.com/davidtheclark/cosmiconfig
@@ -1043,7 +1057,7 @@ augroup END
         \ '.jshintrc.js',
         \ '.jshintrc.yaml',
         \ '.jshintrc.yml'
-        \ ], 3)
+        \ ], 10)
     let g:use_jshint_for_javascript = stridx(g:find_file_path, 'jshintrc') > -1
     let g:use_eslint_for_javascript = stridx(g:find_file_path, 'eslintrc') > -1
 
@@ -1055,7 +1069,7 @@ augroup END
         \ '.eslintrc.js',
         \ '.eslintrc.yaml',
         \ '.eslintrc.yml'
-        \ ], 3)
+        \ ], 10)
     let g:use_tslint_for_typescript = stridx(g:find_file_path, 'tslint') > -1
 
     let g:find_file_path = FindFilesUp([
@@ -1064,7 +1078,7 @@ augroup END
         \ '.stylelintrc.js',
         \ '.stylelintrc.yaml',
         \ '.stylelintrc.yml'
-        \], 3)
+        \], 10)
     let g:use_stylelint_for_style = stridx(g:find_file_path, 'stylelintrc') > -1
 
     unlet g:find_file_path
@@ -1101,7 +1115,12 @@ augroup END
         let g:syntastic_java_checkers = ['javac', 'checkstyle']
         let g:syntastic_java_javac_config_file_enabled = 1
 
-        let g:find_file_path = FindFileUp('.syntastic_javac_config', 10)
+        let g:find_file_path = get(
+            \ FindFileUp('.syntastic_javac_config', 10),
+            \ 'file',
+            \ ''
+            \ )
+
         if strlen(g:find_file_path) > 1
             let g:syntastic_java_javac_config_file = g:find_file_path
         endif
@@ -1189,6 +1208,7 @@ augroup END
                         \ 'scss': ['prettier'],
                         \ 'javascript': ['prettier'],
                         \ 'typescript': ['eslint', 'prettier'],
+                        \ 'typescriptreact': ['eslint', 'prettier'],
                         \ 'vue': ['eslint', 'prettier'],
                         \ 'c': ['clang-format']
                         \}
@@ -1209,6 +1229,8 @@ augroup END
             if g:use_tslint_for_typescript
                 let g:ale_linters['typescript'] = ['tslint', 'tsserver']
                 let g:ale_fixers['typescript'] = ['tslint', 'prettier']
+                let g:ale_linters['typescriptreact'] = ['tslint', 'tsserver']
+                let g:ale_fixers['typescriptreact'] = ['tslint', 'prettier']
 
                 " enable tslint to lint .js file
                 " @see
