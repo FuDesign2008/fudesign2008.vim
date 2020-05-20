@@ -469,6 +469,8 @@ set nocompatible        " must be first line
             " vim-jsx-pretty may be better than vim-jsx
             Bundle 'maxmellon/vim-jsx-pretty'
 
+            Bundle 'FuDesign2008/component-kit.vim'
+
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
@@ -482,14 +484,12 @@ set nocompatible        " must be first line
             endif
 
             if count(g:spf13_bundle_groups, 'react')
-                Bundle 'FuDesign2008/component-kit.vim'
                 Bundle 'FuDesign2008/react-snippets.vim'
             endif
 
             " vue
             if count(g:spf13_bundle_groups, 'vue')
                 Bundle 'posva/vim-vue'
-                Bundle 'FuDesign2008/component-kit.vim'
                 Bundle 'FuDesign2008/vue-snippets.vim'
                 " Bundle 'FuDesign2008/element-ui.vim'
                 Bundle 'FuDesign2008/element-ui-snippets.vim'
