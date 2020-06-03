@@ -1237,10 +1237,10 @@ augroup END
                 " @see
                 " https://github.com/dense-analysis/ale/issues/1609
                 " https://github.com/dense-analysis/ale#5xii-how-can-i-check-jsx-files-with-both-stylelint-and-eslint
-                augroup JSFiletypeGroup
-                    autocmd!
-                    au BufNewFile,BufRead,BufWritePre *.js set filetype=javascript.typescript
-                augroup END
+                " augroup JSFiletypeGroup
+                    " autocmd!
+                    " au BufNewFile,BufRead,BufWritePre *.js set filetype=javascript.typescript
+                " augroup END
             endif
 
         endif
