@@ -865,22 +865,43 @@ augroup END
                         \ 'afterglow'
                         \]
 
-        let g:favorite_gui_fonts = [
-                    \ 'Fira\ Code:h12',
-                    \ 'Cascadia\ Code:h12',
-                    \ 'Inconsolata:h14',
-                    \ 'Source\ Code\ Variable:h12',
-                    \ 'Monaco:h12',
-                    \ 'JetBrains\ Mono:h12'
-                    \]
+        " 0 or 1
+        let g:gui_font_use_big = 1
+
+        if g:gui_font_use_big
+                        " \ 'JetBrains\ Mono:h15'
+                        " \ 'Inconsolata:h15',
+            let g:favorite_gui_fonts = [
+                        \ 'Fira\ Code:h13',
+                        \ 'Cascadia\ Code:h13',
+                        \ 'Source\ Code\ Variable:h13',
+                        \ 'Monaco:h14'
+                        \]
+            let g:gui_font_default = 'Fira\ Code:h13'
+        else
+                        " \ 'JetBrains\ Mono:h12'
+                        " \ 'Inconsolata:h14',
+            let g:favorite_gui_fonts = [
+                        \ 'Fira\ Code:h12',
+                        \ 'Cascadia\ Code:h12',
+                        \ 'Source\ Code\ Variable:h12',
+                        \ 'Monaco:h12'
+                        \]
+            let g:gui_font_default = 'Fira\ Code:h12'
+
+        endif
 
         let g:random_theme_start = 2
 
         if !has('gui_running')
             colo lucius
         else
-            set guifont=Fira\ Code:h12
+            let cmdAsString ='set guifont=' . g:gui_font_default
+            execute(cmdAsString)
         endif
+
+        unlet g:gui_font_use_big
+        unlet g:gui_font_default
     " }
 
     " FuDesign2008/openUrl.vim {
