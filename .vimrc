@@ -994,8 +994,8 @@ augroup END
     " }
 
     "react support {
-        autocmd vimrc BufRead,BufNewFile,BufWritePre *.tsx setf typescript
-        autocmd vimrc BufRead,BufNewFile,BufWritePre *.jsx setf javascript
+        " autocmd vimrc BufRead,BufNewFile,BufWritePre *.tsx setf typescript
+        " autocmd vimrc BufRead,BufNewFile,BufWritePre *.jsx setf javascript
     "}
 
 
