@@ -750,26 +750,21 @@ augroup END
                 "...
                 "6 = sat
                 let g:plan_week_work = {
-                    \ 1 : '1. 升级软件;'
+                    \ 1 : '1. 电脑移除与升级软件;'
                     \}
                 let g:plan_week_personal = {
-                    \ 0 : '1. 锻炼身体;',
+                    \ 0 : '1. 断舍离;   - 手机;    - 家庭居所;'
                     \}
 
                 let g:plan_week_review = [
-                    \ '1. (Invest & Finance);',
-                    \ '1. (Tech & Managment);',
-                    \ '1. (Enjoy Life);'
+                    \ '1. 主要目标是否完成;'
                     \]
 
                 let g:plan_month_keypoint = [
-                    \ '1. (Invest & Finance):;',
-                    \ '1. (Enjoy Life):;',
-                    \ '1. (Tech & Managment):;'
+                    \ '1. 主要目标;    - xxx;'
                     \]
 
                 let g:plan_month_work = {
-                    \ 2 : '1. 确认上月考勤;',
                     \ 27: '1. 月回顾与下月规划;'
                     \}
                 let g:plan_month_personal = {
