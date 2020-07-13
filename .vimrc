@@ -148,7 +148,8 @@ augroup END
         " Always show status line, even for one window
         set laststatus=2
         "The commandbar height
-        set cmdheight=1
+        " @see https://stackoverflow.com/questions/890802/how-do-i-disable-the-press-enter-or-type-command-to-continue-prompt-in-vim
+        set cmdheight=2
 
         " Broken down into easily includeable segments
         set statusline=%<%f\    " Filename
