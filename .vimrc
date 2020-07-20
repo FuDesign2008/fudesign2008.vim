@@ -864,21 +864,21 @@ augroup END
         if g:gui_font_use_big
                         " \ 'JetBrains\ Mono:h15'
                         " \ 'Inconsolata:h15',
+                        " \ 'Monaco:h14'
             let g:favorite_gui_fonts = [
-                        \ 'Fira\ Code:h13',
-                        \ 'Cascadia\ Code:h13',
-                        \ 'Source\ Code\ Variable:h13',
-                        \ 'Monaco:h14'
+                        \ 'Fira\ Code:h14',
+                        \ 'Cascadia\ Code:h14',
+                        \ 'Source\ Code\ Variable:h14'
                         \]
-            let g:gui_font_default = 'Fira\ Code:h13'
+            let g:gui_font_default = 'Fira\ Code:h14'
         else
                         " \ 'JetBrains\ Mono:h12'
                         " \ 'Inconsolata:h14',
+                        " \ 'Monaco:h12'
             let g:favorite_gui_fonts = [
                         \ 'Fira\ Code:h12',
                         \ 'Cascadia\ Code:h12',
-                        \ 'Source\ Code\ Variable:h12',
-                        \ 'Monaco:h12'
+                        \ 'Source\ Code\ Variable:h12'
                         \]
             let g:gui_font_default = 'Fira\ Code:h12'
 
