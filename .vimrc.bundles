@@ -375,6 +375,8 @@ set nocompatible        " must be first line
 
             Bundle 'KabbAmine/zeavim.vim'
 
+            Bundle 'ekalinin/Dockerfile.vim'
+
             if !g:is_win
                 Bundle 'tpope/vim-fugitive'
 
