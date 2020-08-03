@@ -102,6 +102,8 @@ set nocompatible        " must be first line
 
             " Do NOT use, for `:ALEFix` will be run before save
             " Bundle '907th/vim-auto-save'
+            " disable :ALEFix when auto-save
+            Bundle 'FuDesign2008/vim-auto-save'
 
             Bundle 'haya14busa/incsearch.vim'
             Bundle 'haya14busa/incsearch-fuzzy.vim'
