@@ -886,10 +886,14 @@ augroup END
 
         endif
 
-        let g:random_theme_start = 2
+        let g:random_theme_start = 1
 
         if !has('gui_running')
-            colo lucius
+            if has('mac') || has('macunix')
+                " if run vim in mac terminal, use lucius
+                let g:random_theme_start = 0
+                colo lucius
+            endif
         else
             let cmdAsString ='set guifont=' . g:gui_font_default
             execute(cmdAsString)
@@ -1472,7 +1476,15 @@ augroup END
 
      " fzf.vim {
         if count(g:spf13_bundle_groups, 'fzf')
-            set runtimepath+=/usr/local/opt/fzf
+            if isdirectory("/usr/local/opt/fzf")
+                " for brew install fzf on mac os
+                set runtimepath+=/usr/local/opt/fzf
+            else
+                " for apt install fzf on ubuntu
+                " @see https://github.com/junegunn/fzf.vim/issues/456
+                set runtimepath+=~/.fzf
+            endif
+
             nnoremap <C-p> :Files<Cr>
         else
          " ctrlp {
