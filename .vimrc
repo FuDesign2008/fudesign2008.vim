@@ -658,7 +658,7 @@ augroup END
 
 
      "ultisnips {
-        let g:UltiSnipsExpandTrigger='<c-s-j>'
+        let g:UltiSnipsExpandTrigger='<c-j>'
         " default
         "let g:UltiSnipsListSnippets='<c-tab>'
         "let g:UltiSnipsJumpForwardTrigger='<c-j>'
