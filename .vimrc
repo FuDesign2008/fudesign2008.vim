@@ -886,10 +886,14 @@ augroup END
 
         endif
 
-        let g:random_theme_start = 2
+        let g:random_theme_start = 1
 
         if !has('gui_running')
-            colo lucius
+            if has('mac') || has('macunix')
+                " if run vim in mac terminal, use lucius
+                let g:random_theme_start = 0
+                colo lucius
+            endif
         else
             let cmdAsString ='set guifont=' . g:gui_font_default
             execute(cmdAsString)
