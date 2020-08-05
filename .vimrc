@@ -252,11 +252,11 @@ augroup END
     "
     " Easier moving in tabs and windows
     "
-    " <C-J> <C-K> are keep for UltiSnips
+    " <C-J> <C-K> <C-L> <C-H>  are keep for other plugins like UltiSnips
     "map <C-J> <C-W>j
     "map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
+    " map <C-L> <C-W>l
+    " map <C-H> <C-W>h
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
@@ -658,7 +658,7 @@ augroup END
 
 
      "ultisnips {
-        let g:UltiSnipsExpandTrigger='<C-CR>'
+        let g:UltiSnipsExpandTrigger='<c-s-j>'
         " default
         "let g:UltiSnipsListSnippets='<c-tab>'
         "let g:UltiSnipsJumpForwardTrigger='<c-j>'
