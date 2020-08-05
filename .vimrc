@@ -1476,14 +1476,20 @@ augroup END
 
      " fzf.vim {
         if count(g:spf13_bundle_groups, 'fzf')
+            let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
+
             if isdirectory("/usr/local/opt/fzf")
                 " for brew install fzf on mac os
                 set runtimepath+=/usr/local/opt/fzf
-            else
+            elseif isdirectory(g:fzf_folder_via_git)
                 " for apt install fzf on ubuntu
                 " @see https://github.com/junegunn/fzf.vim/issues/456
-                set runtimepath+=~/.fzf
+                execute "set runtimepath+=" . g:fzf_folder_via_git
+            else
+                echoerr 'Please set runtimepath for fzf'
             endif
+
+            unlet g:fzf_folder_via_git
 
             nnoremap <C-p> :Files<Cr>
         else
