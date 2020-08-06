@@ -380,6 +380,9 @@ set nocompatible        " must be first line
 
             Bundle 'ekalinin/Dockerfile.vim'
 
+            Bundle 'christoomey/vim-system-copy'
+
+
             if !g:is_win
                 Bundle 'tpope/vim-fugitive'
 

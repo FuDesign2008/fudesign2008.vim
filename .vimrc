@@ -75,10 +75,10 @@ augroup END
             vmap <c-c> "*y
             nmap <c-b> "*p
         else
-            echoerr 'no clipboard feature, no clipboard register'
+            echomsg 'no clipboard feature, no clipboard shortcuts'
         endif
     else
-        echoerr 'no clipboard feature, no clipboard register'
+        echomsg 'no clipboard feature, no clipboard shortcuts'
     endif
 
 
