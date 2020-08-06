@@ -63,11 +63,23 @@ augroup END
     set encoding=utf-8
     scriptencoding utf-8
 
-    "if has ('x') && has ('gui') " on Linux use + register for copy-paste
-        "set clipboard=unnamedplus
-    "elseif has ('gui') " one mac and windows, use * register for copy-paste
-        "set clipboard=unnamed
-    "endif
+    if has('clipboard')
+        if has ('x') && has ('gui') " on Linux use + register for copy-paste
+            set clipboard=unnamedplus
+            " inspired by  https://github.com/erickzanardo/vim-xclip
+            vmap <c-c> "+y
+            nmap <c-b> "+p
+        elseif has ('gui') " one mac and windows, use * register for copy-paste
+            set clipboard=unnamed
+            " inspired by  https://github.com/erickzanardo/vim-xclip
+            vmap <c-c> "*y
+            nmap <c-b> "*p
+        else
+            echoerr 'no clipboard feature, no clipboard register'
+        endif
+    else
+        echoerr 'no clipboard feature, no clipboard register'
+    endif
 
 
     set noautochdir
