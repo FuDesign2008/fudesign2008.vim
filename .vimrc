@@ -872,31 +872,44 @@ augroup END
                         \ 'afterglow'
                         \]
 
+
+        " @see https://forum.ubuntu.com.cn/viewtopic.php?t=45358
+        " @see :help setting-guifont
+        function! SetGuiFont(font, size)
+            if has('gui_running')
+                " for ubuntu vim-gonme
+                if has('x11')
+                    let commandStr = 'set guifont=' . a:font . '\ ' . a:size
+                    execute commandStr
+                else
+                    let commandStr = 'set guifont=a:font' . ':h' . a:size
+                    execute commandStr
+                endif
+            endif
+        endfunction
+
         " 0 or 1
-        let g:gui_font_use_big = 1
+        let g:gui_font_size = '12'
 
-        if g:gui_font_use_big
-                        " \ 'JetBrains\ Mono:h15'
-                        " \ 'Inconsolata:h15',
-                        " \ 'Monaco:h14'
-            let g:favorite_gui_fonts = [
-                        \ 'Fira\ Code:h14',
-                        \ 'Cascadia\ Code:h14',
-                        \ 'Source\ Code\ Variable:h14'
-                        \]
-            let g:gui_font_default = 'Fira\ Code:h14'
-        else
-                        " \ 'JetBrains\ Mono:h12'
-                        " \ 'Inconsolata:h14',
-                        " \ 'Monaco:h12'
-            let g:favorite_gui_fonts = [
-                        \ 'Fira\ Code:h12',
-                        \ 'Cascadia\ Code:h12',
-                        \ 'Source\ Code\ Variable:h12'
-                        \]
-            let g:gui_font_default = 'Fira\ Code:h12'
-
+        if has('gui_running')
+            if has('x11')
+                let g:gui_font_size = '12'
+            elseif has('macunix')
+                let g:gui_font_size = '14'
+            endif
         endif
+
+
+                    " \ 'JetBrains\ Mono:h15'
+                    " \ 'Inconsolata:h15',
+                    " \ 'Monaco:h14'
+        let g:favorite_gui_fonts = [
+                    \ 'Fira\ Code',
+                    \ 'Cascadia\ Code',
+                    \ 'Source\ Code\ Variable'
+                    \]
+        let g:favorite_gui_fonts = map(g:favorite_gui_fonts,
+                    \ 'v:val . ":h" .  g:gui_font_size')
 
         let g:random_theme_start = 1
 
@@ -907,12 +920,10 @@ augroup END
                 colo lucius
             endif
         else
-            let cmdAsString ='set guifont=' . g:gui_font_default
-            execute(cmdAsString)
+            call SetGuiFont('Fira\ Code', g:gui_font_size)
         endif
 
-        unlet g:gui_font_use_big
-        unlet g:gui_font_default
+        unlet g:gui_font_size
     " }
 
     " FuDesign2008/openUrl.vim {
