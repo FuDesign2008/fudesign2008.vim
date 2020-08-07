@@ -882,7 +882,7 @@ augroup END
                     let commandStr = 'set guifont=' . a:font . '\ ' . a:size
                     execute commandStr
                 else
-                    let commandStr = 'set guifont=a:font' . ':h' . a:size
+                    let commandStr = 'set guifont='. a:font . ':h' . a:size
                     execute commandStr
                 endif
             endif
