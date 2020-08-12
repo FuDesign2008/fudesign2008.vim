@@ -64,7 +64,7 @@ augroup END
     scriptencoding utf-8
 
     if has('clipboard')
-        if has ('x') && has ('gui') " on Linux use + register for copy-paste
+        if has ('gui')
             set clipboard=unnamedplus
             " inspired by  https://github.com/erickzanardo/vim-xclip
             vmap <c-s-c> "+y
