@@ -67,13 +67,9 @@ augroup END
         if has ('x') && has ('gui') " on Linux use + register for copy-paste
             set clipboard=unnamedplus
             " inspired by  https://github.com/erickzanardo/vim-xclip
-            vmap <c-c> "+y
-            nmap <c-b> "+p
-        elseif has ('gui') " one mac and windows, use * register for copy-paste
-            set clipboard=unnamed
-            " inspired by  https://github.com/erickzanardo/vim-xclip
-            vmap <c-c> "*y
-            nmap <c-b> "*p
+            vmap <c-s-c> "+y
+            vmap <c-s-x> "+x
+            nmap <c-s-v> "+gP
         else
             echomsg 'no clipboard feature, no clipboard shortcuts'
         endif
@@ -264,11 +260,11 @@ augroup END
     "
     " Easier moving in tabs and windows
     "
-    " <C-J> <C-K> <C-L> <C-H>  are keep for other plugins like UltiSnips
+    " <C-J> <C-K>   are keep for other plugins like UltiSnips
     "map <C-J> <C-W>j
     "map <C-K> <C-W>k
-    " map <C-L> <C-W>l
-    " map <C-H> <C-W>h
+    map <C-L> <C-W>l
+    map <C-H> <C-W>h
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     nnoremap j gj
