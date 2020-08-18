@@ -65,11 +65,16 @@ augroup END
 
     if has('clipboard')
         if has ('gui')
-            set clipboard=unnamedplus
-            " inspired by  https://github.com/erickzanardo/vim-xclip
-            vmap <c-s-c> "+y
-            vmap <c-s-x> "+x
-            nmap <c-s-v> "+gP
+            if has('mac') || has('macunix')
+                 " for mac,  do nothing
+            else
+                 " for ubuntu
+                set clipboard=unnamedplus
+                " inspired by  https://github.com/erickzanardo/vim-xclip
+                vmap <c-s-c> "+y
+                vmap <c-s-x> "+x
+                nmap <c-s-v> "+gP
+            endif
         else
             echomsg 'no clipboard feature, no clipboard shortcuts'
         endif
