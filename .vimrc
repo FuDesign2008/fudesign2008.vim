@@ -1247,7 +1247,7 @@ augroup END
             let g:ale_fixers = {
                         \ 'markdown': ['prettier'],
                         \ 'html': ['prettier'],
-                        \ 'json': ['prettier'],
+                        \ 'json': ['prettier', 'fixjson'],
                         \ 'css': ['prettier'],
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
