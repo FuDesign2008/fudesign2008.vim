@@ -625,8 +625,20 @@ augroup END
                 let g:ycm_min_num_identifier_candidate_chars = 0
                 let g:ycm_always_populate_location_list = 0
 
-                let g:ycm_add_preview_to_completeopt = 1
+                let g:ycm_add_preview_to_completeopt = 0
                 let g:ycm_autoclose_preview_window_after_insertion = 0
+
+                set completeopt="menu,popup"
+                set updatetime=1000
+                nmap <leader>D <plug>(YCMHover)
+                augroup MyYCMCustom
+                    autocmd!
+                    autocmd FileType typescript,javascript let b:ycm_hover = {
+                      \ 'command': 'GetType',
+                      \ 'syntax': &filetype
+                      \ }
+                augroup END
+
 
                 " default
                 "let g:ycm_key_list_select_completion = ['<TAB>', '<DOWN>'] " with vim default: <c-n>
