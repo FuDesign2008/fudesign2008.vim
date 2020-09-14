@@ -859,30 +859,31 @@ augroup END
                         "\ 'lucius',
                         "\ 'peaksea']
         let g:favorite_color_schemes = [
+                        \ 'OceanicNext',
                         \ 'Tomorrow',
                         \ 'Tomorrow-Night',
                         \ 'Tomorrow-Night-Blue',
                         \ 'Tomorrow-Night-Bright',
                         \ 'Tomorrow-Night-Eighties',
+                        \ 'afterglow',
                         \ 'apprentice',
                         \ 'atom',
                         \ 'autumnleaf',
                         \ 'bclear',
                         \ 'beauty256',
                         \ 'codeschool',
+                        \ 'flattened_light',
                         \ 'github',
                         \ 'hybrid',
                         \ 'jellybeans',
                         \ 'lucius',
                         \ 'molokai',
+                        \ 'nerv-ous',
                         \ 'pencil',
                         \ 'pyte',
                         \ 'solarized',
                         \ 'summerfruit',
-                        \ 'OceanicNext',
-                        \ 'nerv-ous',
-                        \ 'vc',
-                        \ 'afterglow'
+                        \ 'vc'
                         \]
 
 
