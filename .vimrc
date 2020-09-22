@@ -924,20 +924,10 @@ augroup END
                     \]
         let g:favorite_gui_fonts = map(g:favorite_gui_fonts,
                     \ 'v:val . ":h" .  g:gui_font_size')
-
-        let g:random_theme_start = 1
-
-        if !has('gui_running')
-            if has('mac') || has('macunix')
-                " if run vim in mac terminal, use lucius
-                let g:random_theme_start = 0
-                colo lucius
-            endif
-        else
-            call SetGuiFont('Fira\ Code', g:gui_font_size)
-        endif
-
         unlet g:gui_font_size
+
+        let g:random_theme_start = 'favorite'
+
     " }
 
     " FuDesign2008/openUrl.vim {
