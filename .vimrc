@@ -120,6 +120,9 @@ augroup END
     " setting up for diff mode {
         set diffopt-=horizontal
         set diffopt+=vertical
+        if has('patch-8.1.0360')
+            set diffopt+=internal,algorithm:patience
+        endif
     " }
 " }
 "
