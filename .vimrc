@@ -1229,6 +1229,7 @@ augroup END
                         \ 'c': [],
                         \ 'cpp': [],
                         \ 'java': ['javac', 'checkstyle'],
+                        \ 'tex': []
                         \ }
 
             let g:ale_sign_column_always = 1
