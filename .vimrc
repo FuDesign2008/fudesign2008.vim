@@ -11,7 +11,9 @@ set nocompatible        " must be first line
         else
             " use bash as the default shell for vim
             " @see http://dailyvim.tumblr.com/post/66708941289/fish
-            set shell=/bin/bash
+            " set shell=/bin/bash
+            " @see https://stackoverflow.com/questions/11415428/terminal-vim-not-loading-zshrc
+            set shell=zsh\ -i
         endif
     " }
 
