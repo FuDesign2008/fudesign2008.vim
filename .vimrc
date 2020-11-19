@@ -1061,6 +1061,7 @@ augroup END
             let l:isExist = filereadable(l:tempFile)
             if l:isExist
                 let l:result['file'] = l:tempFile
+                let l:result['filename']= a:fileName
                 let l:result['distance']  =  l:counter
                 return l:result
             endif
@@ -1092,13 +1093,13 @@ augroup END
             endif
         endfor
 
-        let l:theFile = get(l:closestItem, 'file', '')
+        let l:theFile = get(l:closestItem, 'filename', '')
         return l:theFile
     endfunction
 
     " support https://github.com/davidtheclark/cosmiconfig
     " try to find eslint first and then jshint in the same directory
-    let g:find_file_path = FindFilesUp([
+    let g:find_file_name = FindFilesUp([
         \ '.eslintrc',
         \ '.eslintrc.json',
         \ '.eslintrc.js',
@@ -1108,12 +1109,14 @@ augroup END
         \ '.jshintrc.json',
         \ '.jshintrc.js',
         \ '.jshintrc.yaml',
-        \ '.jshintrc.yml'
+        \ '.jshintrc.yml',
+        \ '.flowconfig',
         \ ], 10)
-    let g:use_jshint_for_javascript = stridx(g:find_file_path, 'jshintrc') > -1
-    let g:use_eslint_for_javascript = stridx(g:find_file_path, 'eslintrc') > -1
+    let g:use_jshint_for_javascript = stridx(g:find_file_name, 'jshintrc') > -1
+    let g:use_eslint_for_javascript = stridx(g:find_file_name, 'eslintrc') > -1
+    let g:use_flow_for_javascript = stridx(g:find_file_name, 'flowconfig') > -1
 
-    let g:find_file_path = FindFilesUp([
+    let g:find_file_name = FindFilesUp([
         \ 'tslint.json',
         \ 'tslint.yaml',
         \ '.eslintrc',
@@ -1122,18 +1125,18 @@ augroup END
         \ '.eslintrc.yaml',
         \ '.eslintrc.yml'
         \ ], 10)
-    let g:use_tslint_for_typescript = stridx(g:find_file_path, 'tslint') > -1
+    let g:use_tslint_for_typescript = stridx(g:find_file_name, 'tslint') > -1
 
-    let g:find_file_path = FindFilesUp([
+    let g:find_file_name = FindFilesUp([
         \ '.stylelintrc',
         \ '.stylelintrc.json',
         \ '.stylelintrc.js',
         \ '.stylelintrc.yaml',
         \ '.stylelintrc.yml'
         \], 10)
-    let g:use_stylelint_for_style = stridx(g:find_file_path, 'stylelintrc') > -1
+    let g:use_stylelint_for_style = stridx(g:find_file_name, 'stylelintrc') > -1
 
-    unlet g:find_file_path
+    unlet g:find_file_name
 
     "Syntastic {
         " the recommend setting form README
@@ -1278,6 +1281,9 @@ augroup END
                 let g:ale_fixers['javascript'] = ['prettier']
             elseif g:use_eslint_for_javascript
                 let g:ale_fixers['javascript'] = ['eslint', 'prettier']
+            elseif g:use_flow_for_javascript
+                let g:ale_linters['javascript'] = ['flow']
+                let g:ale_fixers['javascript'] = ['prettier']
             endif
 
             if g:use_tslint_for_typescript
