@@ -925,6 +925,7 @@ augroup END
                     " \ 'Fira\ Code',
                     " \ 'Cascadia\ Code',
         let g:favorite_gui_fonts = [
+                    \ 'Cascadia\ Code',
                     \ 'Source\ Code\ Variable'
                     \]
         let g:favorite_gui_fonts = map(g:favorite_gui_fonts,
