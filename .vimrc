@@ -714,24 +714,7 @@ augroup END
             function! ConfigPlanPlugin()
                 let philosophyDir = '~/workspace/github2008/philosophy/'
                 let g:p_edit_files = {
-                    \ 'philosophy': expand(philosophyDir . 'README.md'),
-                    \ 'read': expand(philosophyDir . 'read'),
-                    \ 'write': expand(philosophyDir . 'write'),
-                    \ 'edu': expand(philosophyDir .'edu'),
-                    \ 'beijing': expand(philosophyDir . 'beijing'),
-                    \ 'interp': expand(philosophyDir . 'interp'),
-                    \ 'small-family': expand(philosophyDir . 'small-family'),
-                        \ 'kaixin': expand(philosophyDir . 'small-family/kaixin'),
-                        \ 'fang': expand(philosophyDir . 'small-family/fang'),
-                        \ 'che': expand(philosophyDir . 'small-family/che'),
-                        \ 'holiday': expand(philosophyDir . 'small-family/holiday'),
-                    \ 'log': expand(philosophyDir . 'log'),
-                    \ 'vlog': expand(philosophyDir . 'investing/log'),
-                    \ 'projects': expand(philosophyDir . 'projects'),
-                    \ 'work': expand(philosophyDir . 'work'),
-                    \ 'pwd' : expand(philosophyDir . 'pwd/pwd.gpg'),
-                    \ 'yin' : expand(philosophyDir . 'pwd/yin.gpg'),
-                    \ 'company': expand(philosophyDir . 'pwd/company.gpg')
+                    \ 'philosophy': expand(philosophyDir . 'README.md')
                     \}
 
                 unlet philosophyDir
