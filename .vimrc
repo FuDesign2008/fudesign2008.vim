@@ -1502,6 +1502,8 @@ augroup END
      " fzf.vim {
         if count(g:spf13_bundle_groups, 'fzf')
             let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
+            " diable preview window for performance
+            let g:fzf_preview_window = []
 
             if isdirectory("/usr/local/opt/fzf")
                 " for brew install fzf on mac os
