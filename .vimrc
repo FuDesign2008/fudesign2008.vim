@@ -1271,8 +1271,8 @@ augroup END
             endif
 
             if g:use_tslint_for_typescript
-                " let g:ale_linters['typescript'] = ['tslint', 'tsserver']
-                let g:ale_linters['typescript'] = ['tslint']
+                let g:ale_linters['typescript'] = ['tslint', 'tsserver']
+                " let g:ale_linters['typescript'] = ['tslint']
                 " let g:ale_fixers['typescript'] = ['tslint', 'prettier']
                 let g:ale_fixers['typescript'] = ['prettier']
                 let g:ale_linters['typescriptreact'] = ['tslint', 'tsserver']
