@@ -64,14 +64,14 @@ set nocompatible        " must be first line
             "\ 'ctags',
             "\ 'ios',
             "\ 'fzf'
+            " \ 'python',
+            " \ 'java',
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'fzf',
             \ 'colors',
             \ 'programming',
             \ 'snip',
-            \ 'python',
-            \ 'java',
             \ 'javascript',
             \ 'node',
             \ 'vue',
@@ -94,11 +94,11 @@ set nocompatible        " must be first line
 
     " General
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'mhinz/vim-startify'
+            " Bundle 'mhinz/vim-startify'
             Bundle 'scrooloose/nerdtree'
             Bundle 'matchit.zip'
             Bundle 'ntpeters/vim-better-whitespace'
-            Bundle 'junegunn/rainbow_parentheses.vim'
+            " Bundle 'junegunn/rainbow_parentheses.vim'
 
             " Do NOT use, for `:ALEFix` will be run before save
             " Bundle '907th/vim-auto-save'
@@ -106,14 +106,14 @@ set nocompatible        " must be first line
             " vim-auto-save will breaking undo
             " Bundle 'FuDesign2008/vim-auto-save'
 
-            Bundle 'haya14busa/incsearch.vim'
-            Bundle 'haya14busa/incsearch-fuzzy.vim'
+            " Bundle 'haya14busa/incsearch.vim'
+            " Bundle 'haya14busa/incsearch-fuzzy.vim'
 
             " airline is lightweight than powerline
             Bundle 'vim-airline/vim-airline'
             Bundle 'vim-airline/vim-airline-themes'
 
-            Bundle 'vim-scripts/LanguageTool'
+            " Bundle 'vim-scripts/LanguageTool'
 
             "Bundle 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
@@ -130,7 +130,7 @@ set nocompatible        " must be first line
             "Bundle 'vim-scripts/SearchComplete'
 
             " to zoomin/out/reset guifont size
-            Bundle 'FuDesign2008/zoom.vim'
+            " Bundle 'FuDesign2008/zoom.vim'
             "Bundle 'vim-scripts/ZoomWin'
 
             " Bundle 'vim-scripts/IndentAnything'
@@ -174,7 +174,7 @@ set nocompatible        " must be first line
             else
 
                 if g:spf13_autocomplete_method ==# 'tabnine'
-                    Bundle 'zxqfl/tabnine-vim'
+                    Bundle 'codota/tabnine-vim'
                 elseif g:spf13_autocomplete_method ==# 'deoplete'
                     Bundle 'Shougo/deoplete.nvim'
                     Bundle 'roxma/nvim-yarp'
@@ -332,7 +332,7 @@ set nocompatible        " must be first line
             " conflict with delimitMate
             " Bundle 'jiangmiao/auto-pairs'
 
-            Bundle 'FuDesign2008/toggle-maximize.vim'
+            " Bundle 'FuDesign2008/toggle-maximize.vim'
             Bundle 'FuDesign2008/only.vim'
             Bundle 'FuDesign2008/edit.vim'
             Bundle 'jamessan/vim-gnupg'
@@ -373,19 +373,19 @@ set nocompatible        " must be first line
             Bundle 'FuDesign2008/smartRename.vim'
 
             Bundle 'will133/vim-dirdiff'
-            Bundle 'junkblocker/patchreview-vim'
+            " Bundle 'junkblocker/patchreview-vim'
             Bundle 'chrisbra/vim-diff-enhanced'
-            Bundle 'Chiel92/vim-autoformat'
+            " Bundle 'Chiel92/vim-autoformat'
 
-            Bundle 'KabbAmine/zeavim.vim'
+            " Bundle 'KabbAmine/zeavim.vim'
 
             Bundle 'ekalinin/Dockerfile.vim'
 
-            Bundle 'christoomey/vim-system-copy'
+            " Bundle 'christoomey/vim-system-copy'
 
 
             if !g:is_win
-                Bundle 'tpope/vim-fugitive'
+                " Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
                 "Bundle 'rizzatti/funcoo.vim'
@@ -454,7 +454,7 @@ set nocompatible        " must be first line
 
             Bundle 'othree/es.next.syntax.vim'
             Bundle 'othree/yajs.vim'
-            Bundle 'othree/javascript-libraries-syntax.vim'
+            " Bundle 'othree/javascript-libraries-syntax.vim'
 
             "Bundle 'mattn/jscomplete-vim'
 
@@ -465,9 +465,8 @@ set nocompatible        " must be first line
 
             " Bundle 'scheakur/vim-jsdoc'
             Bundle 'FuDesign2008/vim-jsdoc'
-            Bundle 'maksimr/vim-jsbeautify'
 
-            Bundle 'Quramy/vim-js-pretty-template'
+            " Bundle 'Quramy/vim-js-pretty-template'
 
             " Bundle 'flowtype/vim-flow'
 
@@ -516,7 +515,7 @@ set nocompatible        " must be first line
             Bundle 'guileen/vim-node-dict'
             Bundle 'sidorares/node-vim-debugger'
             Bundle 'moll/vim-node'
-            Bundle 'digitaltoad/vim-pug'
+            " Bundle 'digitaltoad/vim-pug'
 
         endif
 
@@ -531,7 +530,7 @@ set nocompatible        " must be first line
             " use ap/vim-css-color instead of skammer/vim-css-color
             " @see https://github.com/jvortmann/vim-files/issues/2
             Bundle 'ap/vim-css-color'
-            Bundle 'amadeus/vim-convert-color-to'
+            " Bundle 'amadeus/vim-convert-color-to'
 
             Bundle 'FuDesign2008/css-snippets.vim'
         endif
@@ -569,8 +568,8 @@ set nocompatible        " must be first line
             Bundle 'FuDesign2008/MarkdownViewer.vim'
             Bundle 'FuDesign2008/markdown-snippets.vim'
 
-            Bundle 'iamcco/markdown-preview.nvim'
-            Bundle 'mzlogin/vim-markdown-toc'
+            " Bundle 'iamcco/markdown-preview.nvim'
+            " Bundle 'mzlogin/vim-markdown-toc'
             Bundle 'plasticboy/vim-markdown'
             Bundle 'lervag/vimtex'
 
