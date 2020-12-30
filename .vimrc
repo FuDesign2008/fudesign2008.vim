@@ -996,7 +996,7 @@ augroup END
     "}
 
     " junegunn/rainbow_parentheses.vim {
-        autocmd vimrc FileType typescript,javacript,css,scss RainbowParentheses
+        " autocmd vimrc FileType typescript,javacript,css,scss RainbowParentheses
     "}
 
     " coffeescript plugin {
