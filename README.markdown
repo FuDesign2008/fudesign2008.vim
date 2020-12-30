@@ -456,6 +456,8 @@ Here's some tips if you've never used VIM before:
 
 ## Speed up vim
 
+1. vim
+    - [Improving Performance in Vim. This time I want to share with you some… | by Santiago Agüero | Medium](https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf)
 1. fzf
     - [How to search faster in Vim with FZF.vim - DEV](https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko)
     - [How FZF and ripgrep improved my workflow | by Sidney Liebrand | Medium](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861)
