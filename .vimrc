@@ -634,7 +634,7 @@ augroup END
                 let g:ycm_autoclose_preview_window_after_insertion = 0
 
                 set completeopt="menu,popup"
-                set updatetime=1000
+                set updatetime=3000
                 nmap <leader>D <plug>(YCMHover)
                 augroup MyYCMCustom
                     autocmd!
