@@ -174,7 +174,7 @@ set nocompatible        " must be first line
             else
 
                 if g:spf13_autocomplete_method ==# 'tabnine'
-                    Bundle 'zxqfl/tabnine-vim'
+                    Bundle 'codota/tabnine-vim'
                 elseif g:spf13_autocomplete_method ==# 'deoplete'
                     Bundle 'Shougo/deoplete.nvim'
                     Bundle 'roxma/nvim-yarp'
