@@ -714,7 +714,7 @@ augroup END
             function! ConfigPlanPlugin()
                 let philosophyDir = '~/workspace/github2008/philosophy/'
                 let g:p_edit_files = {
-                    \ 'philosophy': expand(philosophyDir . 'README.md')
+                    \ 'philosophy': expand(philosophyDir)
                     \}
 
                 unlet philosophyDir
