@@ -714,7 +714,7 @@ augroup END
             function! ConfigPlanPlugin()
                 let philosophyDir = '~/workspace/github2008/philosophy/'
                 let g:p_edit_files = {
-                    \ 'philosophy': expand(philosophyDir . 'README.md')
+                    \ 'philosophy': expand(philosophyDir)
                     \}
 
                 unlet philosophyDir
@@ -796,7 +796,9 @@ augroup END
                     \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
                     \ '05-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
                     \ '06-24': '1. 半年回顾与规划;',
+                    \ '06-30': '1. 🎂生日快乐;',
                     \ '09-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                    \ '09-12': '1. 纪念日;',
                     \ '12-24': '1. 半年回顾与规划;',
                     \ '12-30': '1. 结婚纪念日;'
                     \}
