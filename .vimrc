@@ -757,8 +757,8 @@ augroup END
                 " regular task
 
                 let g:plan_week_keypoint = [
-                    \ '1. 技术博客;',
-                    \ '    - 每月一篇;'
+                    \ '1. 主要目标1;',
+                    \ '1. 次要目标2;'
                     \]
 
                 "0 = sunday
@@ -769,28 +769,29 @@ augroup END
                     \ 1 : '1. 电脑移除与升级软件;'
                     \}
                 let g:plan_week_personal = {
-                    \ 0 : '1. 断舍离;   - 手机;    - 家庭居所;'
+                    \ 0 : '1. 断舍离;   - 清理手机;    - 清理家庭居所;'
                     \}
 
                 let g:plan_week_review = [
-                    \ '1. 主要目标是否完成;'
+                    \ '1. 周回顾与下周规划;'
                     \]
 
                 let g:plan_month_keypoint = [
-                    \ '1. 主要目标;    - xxx;'
+                    \ '1. 主要目标1;',
+                    \ '1. 次要目标2;'
                     \]
 
-                let g:plan_month_work = {
-                    \ 27: '1. 月回顾与下月规划;'
-                    \}
+                let g:plan_month_work = {}
                 let g:plan_month_personal = {
                     \ 1 : '1. 车贷(2);',
-                    \ 8 : '1. 农行房贷(18); 1. 孩子培养基金;',
                     \ 5 : '1. 查询薪水发放;',
-                    \ 28: '1. 个人总结与下月规划;'
+                    \ 8 : '1. 农行房贷(18); 1. 孩子培养基金;'
                     \}
 
-                let g:plan_month_review = g:plan_week_review
+                let g:plan_month_review = [
+                    \ '1. 家庭财产统计;',
+                    \ '1. 月回顾与下月规划;'
+                    \]
 
                 let g:plan_year_personal = {
                     \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
