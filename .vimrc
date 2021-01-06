@@ -632,6 +632,7 @@ augroup END
 
                 let g:ycm_add_preview_to_completeopt = 0
                 let g:ycm_autoclose_preview_window_after_insertion = 0
+                let g:ycm_auto_hover = ''
 
                 set completeopt="menu,popup"
                 set updatetime=3000
