@@ -783,9 +783,8 @@ augroup END
 
                 let g:plan_month_work = {}
                 let g:plan_month_personal = {
-                    \ 1 : '1. 车贷(2);',
-                    \ 5 : '1. 查询薪水发放;',
-                    \ 8 : '1. 农行房贷(18); 1. 孩子培养基金;'
+                    \ 1 : '1. 车贷(02);',
+                    \ 5 : '1. 查询薪水发放;1. 农行房贷(06); 1. 孩子培养基金;'
                     \}
 
                 let g:plan_month_review = [
