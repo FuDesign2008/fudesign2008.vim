@@ -893,14 +893,17 @@ augroup END
             endif
         endfunction
 
-        " 0 or 1
         let g:gui_font_size = '12'
 
         if has('gui_running')
             if has('x11')
                 let g:gui_font_size = '12'
             elseif has('macunix')
-                let g:gui_font_size = '14'
+                if system('arch') ==? 'arm64'
+                    let g:gui_font_size = '14'
+                else
+                    let g:gui_font_size = '16'
+                endif
             endif
         endif
 
