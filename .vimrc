@@ -902,7 +902,7 @@ augroup END
                 if system('arch') ==? 'arm64'
                     let g:gui_font_size = '14'
                 else
-                    let g:gui_font_size = '16'
+                    let g:gui_font_size = '14'
                 endif
             endif
         endif
