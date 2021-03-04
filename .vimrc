@@ -1239,6 +1239,7 @@ augroup END
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
+            let g:ale_cache_executable_check_failures = 1
             " Do not lint or fix minified files.
             let g:ale_pattern_options = {
                 \ '\.min\.js$': {'ale_enabled': 0},
