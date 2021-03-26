@@ -603,19 +603,19 @@ augroup END
                     \ 'help'
                     \]
                 " }
-                call coc#add_extension(
-                    \'coc-vimlsp',
-                    \'coc-sources',
-                    \'coc-tsserver',
-                    \'coc-json',
-                    \'coc-html',
-                    \'coc-css',
-                    \'coc-svg',
-                    \'coc-vetur',
-                    \'coc-python',
-                    \'coc-git',
-                    \'coc-snippets'
-                    \)
+                " call coc#add_extension(
+                    " \'coc-vimlsp',
+                    " \'coc-sources',
+                    " \'coc-tsserver',
+                    " \'coc-json',
+                    " \'coc-html',
+                    " \'coc-css',
+                    " \'coc-svg',
+                    " \'coc-vetur',
+                    " \'coc-python',
+                    " \'coc-git',
+                    " \'coc-snippets'
+                    " \)
 
         else
              " YCM.vim {
