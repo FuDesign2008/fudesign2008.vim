@@ -285,16 +285,22 @@ set nocompatible        " must be first line
                     "common source
                     Bundle 'neoclide/coc-sources'
 
+
+                    Bundle 'iamcco/coc-spell-checker'
+
                     Bundle 'neoclide/coc-tsserver'
                     Bundle 'neoclide/coc-json'
 
                     Bundle 'neoclide/coc-html'
+                    Bundle 'yaegassy/coc-htmlhint'
+                    Bundle 'yaegassy/coc-html-css-support'
                     Bundle 'neoclide/coc-css'
+                    Bundle 'antonk52/coc-cssmodules'
                     Bundle 'iamcco/coc-svg'
 
                     Bundle 'neoclide/coc-vetur'
-                    Bundle 'neoclide/coc-python'
-                    Bundle 'neoclide/coc-git'
+                    " Bundle 'neoclide/coc-python'
+                    " Bundle 'neoclide/coc-git'
                     Bundle 'neoclide/coc-snippets'
 
                 else

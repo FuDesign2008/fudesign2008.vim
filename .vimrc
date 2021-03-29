@@ -1217,7 +1217,7 @@ augroup END
             let g:ale_enabled = 0
         else
             let g:ale_linters = {
-                        \ 'markdown': ['remark-lint'],
+                        \ 'markdown': ['remark-lint', 'markdownlint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['eslint', 'tsserver'],
                         \ 'typescriptreact': ['eslint', 'tsserver'],
