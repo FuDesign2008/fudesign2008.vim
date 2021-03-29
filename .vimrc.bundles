@@ -86,7 +86,7 @@ set nocompatible        " must be first line
 
     " asyncomplete, ycm is better
     " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
-    let g:spf13_autocomplete_method='coc'
+    let g:spf13_autocomplete_method='ycm'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
