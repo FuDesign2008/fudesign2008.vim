@@ -1216,12 +1216,15 @@ augroup END
         if &diff
             let g:ale_enabled = 0
         else
+            let g:ale_linter_aliases = {
+                        \ 'vue': ['vue', 'typescript', 'css']
+                        \ }
             let g:ale_linters = {
                         \ 'markdown': ['remark-lint', 'markdownlint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['eslint', 'tsserver'],
                         \ 'typescriptreact': ['eslint', 'tsserver'],
-                        \ 'vue': ['eslint', 'vls', 'stylelint'],
+                        \ 'vue': [ 'vls', 'eslint', 'stylelint'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
