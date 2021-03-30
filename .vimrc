@@ -634,7 +634,7 @@ augroup END
                 let g:ycm_autoclose_preview_window_after_insertion = 0
                 let g:ycm_auto_hover = ''
 
-                let g:ycm_lsp_examples_vimrc = expand('~/workspace/github/lsp-examples/vimrc.generated')
+                let g:ycm_lsp_examples_vimrc = expand('~/.vim/bundle/lsp-examples/vimrc.generated')
                 if filereadable(g:ycm_lsp_examples_vimrc)
                     execute 'source ' . g:ycm_lsp_examples_vimrc
                 endif
