@@ -634,6 +634,12 @@ augroup END
                 let g:ycm_autoclose_preview_window_after_insertion = 0
                 let g:ycm_auto_hover = ''
 
+                let g:ycm_language_server = [ {
+                    \ 'name': 'vue',
+                    \ 'filetypes': [ 'vue' ],
+                    \ 'cmdline': [ 'vls'  ]
+                    \ } ]
+
                 set completeopt="menu,popup"
                 set updatetime=3000
                 nmap <leader>D <plug>(YCMHover)
