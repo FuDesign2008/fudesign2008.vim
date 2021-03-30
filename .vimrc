@@ -634,12 +634,11 @@ augroup END
                 let g:ycm_autoclose_preview_window_after_insertion = 0
                 let g:ycm_auto_hover = ''
 
-                " @see https://github.com/ycm-core/YouCompleteMe/issues/3194
-                let g:ycm_language_server = [ {
-                    \ 'name': 'vue',
-                    \ 'filetypes': [ 'vue' ],
-                    \ 'cmdline': [ 'vls'  ]
-                    \ } ]
+                let g:ycm_lsp_examples_vimrc = expand('~/workspace/github/lsp-examples/vimrc.generated')
+                if filereadable(g:ycm_lsp_examples_vimrc)
+                    execute 'source ' . g:ycm_lsp_examples_vimrc
+                endif
+                unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
                 set updatetime=3000
