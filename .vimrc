@@ -634,6 +634,7 @@ augroup END
                 let g:ycm_autoclose_preview_window_after_insertion = 0
                 let g:ycm_auto_hover = ''
 
+                " @see https://github.com/ycm-core/YouCompleteMe/issues/3194
                 let g:ycm_language_server = [ {
                     \ 'name': 'vue',
                     \ 'filetypes': [ 'vue' ],
