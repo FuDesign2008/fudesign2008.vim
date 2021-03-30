@@ -310,6 +310,7 @@ set nocompatible        " must be first line
                     " But YCM does not have good-enough support for obj-c
                     " @see https://github.com/Valloric/YouCompleteMe/issues/84
                     Bundle 'Valloric/YouCompleteMe'
+                    Bundle 'ycm-core/lsp-examples'
                 endif
 
                 Bundle 'FuDesign2008/plan.vim'
