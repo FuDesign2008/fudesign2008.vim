@@ -1230,7 +1230,7 @@ augroup END
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['eslint', 'tsserver'],
                         \ 'typescriptreact': ['eslint', 'tsserver'],
-                        \ 'vue': [ 'vls', 'eslint', 'stylelint', 'tsserver'],
+                        \ 'vue': [ 'vls', 'eslint', 'stylelint'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
