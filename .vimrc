@@ -1268,7 +1268,7 @@ augroup END
                         \ 'javascript': ['prettier'],
                         \ 'typescript': ['eslint', 'prettier'],
                         \ 'typescriptreact': ['eslint', 'prettier'],
-                        \ 'vue': ['eslint', 'prettier'],
+                        \ 'vue': ['eslint', 'prettier', 'stylelint'],
                         \ 'c': ['clang-format']
                         \}
 
