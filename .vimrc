@@ -719,8 +719,13 @@ augroup END
     "
         if !g:is_win
             function! ConfigPlanPlugin()
-                let philosophyDir = '~/workspace/github2008/philosophy/'
+                let philosophyDir = '~/workspace/github2008/philosophy'
                 let g:p_edit_files = {
+                    \ 'interview': expand(philosophyDir . '/work/interview'),
+                    \ 'small-family': expand(philosophyDir . '/small-family'),
+                    \ 'pwd': expand(philosophyDir . '/pwd'),
+                    \ 'log': expand(philosophyDir . '/log'),
+                    \ 'vlog': expand(philosophyDir . '/investing/log'),
                     \ 'philosophy': expand(philosophyDir)
                     \}
 
