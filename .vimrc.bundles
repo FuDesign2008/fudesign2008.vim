@@ -465,8 +465,8 @@ set nocompatible        " must be first line
             " disable othree/yajs.vim for performance
             " @see https://github.com/othree/yajs.vim#performance-issue
             " > yajs.vim is not good on performance
-            Bundle 'othree/es.next.syntax.vim'
-            Bundle 'othree/yajs.vim'
+            " Bundle 'othree/es.next.syntax.vim'
+            " Bundle 'othree/yajs.vim'
             " Bundle 'othree/javascript-libraries-syntax.vim'
 
             "Bundle 'mattn/jscomplete-vim'
