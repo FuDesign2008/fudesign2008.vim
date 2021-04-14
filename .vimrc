@@ -1247,8 +1247,16 @@ augroup END
             let g:ale_open_list = 1
             let g:ale_keep_list_window_open = 1
             let g:ale_list_window_size = 3
+
+            let g:ale_sign_error = '✗'
+            let g:ale_sign_warning = '!'
+
             let g:ale_lint_on_text_changed = 'never'
-            " let g:ale_lint_on_insert_leave = 0
+            let g:ale_lint_on_insert_leave = 0
+            let g:ale_lint_on_enter=1
+            let g:ale_lint_on_save=1
+            let g:ale_lint_on_filetype_changed=1
+
             " let g:ale_lint_delay = 200
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
