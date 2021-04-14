@@ -1257,7 +1257,7 @@ augroup END
             let g:ale_lint_on_save=1
             let g:ale_lint_on_filetype_changed=1
 
-            " let g:ale_lint_delay = 200
+            let g:ale_lint_delay = 0
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
