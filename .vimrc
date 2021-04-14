@@ -1227,6 +1227,9 @@ augroup END
         if &diff
             let g:ale_enabled = 0
         else
+            nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+            nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
             let g:ale_linter_aliases = {
                         \ 'vue': ['vue', 'html', 'javascript', 'typescript', 'css', 'scss']
                         \ }
@@ -1253,11 +1256,11 @@ augroup END
 
             let g:ale_lint_on_text_changed = 'never'
             let g:ale_lint_on_insert_leave = 0
-            let g:ale_lint_on_enter=1
+            let g:ale_lint_on_enter=0
             let g:ale_lint_on_save=1
             let g:ale_lint_on_filetype_changed=1
 
-            let g:ale_lint_delay = 0
+            let g:ale_lint_delay = 100
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
