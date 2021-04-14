@@ -1233,8 +1233,8 @@ augroup END
             let g:ale_linters = {
                         \ 'markdown': ['remark-lint', 'markdownlint'],
                         \ 'javascript': ['eslint'],
-                        \ 'typescript': ['tsserver', 'eslint'],
-                        \ 'typescriptreact': ['tsserver', 'eslint'],
+                        \ 'typescript': ['eslint'],
+                        \ 'typescriptreact': ['eslint'],
                         \ 'vue': ['stylelint', 'vls', 'eslint'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
@@ -1302,11 +1302,11 @@ augroup END
             endif
 
             if g:use_tslint_for_typescript
-                let g:ale_linters['typescript'] = ['tslint', 'tsserver']
+                let g:ale_linters['typescript'] = ['tslint']
                 " let g:ale_linters['typescript'] = ['tslint']
                 " let g:ale_fixers['typescript'] = ['tslint', 'prettier']
                 let g:ale_fixers['typescript'] = ['prettier']
-                let g:ale_linters['typescriptreact'] = ['tslint', 'tsserver']
+                let g:ale_linters['typescriptreact'] = ['tslint']
                 let g:ale_fixers['typescriptreact'] = ['tslint', 'prettier']
 
                 " enable tslint to lint .js file
