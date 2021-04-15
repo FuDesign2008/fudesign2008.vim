@@ -51,6 +51,7 @@ augroup END
 
 " General {
     set background=dark         " Assume a dark background
+    set re=1
     "if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     "endif
@@ -151,9 +152,10 @@ augroup END
     set tabpagemax=1               " only show 1 tabs
     set showmode                    " display the current mode
 
-    set cursorline                  " highlight current line
-    set cursorcolumn
-    set colorcolumn=80,100,120  "显示right margin, 7.3+
+    " those will mark screen redrawing slower, so set to disabled
+    set nocursorline                  " highlight current line
+    set nocursorcolumn
+    " set colorcolumn=80,100,120  "显示right margin, 7.3+
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -223,8 +225,7 @@ augroup END
             setlocal foldnestmax=5
         endif
     endfunction
-    "call SetFolding()
-    autocmd vimrc BufNewFile,BufRead * call SetFolding()
+    " autocmd vimrc BufNewFile,BufRead * call SetFolding()
 
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
@@ -662,7 +663,7 @@ augroup END
                       "\ 'markdown' : 1,
                 let g:ycm_filetype_blacklist = {
                       \ 'tagbar' : 1,
-                      \ 'qf' : 1,
+                      \ e'qf' : 1,
                       \ 'notes' : 1,
                       \ 'unite' : 1,
                       \ 'text' : 1,
@@ -1249,18 +1250,18 @@ augroup END
             let g:ale_sign_column_always = 1
             let g:ale_open_list = 1
             let g:ale_keep_list_window_open = 1
-            let g:ale_list_window_size = 3
+            let g:ale_list_window_size = 5
 
             let g:ale_sign_error = '✗'
             let g:ale_sign_warning = '!'
 
-            let g:ale_lint_on_text_changed = 'never'
-            let g:ale_lint_on_insert_leave = 0
-            let g:ale_lint_on_enter=0
+            let g:ale_lint_on_text_changed = 1
+            let g:ale_lint_on_insert_leave = 1
+            let g:ale_lint_on_enter=1
             let g:ale_lint_on_save=1
             let g:ale_lint_on_filetype_changed=1
 
-            let g:ale_lint_delay = 100
+            let g:ale_lint_delay = 200
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
