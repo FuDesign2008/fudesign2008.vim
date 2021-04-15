@@ -112,7 +112,7 @@ set nocompatible        " must be first line
 
             " airline is lightweight than powerline
             Bundle 'vim-airline/vim-airline'
-            Bundle 'vim-airline/vim-airline-themes'
+            " Bundle 'vim-airline/vim-airline-themes'
 
             " Bundle 'vim-scripts/LanguageTool'
 
@@ -149,7 +149,7 @@ set nocompatible        " must be first line
             Bundle 'FuDesign2008/OpenUrl.vim'
             " Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'myusuf3/numbers.vim'
-            Bundle 'FuDesign2008/style.vim'
+            " Bundle 'FuDesign2008/style.vim'
             Bundle 'FuDesign2008/emoji-snippets.vim'
 
             "Bundle 'Yggdroot/indentLine'
@@ -375,7 +375,7 @@ set nocompatible        " must be first line
             "Bundle 'dimasg/vim-mark'
 
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-            Bundle 'godlygeek/tabular'
+            " Bundle 'godlygeek/tabular'
 
             Bundle 'FuDesign2008/autoHighlight.vim'
             Bundle 'FuDesign2008/smartRename.vim'
@@ -456,7 +456,7 @@ set nocompatible        " must be first line
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
-            Bundle 'kevinoid/vim-jsonc'
+            " Bundle 'kevinoid/vim-jsonc'
 
 
             Bundle 'pangloss/vim-javascript'
@@ -526,7 +526,7 @@ set nocompatible        " must be first line
             " for node
             " Bundle 'myhere/vim-nodejs-complete'
             Bundle 'guileen/vim-node-dict'
-            Bundle 'sidorares/node-vim-debugger'
+            " Bundle 'sidorares/node-vim-debugger'
             Bundle 'moll/vim-node'
             " Bundle 'digitaltoad/vim-pug'
 
@@ -534,9 +534,9 @@ set nocompatible        " must be first line
 
     " css
         if count(g:spf13_bundle_groups, 'css')
-            Bundle 'hail2u/vim-css3-syntax'
+            " Bundle 'hail2u/vim-css3-syntax'
             Bundle 'groenewege/vim-less'
-            Bundle 'wavded/vim-stylus'
+            " Bundle 'wavded/vim-stylus'
 
             Bundle 'cakebaker/scss-syntax.vim'
             "Bundle 'tpope/vim-haml'
@@ -625,7 +625,7 @@ set nocompatible        " must be first line
 
             if !has('win32') && has('unix')
                 " for man page
-                Bundle 'jez/vim-superman'
+                " Bundle 'jez/vim-superman'
             endif
 
         endif
