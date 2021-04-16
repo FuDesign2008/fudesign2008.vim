@@ -922,10 +922,7 @@ augroup END
 
 
                     " \ 'JetBrains\ Mono:h15'
-                    " \ 'Inconsolata:h15',
                     " \ 'Monaco:h14'
-                    " \ 'Fira\ Code',
-                    " \ 'Cascadia\ Code',
         let g:favorite_gui_fonts = [
                     \ 'Cascadia\ Code',
                     \ 'Fira\ Code',
