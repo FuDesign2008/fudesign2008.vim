@@ -462,6 +462,10 @@ set nocompatible        " must be first line
             Bundle 'pangloss/vim-javascript'
             "Bundle 'jelera/vim-javascript-syntax'
 
+            " support javascript and typescript 
+            " @see https://github.com/Galooshi/import-js/issues/503
+            Bundle 'galooshi/vim-import-js'
+
             " disable othree/yajs.vim for performance
             " @see https://github.com/othree/yajs.vim#performance-issue
             " > yajs.vim is not good on performance
