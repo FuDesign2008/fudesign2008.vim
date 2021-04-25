@@ -499,6 +499,7 @@ set nocompatible        " must be first line
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
+                Bundle 'FuDesign2008/json2ts.vim'
                 " yats has UltiSnips for typescript - which is not wanted
                 " Bundle 'HerringtonDarkholme/yats.vim'
             endif
