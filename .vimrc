@@ -1680,7 +1680,8 @@ augroup END
 
      " posva/vim-vue {
         autocmd vimrc BufRead,BufNewFile,BufWritePre *.vue,*.wpy setlocal filetype=vue
-        let g:vue_disable_pre_processors = 1
+        " let g:vue_disable_pre_processors = 1
+        let g:vue_pre_processors = 'detect_on_enter'
         autocmd vimrc FileType vue syntax sync fromstart
 
         let g:ft = ''
