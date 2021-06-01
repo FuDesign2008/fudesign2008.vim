@@ -910,7 +910,7 @@ augroup END
         if has('gui_running')
             if has('x11')
                 " for linux
-                let g:gui_font_size = '12'
+                let g:gui_font_size = '13'
             elseif has('macunix')
                 if system('arch') ==? 'arm64'
                     let g:gui_font_size = '14'
