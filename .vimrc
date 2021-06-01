@@ -925,9 +925,9 @@ augroup END
                     " \ 'Monaco:h14'
         let g:favorite_gui_fonts = [
                     \ 'Cascadia\ Code:h' . g:gui_font_size,
-                    \ 'Fira\ Code:h' . g:gui_font_size,
-                    \ 'Inconsolata:h'. (g:gui_font_size + 1),
-                    \ 'Source\ Code\ Variable:h'. g:gui_font_size
+                    \ 'Fira\ Code:h' . (g:gui_font_size - 1),
+                    \ 'Inconsolata:h'. (g:gui_font_size + 2),
+                    \ 'Source\ Code\ Variable:h'. (g:gui_font_size - 1)
                     \]
 
         unlet g:gui_font_size
