@@ -51,7 +51,7 @@ augroup END
 
 " General {
     set background=dark         " Assume a dark background
-    set re=1
+    set regexpengine=1
     "if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     "endif
@@ -924,13 +924,12 @@ augroup END
                     " \ 'JetBrains\ Mono:h15'
                     " \ 'Monaco:h14'
         let g:favorite_gui_fonts = [
-                    \ 'Cascadia\ Code',
-                    \ 'Fira\ Code',
-                    \ 'Inconsolata',
-                    \ 'Source\ Code\ Variable'
+                    \ 'Cascadia\ Code:h' . g:gui_font_size,
+                    \ 'Fira\ Code:h' . g:gui_font_size,
+                    \ 'Inconsolata:h'. (g:gui_font_size + 1),
+                    \ 'Source\ Code\ Variable:h'. g:gui_font_size
                     \]
-        let g:favorite_gui_fonts = map(g:favorite_gui_fonts,
-                    \ 'v:val . ":h" .  g:gui_font_size')
+
         unlet g:gui_font_size
 
         let g:random_theme_start = 'favorite'
@@ -1538,13 +1537,13 @@ augroup END
             " diable preview window for performance
             let g:fzf_preview_window = []
 
-            if isdirectory("/usr/local/opt/fzf")
+            if isdirectory('/usr/local/opt/fzf')
                 " for brew install fzf on mac os
                 set runtimepath+=/usr/local/opt/fzf
             elseif isdirectory(g:fzf_folder_via_git)
                 " for apt install fzf on ubuntu
                 " @see https://github.com/junegunn/fzf.vim/issues/456
-                execute "set runtimepath+=" . g:fzf_folder_via_git
+                execute 'set runtimepath+=' . g:fzf_folder_via_git
             else
                 echoerr 'Please set runtimepath for fzf'
             endif
