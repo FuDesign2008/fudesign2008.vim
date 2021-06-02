@@ -1280,9 +1280,9 @@ augroup END
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
                         \ 'javascript': ['prettier'],
-                        \ 'typescript': ['prettier', 'eslint'],
-                        \ 'typescriptreact': ['prettier', 'eslint'],
-                        \ 'vue': ['prettier', 'stylelint', 'eslint'],
+                        \ 'typescript': ['prettier'],
+                        \ 'typescriptreact': ['prettier'],
+                        \ 'vue': ['prettier', 'stylelint'],
                         \ 'c': ['clang-format']
                         \}
 
@@ -1296,7 +1296,7 @@ augroup END
                 let g:ale_linters['javascript'] = ['jshint']
                 let g:ale_fixers['javascript'] = ['prettier']
             elseif g:use_eslint_for_javascript
-                let g:ale_fixers['javascript'] = ['eslint', 'prettier']
+                let g:ale_fixers['javascript'] = ['prettier']
             elseif g:use_flow_for_javascript
                 let g:ale_linters['javascript'] = ['flow']
                 let g:ale_fixers['javascript'] = ['prettier']
