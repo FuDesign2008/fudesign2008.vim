@@ -1241,6 +1241,7 @@ augroup END
                         \ 'c': [],
                         \ 'cpp': [],
                         \ 'java': ['javac', 'checkstyle'],
+                        \ 'yaml': ['yamllint', 'prettier'],
                         \ 'tex': []
                         \ }
 
@@ -1283,6 +1284,7 @@ augroup END
                         \ 'typescript': ['prettier'],
                         \ 'typescriptreact': ['prettier'],
                         \ 'vue': ['prettier', 'stylelint'],
+                        \ 'yaml': ['yamlfix', 'prettier'],
                         \ 'c': ['clang-format']
                         \}
 
