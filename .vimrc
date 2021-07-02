@@ -865,29 +865,44 @@ augroup END
                         \ 'OceanicNext',
                         \ 'Tomorrow',
                         \ 'Tomorrow-Night',
-                        \ 'Tomorrow-Night-Blue',
                         \ 'Tomorrow-Night-Bright',
                         \ 'Tomorrow-Night-Eighties',
                         \ 'afterglow',
                         \ 'apprentice',
-                        \ 'atom',
                         \ 'autumnleaf',
                         \ 'bclear',
                         \ 'beauty256',
                         \ 'codeschool',
-                        \ 'flattened_light',
                         \ 'github',
                         \ 'hybrid',
                         \ 'jellybeans',
                         \ 'lucius',
                         \ 'molokai',
-                        \ 'nerv-ous',
                         \ 'pencil',
-                        \ 'pyte',
                         \ 'solarized',
                         \ 'summerfruit',
                         \ 'vc'
                         \]
+
+        if !has('gui_running')
+            let g:favorite_color_schemes = [
+                        \ 'afterglow',
+                        \ 'molokai',
+                        \ 'hybrid',
+                        \ 'Tomorrow',
+                        \ 'Tomorrow-Night',
+                        \ 'Tomorrow-Night-Bright',
+                        \ 'Tomorrow-Night-Eighties',
+                        \ 'jellybeans',
+                        \ 'OceanicNext',
+                        \ 'codeschool',
+                        \ 'beauty256',
+                        \ 'github',
+                        \ 'pencil',
+                        \ 'lucius',
+                        \ 'apprentice'
+                        \ ]
+        endif
 
 
         " @see https://forum.ubuntu.com.cn/viewtopic.php?t=45358
