@@ -722,7 +722,7 @@ augroup END
             function! ConfigPlanPlugin()
                 let philosophyDir = '~/workspace/github2008/philosophy'
                 let g:p_edit_files = {
-                    \ 'interview': expand(philosophyDir . '/work/interview'),
+                    \ 'interview': expand(philosophyDir . '/profession/interview'),
                     \ 'small-family': expand(philosophyDir . '/small-family'),
                     \ 'pwd': expand(philosophyDir . '/pwd'),
                     \ 'log': expand(philosophyDir . '/log'),
