@@ -70,6 +70,7 @@ augroup END
         if has ('gui')
             if has('mac') || has('macunix')
                  " for mac,  do nothing
+                set clipboard=unnamedplus
             else
                  " for ubuntu
                 set clipboard=unnamedplus
