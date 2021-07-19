@@ -68,10 +68,7 @@ augroup END
 
     if has('clipboard')
         if has ('gui')
-            if has('mac') || has('macunix')
-                 " for mac,  do nothing
-                set clipboard=unnamedplus
-            else
+            if has('unnamedplus')
                  " for ubuntu
                 set clipboard=unnamedplus
                 " inspired by  https://github.com/erickzanardo/vim-xclip
