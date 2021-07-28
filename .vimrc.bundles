@@ -84,9 +84,9 @@ set nocompatible        " must be first line
             \ ]
     endif
 
-    " asyncomplete, ycm is better
-    " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
-    let g:spf13_autocomplete_method='ycm'
+    " lsp, ycm is better
+    let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'lsp'
+    " let g:spf13_autocomplete_method='ycm'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -206,74 +206,28 @@ set nocompatible        " must be first line
                     " echo document
                     Bundle 'Shougo/echodoc.vim'
 
-                elseif g:spf13_autocomplete_method ==# 'asyncomplete'
-                    Bundle 'prabirshrestha/asyncomplete.vim'
-                    Bundle 'prabirshrestha/async.vim'
+                elseif g:spf13_autocomplete_method ==# 'lsp'
                     Bundle 'prabirshrestha/vim-lsp'
-                    Bundle 'prabirshrestha/asyncomplete-lsp.vim'
-
-                    " @see
-                    " https://github.com/prabirshrestha/asyncomplete.vim
-
-                    " Buffer
-                    Bundle 'prabirshrestha/asyncomplete-buffer.vim'
-
-                    " Emoji
-                    Bundle 'prabirshrestha/asyncomplete-emoji.vim'
-
-                    " Filenames / directories
-                    Bundle 'prabirshrestha/asyncomplete-file.vim'
-
-                    " NeoInclude
-                    " Bundle 'asyncomplete-neoinclude.vim'
-
-                    " Go
-                    " Bundle 'asyncomplete-gocode.vim'
-                    "
-                    " JavaScript (Flow)
-                    Bundle 'prabirshrestha/asyncomplete-flow.vim'
-                    "
-                    "
-                    Bundle 'yami-beta/asyncomplete-omni.vim'
-
-                    " PivotalTracker stories
-                    " Bundle 'asyncomplete-pivotaltracker.vim'
-
-                    " Racer
-                    " Bundle 'asyncomplete-racer.vim'
-
-                    " tmux complete
-                    " Bundle 'tmux-complete.vim'
-
-                    " css/less/sass
-                    Bundle 'FuDesign2008/vim-lsp-css'
-                    " vue
-                    Bundle 'FuDesign2008/vim-lsp-vue'
-
-                    " python
-                    Bundle 'ryanolsonx/vim-lsp-python'
-
-
-                    " Typescript
-                    Bundle 'runoshun/tscompletejob'
-                    Bundle 'prabirshrestha/asyncomplete-tscompletejob.vim'
-                    " Bundle 'ryanolsonx/vim-lsp-typescript'
-
-                    " Bash
-                    Bundle 'lgranie/vim-lsp-bash'
+                    Bundle 'mattn/vim-lsp-settings'
 
                     " UltiSnips
-                    Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
-                    " Bundle 'thomasfaingnaert/vim-lsp-snippets'
-                    " Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
+                    Bundle 'prabirshrestha/async.vim'
+                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
+                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
-                    " Syntax
-                    Bundle 'Shougo/neco-syntax'
-                    Bundle 'prabirshrestha/asyncomplete-necosyntax.vim'
+                    " Bundle 'prabirshrestha/asyncomplete.vim'
+                    " Bundle 'prabirshrestha/asyncomplete-lsp.vim'
 
-                    " Vim
-                    Bundle 'Shougo/neco-vim'
-                    Bundle 'prabirshrestha/asyncomplete-necovim.vim'
+                    " Buffer
+                    " Bundle 'prabirshrestha/asyncomplete-buffer.vim'
+
+                    " Emoji
+                    " Bundle 'prabirshrestha/asyncomplete-emoji.vim'
+
+                    " Filenames / directories
+                    " Bundle 'prabirshrestha/asyncomplete-file.vim'
+
+                    " Bundle 'yami-beta/asyncomplete-omni.vim'
                 elseif g:spf13_autocomplete_method ==# 'coc'
                     Bundle 'neoclide/coc.nvim'
 
