@@ -367,70 +367,18 @@ augroup END
 
      " asyncomplete.vim {
 
-        if g:spf13_autocomplete_method ==# 'asyncomplete'
+        if g:spf13_autocomplete_method ==# 'lsp'
+            "@see https://github.com/prabirshrestha/asyncomplete.vim#tab-completion
             inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
             inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
             inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-            " prabirshrestha/asyncomplete-buffer.vim
-            call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-                \ 'name': 'buffer',
-                \ 'whitelist': ['*'],
-                \ 'blacklist': ['go'],
-                \ 'completor': function('asyncomplete#sources#buffer#completor'),
-                \ 'config': {
-                \    'max_buffer_size': 5000000,
-                \  },
-                \ }))
-            " prabirshrestha/asyncomplete-flow.vim
-            autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#flow#get_source_options({
-            \ 'name': 'flow',
-            \ 'whitelist': ['javascript'],
-            \ 'completor': function('asyncomplete#sources#flow#completor'),
-            \ 'config': {
-            \    'show_typeinfo': 1
-            \  },
-            \ }))
-            "
-            " prabirshrestha/asyncomplete-tscompletejob.vim
-            call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
-                \ 'name': 'tscompletejob',
-                \ 'whitelist': ['typescript'],
-                \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
-                \ }))
              " prabirshrestha/asyncomplete-ultisnips.vim
              call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
                 \ 'name': 'ultisnips',
                 \ 'whitelist': ['*'],
                 \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
                 \ }))
-
-            " asyncomplete-emoji.vim
-            autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
-                \ 'name': 'emoji',
-                \ 'whitelist': ['gitcommit', 'markdown'],
-                \ 'completor': function('asyncomplete#sources#emoji#completor'),
-                \ }))
-            " asyncomplete-file.vim
-            autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-                \ 'name': 'file',
-                \ 'whitelist': ['*'],
-                \ 'priority': 10,
-                \ 'completor': function('asyncomplete#sources#file#completor')
-                \ }))
-            " prabirshrestha/asyncomplete-necosyntax.vim
-             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
-                \ 'name': 'necosyntax',
-                \ 'whitelist': ['*'],
-                \ 'completor': function('asyncomplete#sources#necosyntax#completor'),
-                \ }))
-             " prabirshrestha/asyncomplete-necovim.vim
-             autocmd vimrc User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
-                \ 'name': 'necovim',
-                \ 'whitelist': ['vim'],
-                \ 'completor': function('asyncomplete#sources#necovim#completor'),
-                \ }))
-     " }
 
         elseif g:spf13_autocomplete_method ==# 'deoplete'
             " Shougo/deoplete.nvim {

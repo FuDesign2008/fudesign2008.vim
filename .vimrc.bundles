@@ -215,8 +215,8 @@ set nocompatible        " must be first line
                     Bundle 'thomasfaingnaert/vim-lsp-snippets'
                     Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
-                    " Bundle 'prabirshrestha/asyncomplete.vim'
-                    " Bundle 'prabirshrestha/asyncomplete-lsp.vim'
+                    Bundle 'prabirshrestha/asyncomplete.vim'
+                    Bundle 'prabirshrestha/asyncomplete-lsp.vim'
 
                     " Buffer
                     " Bundle 'prabirshrestha/asyncomplete-buffer.vim'
