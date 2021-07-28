@@ -372,14 +372,6 @@ augroup END
             inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
             inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
             inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-
-             " prabirshrestha/asyncomplete-ultisnips.vim
-             call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-                \ 'name': 'ultisnips',
-                \ 'whitelist': ['*'],
-                \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-                \ }))
-
         elseif g:spf13_autocomplete_method ==# 'deoplete'
             " Shougo/deoplete.nvim {
                 let g:deoplete#enable_at_startup = 1

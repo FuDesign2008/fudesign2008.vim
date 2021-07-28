@@ -207,16 +207,17 @@ set nocompatible        " must be first line
                     Bundle 'Shougo/echodoc.vim'
 
                 elseif g:spf13_autocomplete_method ==# 'lsp'
+                    Bundle 'prabirshrestha/async.vim'
                     Bundle 'prabirshrestha/vim-lsp'
                     Bundle 'mattn/vim-lsp-settings'
 
-                    " UltiSnips
-                    Bundle 'prabirshrestha/async.vim'
-                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
-                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
                     Bundle 'prabirshrestha/asyncomplete.vim'
                     Bundle 'prabirshrestha/asyncomplete-lsp.vim'
+
+                    " UltiSnips
+                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
+                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
                     " Buffer
                     " Bundle 'prabirshrestha/asyncomplete-buffer.vim'
