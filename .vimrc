@@ -688,6 +688,14 @@ augroup END
                 " let g:ycm_semantic_triggers['css'] = [ 're!^', 're!^\s+', ': ', '-' , '.' ]
                 " let g:ycm_semantic_triggers['scss'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
                 " let g:ycm_semantic_triggers['less'] = [ 're!^', 're!^\s+', ': ', '-', '.' ]
+                " config typescript as lsp
+                let g:ycm_language_server += [
+                                \{
+                                    \ 'name': 'typescript',
+                                    \ 'filetypes': ['typescript', 'typescriptreact'],
+                                    \ 'cmdline': ['typescript-language-server', '--stdio'],
+                                \}
+                            \ ]
              "}
         endif
 
