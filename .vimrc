@@ -1659,10 +1659,10 @@ augroup END
         endfunction
      " }
      "
-     " FuDesign2008/vue-component.vim {
+     " FuDesign2008/component-kit.vim {
         let g:kit_component_css_extension = 'scss'
         let g:kit_component_template_dir = 'built-in'
-        let g:kit_component_auto_layout = 'simple'
+        " let g:kit_component_auto_layout = 'simple'
      " }
 
 
