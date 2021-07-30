@@ -233,8 +233,6 @@ set nocompatible        " must be first line
                     Bundle 'neoclide/coc.nvim'
 
                     " viml
-                    " Bundle 'Shougo/neco-vim'
-                    " Bundle 'neoclide/coc-neco'
                     Bundle 'iamcco/coc-vimlsp'
 
                     "common source
@@ -244,6 +242,7 @@ set nocompatible        " must be first line
                     Bundle 'iamcco/coc-spell-checker'
 
                     Bundle 'neoclide/coc-tsserver'
+
                     Bundle 'neoclide/coc-json'
 
                     Bundle 'neoclide/coc-html'
@@ -258,6 +257,10 @@ set nocompatible        " must be first line
                     " Bundle 'neoclide/coc-git'
                     Bundle 'neoclide/coc-snippets'
 
+                    Bundle 'josa42/coc-sh'
+
+                    Bundle 'fannheyward/coc-xml'
+                    Bundle 'neoclide/coc-yaml'
                 else
                     " YCM is better than NeoComplCache and supertab
                     " @see http://valloric.github.io/YouCompleteMe/
