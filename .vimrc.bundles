@@ -85,7 +85,7 @@ set nocompatible        " must be first line
     endif
 
     " lsp, ycm is better
-    let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'asyncomplete'
+    let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
     " let g:spf13_autocomplete_method='ycm'
 
     " To override all the included bundles, put
