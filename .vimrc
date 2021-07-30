@@ -375,7 +375,7 @@ augroup END
             " }
 
             "vim-lsp.vim
-                g:lsp_ignorecase = 0
+                let g:lsp_ignorecase = 0
             "}
         elseif g:spf13_autocomplete_method ==# 'deoplete'
             " Shougo/deoplete.nvim {
