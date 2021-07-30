@@ -367,7 +367,7 @@ augroup END
 
      " asyncomplete.vim {
 
-        if g:spf13_autocomplete_method ==# 'lsp'
+        if g:spf13_autocomplete_method ==# 'asyncomplete'
             "@see https://github.com/prabirshrestha/asyncomplete.vim#tab-completion
             inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
             inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
