@@ -365,13 +365,18 @@ augroup END
      "}
 
 
-     " asyncomplete.vim {
 
         if g:spf13_autocomplete_method ==# 'asyncomplete'
+         " asyncomplete.vim {
             "@see https://github.com/prabirshrestha/asyncomplete.vim#tab-completion
-            inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-            inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-            inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+                inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+                inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+                inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+            " }
+
+            "vim-lsp.vim
+                g:lsp_ignorecase = 0
+            "}
         elseif g:spf13_autocomplete_method ==# 'deoplete'
             " Shougo/deoplete.nvim {
                 let g:deoplete#enable_at_startup = 1
