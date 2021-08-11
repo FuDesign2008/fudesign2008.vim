@@ -1202,6 +1202,10 @@ augroup END
                         \ 'yaml': ['yamllint', 'prettier'],
                         \ 'tex': []
                         \ }
+            if g:spf13_autocomplete_method ==# 'coc'
+                let g:ale_linters['typescript'] =   ['eslint']
+                let g:ale_linters['typescriptreact'] =   ['eslint']
+            endif
 
             let g:ale_sign_column_always = 1
             let g:ale_open_list = 1
@@ -1263,11 +1267,11 @@ augroup END
             endif
 
             if g:use_tslint_for_typescript
-                let g:ale_linters['typescript'] = ['tslint', 'tsserver']
+                let g:ale_linters['typescript'] = g:spf13_autocomplete_method ==# 'coc' ?  ['tslint'] : ['tslint', 'tsserver']
                 " let g:ale_linters['typescript'] = ['tslint']
                 " let g:ale_fixers['typescript'] = ['tslint', 'prettier']
                 let g:ale_fixers['typescript'] = ['prettier']
-                let g:ale_linters['typescriptreact'] = ['tslint', 'tsserver']
+                let g:ale_linters['typescriptreact'] = g:spf13_autocomplete_method ==# 'coc' ?  ['tslint'] : ['tslint', 'tsserver']
                 let g:ale_fixers['typescriptreact'] = ['tslint', 'prettier']
 
                 " enable tslint to lint .js file
