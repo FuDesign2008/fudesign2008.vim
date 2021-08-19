@@ -585,7 +585,8 @@ augroup END
 
                 set completeopt="menu,popup"
                 set updatetime=3000
-                let g:ycm_auto_hover = 'CursorHold'
+                let g:ycm_auto_hover = ''
+                " let g:ycm_auto_hover = 'CursorHold'
                 nmap <leader>D <plug>(YCMHover)
                 " augroup MyYCMCustom
                     " autocmd!
