@@ -576,7 +576,6 @@ augroup END
 
                 let g:ycm_add_preview_to_completeopt = 0
                 let g:ycm_autoclose_preview_window_after_insertion = 0
-                let g:ycm_auto_hover = ''
 
                 let g:ycm_lsp_examples_vimrc = expand('~/.vim/bundle/lsp-examples/vimrc.generated')
                 if filereadable(g:ycm_lsp_examples_vimrc)
@@ -586,14 +585,15 @@ augroup END
 
                 set completeopt="menu,popup"
                 set updatetime=3000
+                let g:ycm_auto_hover = 'CursorHold'
                 nmap <leader>D <plug>(YCMHover)
-                augroup MyYCMCustom
-                    autocmd!
-                    autocmd FileType typescript,javascript let b:ycm_hover = {
-                      \ 'command': 'GetType',
-                      \ 'syntax': &filetype
-                      \ }
-                augroup END
+                " augroup MyYCMCustom
+                    " autocmd!
+                    " autocmd FileType typescript,javascript let b:ycm_hover = {
+                      " \ 'command': 'GetType',
+                      " \ 'syntax': &filetype
+                      " \ }
+                " augroup END
 
 
                 " default
