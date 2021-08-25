@@ -471,30 +471,30 @@ augroup END
                     nmap <leader>rn <Plug>(coc-rename)
 
                     " Remap for format selected region
-                    xmap <leader>f  <Plug>(coc-format-selected)
-                    nmap <leader>f  <Plug>(coc-format-selected)
+                    " xmap <leader>f  <Plug>(coc-format-selected)
+                    " nmap <leader>f  <Plug>(coc-format-selected)
 
-                    augroup mygroup
-                      autocmd!
+                    " augroup mygroup
+                      " autocmd!
                       " Setup formatexpr specified filetype(s).
-                      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+                      " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
                       " Update signature help on jump placeholder
-                      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-                    augroup end
+                      " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+                    " augroup end
 
                     " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-                    xmap <leader>a  <Plug>(coc-codeaction-selected)
-                    nmap <leader>a  <Plug>(coc-codeaction-selected)
+                    " xmap <leader>a  <Plug>(coc-codeaction-selected)
+                    " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
                     " Remap for do codeAction of current line
-                    nmap <leader>ac  <Plug>(coc-codeaction)
+                    " nmap <leader>ac  <Plug>(coc-codeaction)
                     " Fix autofix problem of current line
-                    nmap <leader>qf  <Plug>(coc-fix-current)
+                    nmap <leader>f  <Plug>(coc-fix-current)
 
                     " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-                    nmap <silent> <TAB> <Plug>(coc-range-select)
-                    xmap <silent> <TAB> <Plug>(coc-range-select)
-                    xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+                    " nmap <silent> <TAB> <Plug>(coc-range-select)
+                    " xmap <silent> <TAB> <Plug>(coc-range-select)
+                    " xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
                     " Use `:Format` to format current buffer
                     " command! -nargs=0 Format :call CocAction('format')
@@ -502,8 +502,8 @@ augroup END
                     " Use `:Fold` to fold current buffer
                     " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-                    " use `:OR` for organize import of current buffer
-                    command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+                    " use `:ImportOrganize` for organize import of current buffer
+                    command! -nargs=0 ImportOrganize   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
                     " Add status line support, for integration with other plugin, checkout `:h coc-status`
                     set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -584,9 +584,9 @@ augroup END
                 unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
-                set updatetime=3000
-                let g:ycm_auto_hover = ''
-                " let g:ycm_auto_hover = 'CursorHold'
+                set updatetime=300
+                " let g:ycm_auto_hover = ''
+                let g:ycm_auto_hover = 'CursorHold'
                 nmap <leader>D <plug>(YCMHover)
                 " augroup MyYCMCustom
                     " autocmd!
@@ -1204,6 +1204,7 @@ augroup END
                         \ 'tex': []
                         \ }
             if g:spf13_autocomplete_method ==# 'coc'
+                let g:ale_disable_lsp = 1
                 let g:ale_linters['typescript'] =   ['eslint']
                 let g:ale_linters['typescriptreact'] =   ['eslint']
             endif
