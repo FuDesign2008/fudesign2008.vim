@@ -868,10 +868,11 @@ augroup END
 
         if has('gui_running')
             if has('x11')
-                " for linux
-                let g:gui_font_size = '13'
+                " for linux + 4k display
+                let g:gui_font_size = '9'
             elseif has('macunix')
                 if system('arch') ==? 'arm64'
+                    " for m1 macbook air
                     let g:gui_font_size = '14'
                 else
                     let g:gui_font_size = '14'
