@@ -869,7 +869,7 @@ augroup END
         if has('gui_running')
             if has('x11')
                 " for linux + 4k display
-                let g:gui_font_size = '11'
+                let g:gui_font_size = '12'
             elseif has('macunix')
                 if system('arch') ==? 'arm64'
                     " for m1 macbook air
@@ -886,7 +886,7 @@ augroup END
         let g:favorite_gui_fonts = [
                     \ 'Cascadia\ Code:h' . g:gui_font_size,
                     \ 'Fira\ Code:h' . (g:gui_font_size - 1),
-                    \ 'Inconsolata:h'. (g:gui_font_size + 2),
+                    \ 'Inconsolata:h'. (g:gui_font_size + 1),
                     \ 'Source\ Code\ Variable:h'. (g:gui_font_size - 1)
                     \]
 
