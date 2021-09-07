@@ -584,7 +584,7 @@ augroup END
                 unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
-                set updatetime=300
+                set updatetime=3000
                 " let g:ycm_auto_hover = ''
                 let g:ycm_auto_hover = 'CursorHold'
                 nmap <leader>D <plug>(YCMHover)
@@ -1211,9 +1211,9 @@ augroup END
             endif
 
             let g:ale_sign_column_always = 1
-            let g:ale_open_list = 0
-            let g:ale_keep_list_window_open = 0
-            let g:ale_list_window_size = 5
+            let g:ale_open_list = 1
+            let g:ale_keep_list_window_open = 1
+            let g:ale_list_window_size = 7
 
             let g:ale_sign_error = '✗'
             let g:ale_sign_warning = '!'
