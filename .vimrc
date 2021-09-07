@@ -1193,6 +1193,7 @@ augroup END
                         \ }
             let g:ale_linters = {
                         \ 'markdown': ['remark-lint', 'markdownlint'],
+                        \ 'json': ['jsonlint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tsserver', 'eslint'],
                         \ 'typescriptreact': ['tsserver', 'eslint'],
