@@ -443,17 +443,20 @@ augroup END
                     " Coc only does snippet and additional edit on confirm.
                     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-                    " Use `[c` and `]c` to navigate diagnostics
-                    nmap <silent> [c <Plug>(coc-diagnostic-prev)
-                    nmap <silent> ]c <Plug>(coc-diagnostic-next)
+                    " Use `<c-s-k>` and `<c-s-j>` to navigate diagnostics
+                    " ⚠️  same-like shortcut with ALE
+                    nmap <silent> <C-S-k> <Plug>(coc-diagnostic-prev)
+                    nmap <silent> <C-S-j> <Plug>(coc-diagnostic-next)
 
                     " Remap keys for gotos
-                    nmap <silent> gd <Plug>(coc-definition)
-                    nmap <silent> gy <Plug>(coc-type-definition)
-                    nmap <silent> gi <Plug>(coc-implementation)
-                    nmap <silent> gr <Plug>(coc-references)
+                    " ⚠️  same shortcut with ALE
+                    nmap <silent> <leader>d <Plug>(coc-definition)
+                    nmap <silent> <leader>t <Plug>(coc-type-definition)
+                    nmap <silent> <leader>i <Plug>(coc-implementation)
+                    nmap <silent> <leader>r <Plug>(coc-references)
 
                     " Use K to show documentation in preview window
+                    " ⚠️  same shortcut with YCMHover
                     nnoremap <silent> K :call <SID>show_documentation()<CR>
 
                     function! s:show_documentation()
@@ -465,7 +468,7 @@ augroup END
                     endfunction
 
                     " Highlight symbol under cursor on CursorHold
-                    autocmd vimrc CursorHold * silent call CocActionAsync('highlight')
+                    " autocmd vimrc CursorHold * silent call CocActionAsync('highlight')
 
                     " Remap for rename current word
                     nmap <leader>rn <Plug>(coc-rename)
@@ -585,9 +588,13 @@ augroup END
 
                 set completeopt="menu,popup"
                 set updatetime=3000
-                " let g:ycm_auto_hover = ''
-                let g:ycm_auto_hover = 'CursorHold'
-                nmap <leader>D <plug>(YCMHover)
+
+                " prefer to use shortcut
+                let g:ycm_auto_hover = ''
+                " let g:ycm_auto_hover = 'CursorHold'
+
+                " ⚠️  same shortcut with show_documentation of coc
+                nnoremap K <plug>(YCMHover)
                 " augroup MyYCMCustom
                     " autocmd!
                     " autocmd FileType typescript,javascript let b:ycm_hover = {
@@ -1188,6 +1195,7 @@ augroup END
             nmap <silent> <C-k> <Plug>(ale_previous_wrap)
             nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+
             let g:ale_linter_aliases = {
                         \ 'vue': ['vue', 'html', 'javascript', 'typescript', 'css', 'scss']
                         \ }
@@ -1209,12 +1217,19 @@ augroup END
                 let g:ale_disable_lsp = 1
                 let g:ale_linters['typescript'] =   ['eslint']
                 let g:ale_linters['typescriptreact'] =   ['eslint']
+            else
+                " same shortcut with coc
+                nmap <silent> <leader>d :ALEGoToDefinition <CR>
+                nmap <silent> <leader>t :ALEGoToTypeDefinition <CR>
+                nmap <leader>f   :ALEFix <CR>
             endif
 
             let g:ale_sign_column_always = 1
-            let g:ale_open_list = 1
-            let g:ale_keep_list_window_open = 1
-            let g:ale_list_window_size = 7
+            " Prefer to use shortcut
+            " Do not show window for more space
+            let g:ale_open_list = 0
+            let g:ale_keep_list_window_open = 0
+            let g:ale_list_window_size = 3
 
             let g:ale_sign_error = '✗'
             let g:ale_sign_warning = '!'
