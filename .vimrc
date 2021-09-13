@@ -673,6 +673,7 @@ augroup END
             function! ConfigPlanPlugin()
                 let philosophyDir = '~/workspace/github2008/philosophy'
                 let g:p_edit_files = {
+                    \ 'management': expand(philosophyDir . '/career/youdao/management'),
                     \ 'interview': expand(philosophyDir . '/profession/interview'),
                     \ 'small-family': expand(philosophyDir . '/small-family'),
                     \ 'pwd': expand(philosophyDir . '/pwd'),
@@ -777,7 +778,6 @@ augroup END
     " FuDesign2008/webSearch.vim {
         let g:webSearchEngines = {
             \ 'google': 'https://www.google.com.hk/search?hl=en&q=<QUERY>',
-            \ 'iyoudao': 'http://home.iyoudao.net/search.php#q=<QUERY>',
             \ 'github': 'https://github.com/search?q=<QUERY>',
             \ 'mozilla': 'https://developer.mozilla.org/en-US/search?q=<QUERY>',
             \ 'dottoro': 'http://www.dottoro.com/search.php?query=<QUERY>',
