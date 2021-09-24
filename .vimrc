@@ -674,6 +674,8 @@ augroup END
                 let philosophyDir = '~/workspace/github2008/philosophy'
                 let g:p_edit_files = {
                     \ 'management': expand(philosophyDir . '/career/youdao/management'),
+                    \ 'profession': expand(philosophyDir . '/profession'),
+                    \ 'patents': expand(philosophyDir . '/profession/patents'),
                     \ 'interview': expand(philosophyDir . '/profession/interview'),
                     \ 'small-family': expand(philosophyDir . '/small-family'),
                     \ 'pwd': expand(philosophyDir . '/pwd'),
