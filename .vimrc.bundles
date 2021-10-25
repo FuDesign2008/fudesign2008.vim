@@ -63,12 +63,10 @@ set nocompatible        " must be first line
             "\ 'php',
             "\ 'ctags',
             "\ 'ios',
-            "\ 'fzf'
             " \ 'python',
             " \ 'java',
         let g:spf13_bundle_groups=[
             \ 'general',
-            \ 'fzf',
             \ 'colors',
             \ 'programming',
             \ 'snip',
@@ -274,10 +272,10 @@ set nocompatible        " must be first line
                 Bundle 'FuDesign2008/plan.vim'
                 "Bundle 'mattn/calendar-vim'
 
-                if count(g:spf13_bundle_groups, 'fzf')
-                    Bundle 'junegunn/fzf.vim'
-                else
+                if has('win32') || has('win64')
                     Bundle 'ctrlpvim/ctrlp.vim'
+                else
+                    Bundle 'junegunn/fzf.vim'
                 endif
             endif
 
