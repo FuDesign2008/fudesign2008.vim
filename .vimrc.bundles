@@ -170,6 +170,9 @@ set nocompatible        " must be first line
 
                 " supertab is more lightweight than YCM
                 Bundle 'ervandew/supertab'
+
+                " ctrlp.vim is light weight than fzf.vim
+                Bundle 'ctrlpvim/ctrlp.vim'
             else
 
                 if g:spf13_autocomplete_method ==# 'tabnine'
@@ -269,15 +272,12 @@ set nocompatible        " must be first line
                     Bundle 'ycm-core/lsp-examples'
                 endif
 
-                Bundle 'FuDesign2008/plan.vim'
                 "Bundle 'mattn/calendar-vim'
 
-                if has('win32') || has('win64')
-                    Bundle 'ctrlpvim/ctrlp.vim'
-                else
-                    Bundle 'junegunn/fzf.vim'
-                endif
+                Bundle 'junegunn/fzf.vim'
             endif
+
+            Bundle 'FuDesign2008/plan.vim'
 
             " ack
             "if executable('ack-grep')
