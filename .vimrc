@@ -886,6 +886,8 @@ augroup END
                 else
                     let g:gui_font_size = '14'
                 endif
+            elseif g:is_win
+                let g:gui_font_size = '10'
             endif
         endif
 
