@@ -65,6 +65,7 @@ set nocompatible        " must be first line
             "\ 'ios',
             " \ 'python',
             " \ 'java',
+            " \ 'haskell',
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
@@ -78,6 +79,7 @@ set nocompatible        " must be first line
             \ 'css',
             \ 'html',
             \ 'document',
+            \ 'haskell',
             \ 'bash'
             \ ]
     endif
@@ -587,6 +589,12 @@ set nocompatible        " must be first line
                 " Bundle 'jez/vim-superman'
             endif
 
+        endif
+
+
+    " haskell
+        if count(g:spf13_bundle_groups, 'haskell')
+            Bundle 'neovimhaskell/haskell-vim'
         endif
 
 
