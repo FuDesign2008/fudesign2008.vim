@@ -274,7 +274,7 @@ set nocompatible        " must be first line
 
             endif
 
-            " Bundle 'ctrlpvim/ctrlp.vim'
+            Bundle 'ctrlpvim/ctrlp.vim'
             Bundle 'junegunn/fzf.vim'
             Bundle 'FuDesign2008/plan.vim'
 
