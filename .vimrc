@@ -1518,150 +1518,162 @@ augroup END
         "let g:pymode_utils_whitespaces = 0
      " }
 
+
+     let g:is_use_fzf = 0
+
      " fzf.vim {
-        if count(g:spf13_bundle_groups, 'fzf')
-            let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
-            " diable preview window for performance
-            let g:fzf_preview_window = []
+        let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
+        " diable preview window for performance
+        let g:fzf_preview_window = []
 
-            if isdirectory('/usr/local/opt/fzf')
-                " for brew install fzf on mac os
-                set runtimepath+=/usr/local/opt/fzf
-            elseif isdirectory(g:fzf_folder_via_git)
-                " for apt install fzf on ubuntu
-                " @see https://github.com/junegunn/fzf.vim/issues/456
-                execute 'set runtimepath+=' . g:fzf_folder_via_git
-            else
-                echoerr 'Please set runtimepath for fzf'
-            endif
-
-            unlet g:fzf_folder_via_git
-
-            nnoremap <C-p> :Files<Cr>
+        if isdirectory('/usr/local/opt/fzf')
+            " for brew install fzf on mac os
+            set runtimepath+=/usr/local/opt/fzf
+            nnoremap <c-p> :Files<Cr>
+            let g:is_use_fzf = 1
+        elseif isdirectory(g:fzf_folder_via_git)
+            " for apt install fzf on ubuntu
+            " @see https://github.com/junegunn/fzf.vim/issues/456
+            execute 'set runtimepath+=' . g:fzf_folder_via_git
+            nnoremap <c-p> :Files<Cr>
+            let g:is_use_fzf = 1
         else
-         " ctrlp {
-            let g:ctrlp_working_path_mode = 'w'
-            let g:ctrlp_by_filename = 0
-            let g:ctrlp_match_current_file = 1
-            let g:ctrlp_lazy_update = 1
-            let g:ctrlp_match_current_file = 1
-
-            " @param {String} type  available values:
-            "
-            "  wildignore
-            "  ctrlp_user_command
-            "  ctrlp_custom_ignore_dir
-            "  ctrlp_custom_ignore_file
-            "
-            " @return {String}
-            "
-            function! CreateIgnoredCommand(type)
-                let l:directoryList = [
-                                \ '.git',
-                                \ '.gitmodules',
-                                \ '.svn',
-                                \ '.settings',
-                                \ 'node_modules',
-                                \ 'bower_components',
-                                \ 'node_modules',
-                                \ 'dist',
-                                \ 'libs'
-                            \]
-                let l:fileListWithFullName = [
-                        \ '.DS_Store'
-                        \]
-
-                let l:fileListWithEndName = [
-                        \ 'png',
-                        \ 'jpg',
-                        \ 'gif',
-                        \ 'class',
-                        \ 'jar',
-                        \ 'so'
-                        \]
-
-                let l:prefix = ''
-                let l:suffix = ''
-                let l:splitter = ' '
-                let l:strList = []
-
-                if a:type ==# 'wildignore'
-                    let l:splitter = ','
-                    for l:item in l:directoryList
-                        call add(l:strList, '*/' . l:item . '/*')
-                    endfor
-                    for l:item in l:fileListWithFullName
-                        call add(l:strList, l:item)
-                    endfor
-                    for l:item in l:fileListWithEndName
-                        call add(l:strList, '*.' . l:item)
-                    endfor
-                elseif a:type ==# 'ctrlp_user_command'
-                    let l:prefix = 'ag %s -i --nocolor --nogroup '
-                    let l:suffix = ' --hidden -g ""'
-                    let l:splitter = ' '
-                    for l:item in l:directoryList
-                        call add(l:strList, "--ignore '" . l:item . "'")
-                    endfor
-                    for l:item in l:fileListWithFullName
-                        call add(l:strList, "--ignore '" . l:item . "'")
-                    endfor
-                    for l:item in l:fileListWithEndName
-                        call add(l:strList, "--ignore '*." . l:item . "'")
-                    endfor
-                elseif a:type ==# 'ctrlp_custom_ignore_dir'
-                    let l:prefix = '\v[\/]('
-                    let l:suffix = ')$'
-                    let l:splitter = '|'
-                    for l:item in l:directoryList
-                        if stridx(l:item, '.') == 0
-                            call add(l:strList, '\' . l:item)
-                        else
-                            call add(l:strList, l:item)
-                        endif
-                    endfor
-                elseif a:type ==# 'ctrlp_custom_ignore_file'
-                    let l:prefix = '\v('
-                    let l:suffix = ')$'
-                    let l:splitter = '|'
-                    for l:item in l:fileListWithFullName
-                        if stridx(l:item, '.') == 0
-                            call add(l:strList,  '\' . l:item)
-                        else
-                            call add(l:strList, l:item)
-                        endif
-                    endfor
-                    for l:item in l:fileListWithEndName
-                        call add(l:strList, '\.' .l:item)
-                    endfor
-                endif
-
-                let l:commandStr = l:prefix . join(l:strList, l:splitter) . l:suffix
-                return l:commandStr
-            endfunction
-
-            let g:vimrc_temp_str = 'set wildignore+=' .  CreateIgnoredCommand('wildignore')
-            exec g:vimrc_temp_str
-            unlet g:vimrc_temp_str
-
-
-            if executable('ag')
-                let g:ctrlp_user_command = CreateIgnoredCommand('ctrlp_user_command')
-                let g:ctrlp_use_caching = 0
-            else
-                let g:ctrlp_use_caching = 1
-                let g:ctrlp_clear_cache_on_exit = 1
-                let g:ctrlp_cache_dir = expand('~/.cache/ctrlp')
-                let g:ctrlp_show_hidden = 1
-                let g:ctrlp_max_files = 0
-                let g:ctrlp_custom_ignore = {}
-                let g:ctrlp_custom_ignore['dir'] = CreateIgnoredCommand('ctrlp_custom_ignore_dir')
-                let g:ctrlp_custom_ignore['file'] = CreateIgnoredCommand('ctrlp_custom_ignore_file')
-            endif
-         "}
+            echoerr 'Please set runtimepath for fzf'
         endif
+
+        unlet g:fzf_folder_via_git
+
      " }
 
+     " ctrlp {
+        let g:ctrlp_working_path_mode = 'w'
+        let g:ctrlp_by_filename = 0
+        let g:ctrlp_match_current_file = 1
+        let g:ctrlp_lazy_update = 1
+        let g:ctrlp_match_current_file = 1
+
+        " @param {String} type  available values:
+        "
+        "  wildignore
+        "  ctrlp_user_command
+        "  ctrlp_custom_ignore_dir
+        "  ctrlp_custom_ignore_file
+        "
+        " @return {String}
+        "
+        function! CreateIgnoredCommand(type)
+            let l:directoryList = [
+                            \ '.git',
+                            \ '.gitmodules',
+                            \ '.svn',
+                            \ '.settings',
+                            \ 'node_modules',
+                            \ 'bower_components',
+                            \ 'node_modules',
+                            \ 'dist',
+                            \ 'libs'
+                        \]
+            let l:fileListWithFullName = [
+                    \ '.DS_Store'
+                    \]
+
+            let l:fileListWithEndName = [
+                    \ 'png',
+                    \ 'jpg',
+                    \ 'gif',
+                    \ 'class',
+                    \ 'jar',
+                    \ 'so'
+                    \]
+
+            let l:prefix = ''
+            let l:suffix = ''
+            let l:splitter = ' '
+            let l:strList = []
+
+            if a:type ==# 'wildignore'
+                let l:splitter = ','
+                for l:item in l:directoryList
+                    call add(l:strList, '*/' . l:item . '/*')
+                endfor
+                for l:item in l:fileListWithFullName
+                    call add(l:strList, l:item)
+                endfor
+                for l:item in l:fileListWithEndName
+                    call add(l:strList, '*.' . l:item)
+                endfor
+            elseif a:type ==# 'ctrlp_user_command'
+                let l:prefix = 'ag %s -i --nocolor --nogroup '
+                let l:suffix = ' --hidden -g ""'
+                let l:splitter = ' '
+                for l:item in l:directoryList
+                    call add(l:strList, "--ignore '" . l:item . "'")
+                endfor
+                for l:item in l:fileListWithFullName
+                    call add(l:strList, "--ignore '" . l:item . "'")
+                endfor
+                for l:item in l:fileListWithEndName
+                    call add(l:strList, "--ignore '*." . l:item . "'")
+                endfor
+            elseif a:type ==# 'ctrlp_custom_ignore_dir'
+                let l:prefix = '\v[\/]('
+                let l:suffix = ')$'
+                let l:splitter = '|'
+                for l:item in l:directoryList
+                    if stridx(l:item, '.') == 0
+                        call add(l:strList, '\' . l:item)
+                    else
+                        call add(l:strList, l:item)
+                    endif
+                endfor
+            elseif a:type ==# 'ctrlp_custom_ignore_file'
+                let l:prefix = '\v('
+                let l:suffix = ')$'
+                let l:splitter = '|'
+                for l:item in l:fileListWithFullName
+                    if stridx(l:item, '.') == 0
+                        call add(l:strList,  '\' . l:item)
+                    else
+                        call add(l:strList, l:item)
+                    endif
+                endfor
+                for l:item in l:fileListWithEndName
+                    call add(l:strList, '\.' .l:item)
+                endfor
+            endif
+
+            let l:commandStr = l:prefix . join(l:strList, l:splitter) . l:suffix
+            return l:commandStr
+        endfunction
+
+        let g:vimrc_temp_str = 'set wildignore+=' .  CreateIgnoredCommand('wildignore')
+        exec g:vimrc_temp_str
+        unlet g:vimrc_temp_str
+
+
+        if executable('ag')
+            let g:ctrlp_user_command = CreateIgnoredCommand('ctrlp_user_command')
+            let g:ctrlp_use_caching = 0
+        else
+            let g:ctrlp_use_caching = 1
+            let g:ctrlp_clear_cache_on_exit = 1
+            let g:ctrlp_cache_dir = expand('~/.cache/ctrlp')
+            let g:ctrlp_show_hidden = 1
+            let g:ctrlp_max_files = 0
+            let g:ctrlp_custom_ignore = {}
+            let g:ctrlp_custom_ignore['dir'] = CreateIgnoredCommand('ctrlp_custom_ignore_dir')
+            let g:ctrlp_custom_ignore['file'] = CreateIgnoredCommand('ctrlp_custom_ignore_file')
+        endif
+
+        if g:is_use_fzf
+            let g:ctrlp_map = '<c-s-p>'
+        else
+            let g:ctrlp_map = '<c-p>'
+        endif
+
+     "}
+
+    unlet g:is_use_fzf
 
 
      " posva/vim-vue {
