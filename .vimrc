@@ -1519,7 +1519,6 @@ augroup END
      " }
 
 
-     let g:is_use_fzf = 0
 
      " fzf.vim {
         let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
@@ -1529,14 +1528,12 @@ augroup END
         if isdirectory('/usr/local/opt/fzf')
             " for brew install fzf on mac os
             set runtimepath+=/usr/local/opt/fzf
-            nnoremap <c-p> :Files<Cr>
-            let g:is_use_fzf = 1
+            nnoremap <c-t> :Files<Cr>
         elseif isdirectory(g:fzf_folder_via_git)
             " for apt install fzf on ubuntu
             " @see https://github.com/junegunn/fzf.vim/issues/456
             execute 'set runtimepath+=' . g:fzf_folder_via_git
-            nnoremap <c-p> :Files<Cr>
-            let g:is_use_fzf = 1
+            nnoremap <c-t> :Files<Cr>
         else
             echoerr 'Please set runtimepath for fzf'
         endif
@@ -1665,15 +1662,8 @@ augroup END
             let g:ctrlp_custom_ignore['file'] = CreateIgnoredCommand('ctrlp_custom_ignore_file')
         endif
 
-        if g:is_use_fzf
-            let g:ctrlp_map = '<c-s-p>'
-        else
-            let g:ctrlp_map = '<c-p>'
-        endif
-
      "}
 
-    unlet g:is_use_fzf
 
 
      " posva/vim-vue {
