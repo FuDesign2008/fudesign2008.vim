@@ -70,6 +70,7 @@ set nocompatible        " must be first line
             \ 'general',
             \ 'colors',
             \ 'programming',
+            \ 'fzf',
             \ 'snip',
             \ 'javascript',
             \ 'node',
@@ -274,8 +275,13 @@ set nocompatible        " must be first line
 
             endif
 
-            Bundle 'ctrlpvim/ctrlp.vim'
-            Bundle 'junegunn/fzf.vim'
+
+            if count(g:spf13_bundle_groups, 'fzf')
+                Bundle 'junegunn/fzf.vim'
+            else
+                Bundle 'ctrlpvim/ctrlp.vim'
+            endif
+
             Bundle 'FuDesign2008/plan.vim'
 
             " ack
