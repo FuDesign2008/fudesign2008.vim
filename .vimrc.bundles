@@ -64,7 +64,6 @@ set nocompatible        " must be first line
             "\ 'ctags',
             "\ 'ios',
             " \ 'python',
-            " \ 'java',
             " \ 'haskell',
         let g:spf13_bundle_groups=[
             \ 'general',
@@ -73,6 +72,7 @@ set nocompatible        " must be first line
             \ 'fzf',
             \ 'snip',
             \ 'javascript',
+            \ 'java',
             \ 'node',
             \ 'vue',
             \ 'react',
@@ -575,6 +575,7 @@ set nocompatible        " must be first line
         "
         if count(g:spf13_bundle_groups, 'java') && !g:is_win
             " Bundle 'artur-shaik/vim-javacomplete2'
+            Bundle 'udalov/kotlin-vim'
         endif
 
     "iOS
