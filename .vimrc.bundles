@@ -135,24 +135,25 @@ set nocompatible        " must be first line
             " Bundle 'FuDesign2008/zoom.vim'
             "Bundle 'vim-scripts/ZoomWin'
 
-            " Bundle 'vim-scripts/IndentAnything'
-            Bundle 'FuDesign2008/WebSearch.vim'
+            " Bundle 'FuDesign2008/WebSearch.vim'
 
             " 1. http://aftnn.org/post/75730734352/vim-auto-closers-compared
             " 2. https://github.com/kana/vim-smartinput/issues/65
             "Bundle 'kana/vim-smartinput'
-
             " use delimitMate instead vim-closetag
             " for vim-closetag conflicts with YCM
             " Bundle 'alvan/vim-closetag'
             Bundle 'Raimondi/delimitMate'
 
             Bundle 'FuDesign2008/OpenUrl.vim'
+            " Bundle 'tyru/open-browser.vim'
+
             " Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'myusuf3/numbers.vim'
             " Bundle 'FuDesign2008/style.vim'
             Bundle 'FuDesign2008/emoji-snippets.vim'
 
+            " Bundle 'vim-scripts/IndentAnything'
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
 

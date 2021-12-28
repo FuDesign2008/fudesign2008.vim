@@ -349,6 +349,22 @@ augroup END
 
     " }
 
+    " ntpeters/vim-better-whitespace {
+        " use :StripWhitespace manully
+        " let g:strip_whitespace_on_save = 1
+        " let g:strip_max_file_size = 1000
+        " let g:better_whitespace_filetypes_blacklist=[
+                    " \ 'diff',
+                    " \ 'git',
+                    " \ 'gitcommit',
+                    " \ 'unite',
+                    " \ 'qf',
+                    " \ 'help',
+                    " \'markdown',
+                    " \ 'fugitive'
+                    " \]
+    "  }
+
     " autoHighlight.vim {
         let g:auto_highlight_enable = 0
     " }
@@ -1215,6 +1231,7 @@ augroup END
                         \ 'cpp': [],
                         \ 'java': ['javac', 'checkstyle'],
                         \ 'yaml': ['yamllint', 'prettier'],
+                        \ 'dockerfile': ['hadolint'],
                         \ 'tex': []
                         \ }
             if g:spf13_autocomplete_method ==# 'coc'
@@ -1700,7 +1717,7 @@ augroup END
      " FuDesign2008/component-kit.vim {
         let g:kit_component_css_extension = 'scss'
         let g:kit_component_template_dir = 'built-in'
-        " let g:kit_component_auto_layout = 'simple'
+        let g:kit_component_auto_layout = 'disabled'
      " }
 
 
