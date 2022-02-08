@@ -443,8 +443,8 @@ set nocompatible        " must be first line
             " tern is used in YCM
             " Bundle 'marijnh/tern_for_vim'
 
-            " Bundle 'scheakur/vim-jsdoc'
-            Bundle 'FuDesign2008/vim-jsdoc'
+            Bundle 'heavenshell/vim-jsdoc'
+            " Bundle 'FuDesign2008/vim-jsdoc'
 
             " Bundle 'Quramy/vim-js-pretty-template'
 
