@@ -334,7 +334,8 @@ set nocompatible        " must be first line
 
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
-            Bundle 'preservim/nerdcommenter'
+            " Bundle 'preservim/nerdcommenter'
+            Bundle 'FuDesign2008/nerdcommenter'
             "Bundle 'dimasg/vim-mark'
 
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
