@@ -961,27 +961,6 @@ augroup END
             \}
         let g:NERDSpaceDelims = 1
 
-        let g:ft_cache_nerd = ''
-        function! NERDCommenter_before()
-            if &filetype ==# 'vue'
-                let g:ft_cache_nerd = 'vue'
-                let stack = synstack(line('.'), col('.'))
-                if len(stack) > 0
-                    let syn = synIDattr((stack)[0], 'name')
-                    if len(syn) > 0
-                        let syn = tolower(syn)
-                        exe 'setf '.syn
-                    endif
-                endif
-            endif
-        endfu
-        function! NERDCommenter_after()
-            if g:ft_cache_nerd ==# 'vue'
-                setf vue
-                let g:ft_cache_nerd = ''
-            endif
-        endfu
-
     " }
 
     " Raimondi/delimitMate {
@@ -1683,6 +1662,26 @@ augroup END
         " let g:vue_disable_pre_processors = 1
         let g:vue_pre_processors = 'detect_on_enter'
         autocmd vimrc FileType vue syntax sync fromstart
+
+        let g:ft = ''
+        function! NERDCommenter_before()
+          if &filetype ==# 'vue'
+            let g:ft = 'vue'
+            let l:stack = synstack(line('.'), col('.'))
+            if len(l:stack) > 0
+              let l:syn = synIDattr((l:stack)[0], 'name')
+              if len(l:syn) > 0
+                exe 'setf ' . substitute(tolower(l:syn), '^vue_', '', '')
+              endif
+            endif
+          endif
+        endfunction
+        function! NERDCommenter_after()
+          if g:ft ==# 'vue'
+            setf vue
+            let g:ft = ''
+          endif
+        endfunction
      " }
      "
      " FuDesign2008/component-kit.vim {
