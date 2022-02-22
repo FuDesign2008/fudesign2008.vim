@@ -641,10 +641,24 @@ augroup END
                       \}
 
                 if !exists('g:ycm_semantic_triggers')
-                    let g:ycm_semantic_triggers = {}
+                    " default
+                    let g:ycm_semantic_triggers = {
+                            \   'c': ['->', '.'],
+                            \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+                            \            're!\[.*\]\s'],
+                            \   'ocaml': ['.', '#'],
+                            \   'cpp,cuda,objcpp': ['->', '.', '::'],
+                            \   'perl': ['->'],
+                            \   'php': ['->', '::'],
+                            \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
+                            \   'ruby,rust': ['.', '::'],
+                            \   'lua': ['.', ':'],
+                            \   'erlang': [':'],
+                            \ }
                 endif
-                let g:ycm_semantic_triggers['javascript'] = ['.', '__']
-                let g:ycm_semantic_triggers['typescript'] = ['.', '__']
+
+                " let g:ycm_semantic_triggers['javascript'] = ['.', '__']
+                " let g:ycm_semantic_triggers['typescript'] = ['.', '__']
 
                 " for css @see https://github.com/Valloric/YouCompleteMe/issues/413
                 " : for property: value
