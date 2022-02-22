@@ -158,7 +158,9 @@ set nocompatible        " must be first line
             "Bundle 'Yggdroot/indentLine'
             "Bundle 'nathanaelkane/vim-indent-guides'
 
-            "Bundle 'tpope/vim-surround'
+            " how to use
+            " @see https://yanpritzker.com/learn-to-speak-vim-verbs-nouns-and-modifiers-d7bfed1f6b2d
+            Bundle 'tpope/vim-surround'
 
             "Bundle 'terryma/vim-multiple-cursors'
 
