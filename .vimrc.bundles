@@ -55,15 +55,12 @@ set nocompatible        " must be first line
     " In your .vimrc.bundles.local file"
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-            "\ 'ruby',
             "\ 'twig',
             "\ 'scala',
             "\ 'java',
             "\ 'coffeescript',
-            "\ 'php',
             "\ 'ctags',
             "\ 'ios',
-            " \ 'python',
             " \ 'haskell',
         let g:spf13_bundle_groups=[
             \ 'general',
@@ -81,6 +78,9 @@ set nocompatible        " must be first line
             \ 'html',
             \ 'document',
             \ 'haskell',
+            \ 'ruby',
+            \ 'python',
+            \ 'php',
             \ 'bash'
             \ ]
     endif
@@ -538,6 +538,7 @@ set nocompatible        " must be first line
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
+            Bundle 'vim-ruby/vim-ruby'
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
