@@ -195,8 +195,8 @@ augroup END
     "set noignorecase
     set smartcase                   " case sensitive when uc present
     "set nosmartcase
-    set fileignorecase              " ignore case for file
-    "set nofileignorecase           " do not ignore case for file
+    " set fileignorecase              " ignore case for file
+    set nofileignorecase           " do not ignore case for file
     set wildmenu                    " show list instead of just completing
     set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
@@ -334,6 +334,8 @@ augroup END
     map zl zL
     map zh zH
 " }
+
+    let g:performance_low = has('linux')
 
 " Plugins {
     " ack.vim/ag.vim {
@@ -589,8 +591,8 @@ augroup END
                 let g:ycm_collect_identifiers_from_comments_and_strings = 1
                 let g:ycm_collect_identifiers_from_tags_files = 1
                 let g:ycm_seed_identifiers_with_syntax = 1
-                let g:ycm_min_num_of_chars_for_completion = 2
-                let g:ycm_min_num_identifier_candidate_chars = 2
+                let g:ycm_min_num_of_chars_for_completion = g:performance_low ? 4 :  2
+                let g:ycm_min_num_identifier_candidate_chars = g:performance_low ? 4 : 2
                 let g:ycm_always_populate_location_list = 0
 
                 let g:ycm_add_preview_to_completeopt = 0
@@ -603,7 +605,11 @@ augroup END
                 unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
-                set updatetime=3000
+                if g:performance_low
+                    set updatetime=6000
+                else
+                    set updatetime=3000
+                endif
 
                 " prefer to use shortcut
                 let g:ycm_auto_hover = ''
@@ -1239,13 +1245,21 @@ augroup END
             let g:ale_sign_error = '✗'
             let g:ale_sign_warning = '!'
 
-            let g:ale_lint_on_text_changed = 1
-            let g:ale_lint_on_insert_leave = 1
             let g:ale_lint_on_enter=1
-            let g:ale_lint_on_save=0
             let g:ale_lint_on_filetype_changed=1
 
-            let g:ale_lint_delay = 200
+            if g:performance_low
+                let g:ale_lint_on_text_changed = 0
+                let g:ale_lint_on_insert_leave = 0
+                let g:ale_lint_on_save=1
+                let g:ale_lint_delay = 400
+            else
+                let g:ale_lint_on_text_changed = 1
+                let g:ale_lint_on_enter=1
+                let g:ale_lint_on_save=0
+                let g:ale_lint_delay = 200
+            endif
+
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
@@ -1767,6 +1781,8 @@ augroup END
      " }
 
 " }
+
+    unlet g:performance_low
 
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
