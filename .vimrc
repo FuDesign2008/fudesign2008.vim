@@ -195,8 +195,8 @@ augroup END
     "set noignorecase
     set smartcase                   " case sensitive when uc present
     "set nosmartcase
-    set fileignorecase              " ignore case for file
-    "set nofileignorecase           " do not ignore case for file
+    " set fileignorecase              " ignore case for file
+    set nofileignorecase           " do not ignore case for file
     set wildmenu                    " show list instead of just completing
     set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
@@ -335,6 +335,8 @@ augroup END
     map zh zH
 " }
 
+    let g:performance_low = has('linux')
+
 " Plugins {
     " ack.vim/ag.vim {
         " @see http://robots.thoughtbot.com/faster-grepping-in-vim
@@ -348,6 +350,22 @@ augroup END
         endif
 
     " }
+
+    " ntpeters/vim-better-whitespace {
+        " use :StripWhitespace manully
+        " let g:strip_whitespace_on_save = 1
+        " let g:strip_max_file_size = 1000
+        " let g:better_whitespace_filetypes_blacklist=[
+                    " \ 'diff',
+                    " \ 'git',
+                    " \ 'gitcommit',
+                    " \ 'unite',
+                    " \ 'qf',
+                    " \ 'help',
+                    " \'markdown',
+                    " \ 'fugitive'
+                    " \]
+    "  }
 
     " autoHighlight.vim {
         let g:auto_highlight_enable = 0
@@ -573,8 +591,8 @@ augroup END
                 let g:ycm_collect_identifiers_from_comments_and_strings = 1
                 let g:ycm_collect_identifiers_from_tags_files = 1
                 let g:ycm_seed_identifiers_with_syntax = 1
-                let g:ycm_min_num_of_chars_for_completion = 2
-                let g:ycm_min_num_identifier_candidate_chars = 2
+                let g:ycm_min_num_of_chars_for_completion = g:performance_low ? 4 :  2
+                let g:ycm_min_num_identifier_candidate_chars = g:performance_low ? 4 : 2
                 let g:ycm_always_populate_location_list = 0
 
                 let g:ycm_add_preview_to_completeopt = 0
@@ -587,7 +605,11 @@ augroup END
                 unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
-                set updatetime=3000
+                if g:performance_low
+                    set updatetime=6000
+                else
+                    set updatetime=3000
+                endif
 
                 " prefer to use shortcut
                 let g:ycm_auto_hover = ''
@@ -625,10 +647,24 @@ augroup END
                       \}
 
                 if !exists('g:ycm_semantic_triggers')
-                    let g:ycm_semantic_triggers = {}
+                    " default
+                    let g:ycm_semantic_triggers = {
+                            \   'c': ['->', '.'],
+                            \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+                            \            're!\[.*\]\s'],
+                            \   'ocaml': ['.', '#'],
+                            \   'cpp,cuda,objcpp': ['->', '.', '::'],
+                            \   'perl': ['->'],
+                            \   'php': ['->', '::'],
+                            \   'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'],
+                            \   'ruby,rust': ['.', '::'],
+                            \   'lua': ['.', ':'],
+                            \   'erlang': [':'],
+                            \ }
                 endif
-                let g:ycm_semantic_triggers['javascript'] = ['.', '__']
-                let g:ycm_semantic_triggers['typescript'] = ['.', '__']
+
+                " let g:ycm_semantic_triggers['javascript'] = ['.', '__']
+                " let g:ycm_semantic_triggers['typescript'] = ['.', '__']
 
                 " for css @see https://github.com/Valloric/YouCompleteMe/issues/413
                 " : for property: value
@@ -895,10 +931,10 @@ augroup END
                     " \ 'JetBrains\ Mono:h15'
                     " \ 'Monaco:h14'
         let g:favorite_gui_fonts = [
-                    \ 'Cascadia\ Code:h' . g:gui_font_size,
-                    \ 'Fira\ Code:h' . (g:gui_font_size),
+                    \ 'Source\ Code\ Variable:h'. (g:gui_font_size),
                     \ 'Inconsolata:h'. (g:gui_font_size + 2),
-                    \ 'Source\ Code\ Variable:h'. (g:gui_font_size)
+                    \ 'Cascadia\ Code:h' . g:gui_font_size,
+                    \ 'Fira\ Code:h' . (g:gui_font_size)
                     \]
 
         unlet g:gui_font_size
@@ -937,36 +973,6 @@ augroup END
     " }
 
     " vim-jsdoc {
-        let g:jsdoc_allow_input_prompt = 0
-        let g:jsdoc_input_description = 0
-        let g:jsdoc_disable_function_name = 1
-        let g:jsdoc_compress_mode = 1
-        let g:jsdoc_access_descriptions = 2
-        let g:jsdoc_underscore_private = 1
-        let g:jsdoc_enable_es6 = 1
-        let g:jsdoc_return = 0
-        let g:jsdoc_custom_args_regex_only = 1
-        let g:jsdoc_custom_args_hook = {
-                \ '^$': {
-                        \ 'type': '{}'
-                    \ },
-                \ 'callback': {
-                        \ 'type': '{Function}'
-                    \},
-                \ 'data': {
-                        \ 'type': '{Object}'
-                    \},
-                \ 'el': {
-                        \ 'type': '{HTMLElement}'
-                    \},
-                \ '^is': {
-                        \ 'type': '{Boolean}'
-                    \},
-                \ 'options$': {
-                        \ 'type': '{Object}'
-                    \}
-                \}
-
     " }
 
     " NERDCommenter {
@@ -1215,6 +1221,7 @@ augroup END
                         \ 'cpp': [],
                         \ 'java': ['javac', 'checkstyle'],
                         \ 'yaml': ['yamllint', 'prettier'],
+                        \ 'dockerfile': ['hadolint'],
                         \ 'tex': []
                         \ }
             if g:spf13_autocomplete_method ==# 'coc'
@@ -1238,13 +1245,21 @@ augroup END
             let g:ale_sign_error = '✗'
             let g:ale_sign_warning = '!'
 
-            let g:ale_lint_on_text_changed = 1
-            let g:ale_lint_on_insert_leave = 1
             let g:ale_lint_on_enter=1
-            let g:ale_lint_on_save=0
             let g:ale_lint_on_filetype_changed=1
 
-            let g:ale_lint_delay = 200
+            if g:performance_low
+                let g:ale_lint_on_text_changed = 0
+                let g:ale_lint_on_insert_leave = 0
+                let g:ale_lint_on_save=1
+                let g:ale_lint_delay = 400
+            else
+                let g:ale_lint_on_text_changed = 1
+                let g:ale_lint_on_enter=1
+                let g:ale_lint_on_save=0
+                let g:ale_lint_delay = 200
+            endif
+
             let g:ale_completion_max_suggestions = 5
             let g:ale_max_signs = 5
             let g:ale_maximum_file_size = 1024 * 1024
@@ -1518,7 +1533,10 @@ augroup END
         "let g:pymode_utils_whitespaces = 0
      " }
 
+
+
      " fzf.vim {
+
         if count(g:spf13_bundle_groups, 'fzf')
             let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
             " diable preview window for performance
@@ -1535,11 +1553,14 @@ augroup END
                 echoerr 'Please set runtimepath for fzf'
             endif
 
-            unlet g:fzf_folder_via_git
+            nnoremap <c-p> :Files<Cr>
 
-            nnoremap <C-p> :Files<Cr>
-        else
-         " ctrlp {
+            unlet g:fzf_folder_via_git
+        endif
+     " }
+
+     " ctrlp {
+        if count(g:spf13_bundle_groups, 'fzf') == 0
             let g:ctrlp_working_path_mode = 'w'
             let g:ctrlp_by_filename = 0
             let g:ctrlp_match_current_file = 1
@@ -1658,9 +1679,9 @@ augroup END
                 let g:ctrlp_custom_ignore['dir'] = CreateIgnoredCommand('ctrlp_custom_ignore_dir')
                 let g:ctrlp_custom_ignore['file'] = CreateIgnoredCommand('ctrlp_custom_ignore_file')
             endif
-         "}
         endif
-     " }
+
+     "}
 
 
 
@@ -1694,7 +1715,7 @@ augroup END
      " FuDesign2008/component-kit.vim {
         let g:kit_component_css_extension = 'scss'
         let g:kit_component_template_dir = 'built-in'
-        " let g:kit_component_auto_layout = 'simple'
+        let g:kit_component_auto_layout = 'disable'
      " }
 
 
@@ -1760,6 +1781,8 @@ augroup END
      " }
 
 " }
+
+    unlet g:performance_low
 
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
