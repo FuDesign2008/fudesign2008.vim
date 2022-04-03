@@ -29,8 +29,8 @@ set nocompatible        " must be first line
     "  @see https://zhuanlan.zhihu.com/p/139746816
     "  python -c "import sys; print(sys.path)"
     "
-        let g:python3_in_scoop=expand('~/scoop/apps/python/current')
-        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python310.dll')
+        let g:python3_in_scoop=expand('~/scoop/apps/python/3.10.4')
+        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/3.10.4/python310.dll')
         if isdirectory(g:python3_in_scoop)
             execute 'set pythonthreehome=' . g:python3_in_scoop
             execute 'set pythonthreedll=' . g:python3_dll_in_scoop
