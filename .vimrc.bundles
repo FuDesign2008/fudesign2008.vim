@@ -548,7 +548,8 @@ set nocompatible        " must be first line
 
     " Document
         if count(g:spf13_bundle_groups, 'document')
-            "Bundle 'junegunn/goyo.vim'
+            " useful when show code
+            Bundle 'junegunn/goyo.vim'
             " Bundle 'jszakmeister/markdown2ctags'
 
             Bundle 'FuDesign2008/mkdInput.vim'

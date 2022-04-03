@@ -937,7 +937,6 @@ augroup END
                     \ 'Fira\ Code:h' . (g:gui_font_size)
                     \]
 
-        unlet g:gui_font_size
 
         let g:random_theme_start = 'favorite'
 
@@ -1778,6 +1777,28 @@ augroup END
 
      " lervag/vimtex {
         let g:tex_flavor='latex'
+     " }
+
+     " for code show {
+        let g:goyo_linenr=1
+
+        function! CodeShow()
+          set background=light
+          color Tomorrow
+          set number
+          set norelativenumber
+          call SetGuiFont('Source\ Code\ Variable', g:gui_font_size)
+          execute ":Goyo"
+        endfunction
+
+        function! CodeShowOff()
+          execute ":Goyo!"
+          set number
+          set relativenumber
+        endfunction
+
+        command! -nargs=0 CodeShow :call CodeShow()
+        command! -nargs=0 CodeShowOff :call CodeShowOff()
      " }
 
 " }
