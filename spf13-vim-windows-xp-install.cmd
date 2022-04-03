@@ -19,7 +19,7 @@
         chdir /d "%ORIGINAL_DIR%"
         ) else (
             echo cloning fudesign2008.vim
-            call git clone --recursive -b 3.0 git://github.com/FuDesign2008/fudesign2008.vim.git "%BASE_DIR%"
+            call git clone --recursive -b 3.0 https://github.com/FuDesign2008/fudesign2008.vim.git "%BASE_DIR%"
         )
 
 @if not exist  "%BASE_DIR%\.vim\bundle" call mkdir "%BASE_DIR%\.vim\bundle"
