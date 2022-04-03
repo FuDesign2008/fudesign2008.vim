@@ -24,6 +24,17 @@ set nocompatible        " must be first line
         set runtimepath+=~/.vim/bundle/vundle
         call vundle#rc()
     " }
+    " { for python3
+    "  fix https://blog.csdn.net/f4prime/article/details/113783784
+    "  @see https://zhuanlan.zhihu.com/p/139746816
+    "  python -c "import sys; print(sys.path)"
+    "
+        let g:python3home=expand('C:\\Program Files\\Python310')
+        if isdirectory('C:\\Program Files\\Python310')
+            set pythonthreehome=C:\\Program\ Files\\Python310
+            set pythonthreedll=C:\\Program\ Files\\Python310\\python310.dll'
+        endif
+    " }
 
 " }
 
