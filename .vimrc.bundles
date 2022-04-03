@@ -169,8 +169,9 @@ set nocompatible        " must be first line
                 "Bundle 'vim-scripts/grep.vim'
 
                 " supertab is more lightweight than YCM
-                Bundle 'ervandew/supertab'
-
+                " Bundle 'ervandew/supertab'
+                Bundle 'Valloric/YouCompleteMe'
+                Bundle 'ycm-core/lsp-examples'
             else
 
                 if g:spf13_autocomplete_method ==# 'tabnine'
