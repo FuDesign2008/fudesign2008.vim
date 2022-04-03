@@ -29,11 +29,12 @@ set nocompatible        " must be first line
     "  @see https://zhuanlan.zhihu.com/p/139746816
     "  python -c "import sys; print(sys.path)"
     "
-        let g:python3home=expand('C:\\Program Files\\Python310')
-        if isdirectory('C:\\Program Files\\Python310')
-            set pythonthreehome=C:\\Program\ Files\\Python310
-            set pythonthreedll=C:\\Program\ Files\\Python310\\python310.dll'
+        let g:python3_in_scoop=expand('~/scoop/apps/python/current')
+        if isdirectory(g:python3_in_scoop)
+            execute 'set pythonthreehome=' . g:python3_in_scoop
+            execute 'set pythonthreedll=' . g:python3_in_scoop . '/python3.dll'
         endif
+        unlet g:python3_in_scoop
     " }
 
 " }
