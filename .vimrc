@@ -30,7 +30,7 @@ set nocompatible        " must be first line
     "  python -c "import sys; print(sys.path)"
     "
         let g:python3_in_scoop=expand('~/scoop/apps/python/current')
-        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python3.dll')
+        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python310.dll')
         if isdirectory(g:python3_in_scoop)
             execute 'set pythonthreehome=' . g:python3_in_scoop
             execute 'set pythonthreedll=' . g:python3_dll_in_scoop
