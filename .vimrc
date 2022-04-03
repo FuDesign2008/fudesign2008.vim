@@ -1540,10 +1540,14 @@ augroup END
             let g:fzf_folder_via_git = fnamemodify('~/.fzf', ':p')
             " diable preview window for performance
             let g:fzf_preview_window = []
+            let g:fzf_in_scoop=expand('~/scoop/apps/fzf/current')
 
             if isdirectory('/usr/local/opt/fzf')
-                " for brew install fzf on mac os
+                " for mac os,  fzf installed by brew
                 set runtimepath+=/usr/local/opt/fzf
+            elseif isdirectory(g:fzf_in_scoop)
+                " for windows, fzf installed by scoop
+                execute 'set runtimepath+=' . g:fzf_in_scoop
             elseif isdirectory(g:fzf_folder_via_git)
                 " for apt install fzf on ubuntu
                 " @see https://github.com/junegunn/fzf.vim/issues/456
@@ -1555,6 +1559,7 @@ augroup END
             nnoremap <c-p> :Files<Cr>
 
             unlet g:fzf_folder_via_git
+            unlet g:fzf_in_scoop
         endif
      " }
 
