@@ -1797,6 +1797,15 @@ augroup END
      " lervag/vimtex {
         let g:tex_flavor='latex'
      " }
+     "  kristijanhusak/vim-carbon-now-sh {
+        let g:carbon_now_sh_options = {
+            \ 'ln': 'true',
+            \ 't': 'solarized light',
+            \ 'bg': 'rgba(0,0,0,0)',
+            \ 'wc': 'false',
+            \ 'fm': 'Source Code Pro'
+            \}
+     " }
 
      " for code show {
         let g:goyo_linenr=1
@@ -1807,11 +1816,11 @@ augroup END
           set number
           set norelativenumber
           call SetGuiFont('Source\ Code\ Variable', g:gui_font_size)
-          execute ":Goyo"
+          execute ':Goyo'
         endfunction
 
         function! CodeShowOff()
-          execute ":Goyo!"
+          execute ':Goyo!'
           set number
           set relativenumber
         endfunction
