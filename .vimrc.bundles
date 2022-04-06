@@ -550,7 +550,7 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'document')
             " useful when show code
             Bundle 'junegunn/goyo.vim'
-            Bundle 'kristijanhusak/vim-carbon-now-sh'
+            Bundle 'FuDesign2008/vim-carbon-now-sh'
             " Bundle 'jszakmeister/markdown2ctags'
 
             Bundle 'FuDesign2008/mkdInput.vim'

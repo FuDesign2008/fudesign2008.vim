@@ -1798,11 +1798,14 @@ augroup END
         let g:tex_flavor='latex'
      " }
      "  kristijanhusak/vim-carbon-now-sh {
+     "  @see https://github.com/carbon-app/carbon/blob/main/lib/routing.js#L58
         let g:carbon_now_sh_options = {
             \ 'ln': 'true',
             \ 't': 'solarized light',
             \ 'bg': 'rgba(0,0,0,0)',
+            \ 'fs': '12px',
             \ 'wc': 'false',
+            \ 'wa': 'true',
             \ 'fm': 'Source Code Pro'
             \}
      " }
