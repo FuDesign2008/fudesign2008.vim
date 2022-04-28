@@ -209,8 +209,8 @@ augroup END
     "set noignorecase
     set smartcase                   " case sensitive when uc present
     "set nosmartcase
-    " set fileignorecase              " ignore case for file
-    set nofileignorecase           " do not ignore case for file
+    set fileignorecase              " ignore case for file
+    " set nofileignorecase           " do not ignore case for file
     set wildmenu                    " show list instead of just completing
     set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
