@@ -721,9 +721,9 @@ augroup END
     "
         if !g:is_win
             function! ConfigPlanPlugin()
+
                 let philosophyDir = '~/workspace/github2008/philosophy'
                 let g:p_edit_files = {
-                    \ 'management': expand(philosophyDir . '/career/youdao/management'),
                     \ 'profession': expand(philosophyDir . '/profession'),
                     \ 'patents': expand(philosophyDir . '/profession/patents'),
                     \ 'interview': expand(philosophyDir . '/profession/interview'),
@@ -734,19 +734,22 @@ augroup END
                     \ 'philosophy': expand(philosophyDir)
                     \}
 
-                unlet philosophyDir
 
                 let l:cur_year = strftime('%Y')
                 "01-12
                 let l:cur_month = strftime('%m')
                 let l:cur_month = l:cur_year . '-' . l:cur_month
 
-                let l:plan_year_path = '~/workspace/github2008/philosophy/plan/' . l:cur_year
+                let l:plan_year_path =  philosophyDir . '/plan/' . l:cur_year
                 let l:plan_file_pattern = l:plan_year_path .'/' . l:cur_month . '/plan.*'
+
                 "  ~/workspace/github2008/philosophy/plan/2013/2013-04/2013-04.*
                 "  the plan file may has different file extension
                 let l:plan_file_pattern_old = l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month . '.*'
                 let l:diary_file_pattern = l:plan_year_path .'/' . l:cur_month . '/diary.*'
+
+                let l:team_work_file_path = expand(l:plan_year_path .'/' . l:cur_month . '/team-work.md')
+                let g:p_edit_files['teamwork'] = l:team_work_file_path
 
                 "
                 let l:fileList = glob(l:plan_file_pattern, 0, 1)
@@ -783,7 +786,7 @@ augroup END
                 "...
                 "6 = sat
                 let g:plan_week_work = {
-                    \ 1 : '1. 电脑移除与升级软件;'
+                    \ 1 : '1. 电脑移除与升级软件;1. 工作周报;'
                     \}
                 let g:plan_week_personal = {
                     \ 0 : '1. 断舍离;   - 清理手机;    - 清理家庭居所;'
@@ -819,6 +822,9 @@ augroup END
                     \ '12-24': '1. 半年回顾与规划;',
                     \ '12-30': '1. 结婚纪念日;'
                     \}
+
+                unlet philosophyDir
+
             endfunction
 
             call ConfigPlanPlugin()
@@ -832,17 +838,6 @@ augroup END
             \ 'google': 'https://www.google.com.hk/search?hl=en&q=<QUERY>',
             \ 'github': 'https://github.com/search?q=<QUERY>',
             \ 'mozilla': 'https://developer.mozilla.org/en-US/search?q=<QUERY>',
-            \ 'dottoro': 'http://www.dottoro.com/search.php?query=<QUERY>',
-            \ 'overapi' : 'http://overapi.com/<QUERY>/',
-            \ 'jquery': 'http://api.jquery.com/?s=<QUERY>',
-            \ 'underscore': 'http://underscorejs.org/#<QUERY>',
-            \ 'backbone': 'http://backbonejs.org/#Model-<QUERY>',
-            \ 'dict': 'http://dict.youdao.com/search?q=<QUERY>',
-            \ 'wiki': 'http://en.wikipedia.org/w/index.php?search=<QUERY>',
-            \ 'bmap': 'http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D<QUERY>',
-            \ 'bimg': 'http://image.baidu.com/i?word=<QUERY>&ie=utf-8',
-            \ 'ganji': 'http://bj.ganji.com/site/s/_<QUERY>',
-            \ '58': 'http://bj.58.com/sou/jh_<QUERY>/'
             \}
     " }
     "
