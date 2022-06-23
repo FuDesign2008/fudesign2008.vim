@@ -356,6 +356,7 @@ set nocompatible        " must be first line
             " Bundle 'KabbAmine/zeavim.vim'
 
             Bundle 'ekalinin/Dockerfile.vim'
+            Bundle 'cespare/vim-toml'
 
             " Bundle 'christoomey/vim-system-copy'
 
