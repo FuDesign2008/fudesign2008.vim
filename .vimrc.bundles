@@ -301,7 +301,6 @@ set nocompatible        " must be first line
             " instead of ack
             " @see https://github.com/rking/ag.vim/issues/124#issuecomment-227038003
             Bundle 'FuDesign2008/ack.vim'
-            Bundle 'FuDesign2008/vim-qargs'
 
             " conflict with delimitMate
             " Bundle 'jiangmiao/auto-pairs'
