@@ -356,7 +356,7 @@ augroup END
         " @see http://robots.thoughtbot.com/faster-grepping-in-vim
         "set grepprg=ack
         "
-        if execute('rg')
+        if executable('rg')
             " @see https://github.com/BurntSushi/ripgrep/issues/425
             set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
             " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
