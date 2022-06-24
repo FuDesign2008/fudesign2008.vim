@@ -356,10 +356,14 @@ augroup END
         " @see http://robots.thoughtbot.com/faster-grepping-in-vim
         "set grepprg=ack
         "
-        " The Silver Searcher
-        if executable('ag')
-            " Use ag over grep
-            set grepprg=ag\ --nogroup\ --nocolor
+        if execute('rg')
+            " @see https://github.com/BurntSushi/ripgrep/issues/425
+            set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+            " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
+            let g:ackprg = 'rg --vimgrep --no-heading --smart-case'
+        elseif executable('ag')
+            " The Silver Searcher
+            set grepprg=ag\ --nogroup\ --nocolor\ --smart-case
             let g:ackprg = 'ag --vimgrep --smart-case'
         endif
 
@@ -1679,8 +1683,11 @@ augroup END
             exec g:vimrc_temp_str
             unlet g:vimrc_temp_str
 
-
-            if executable('ag')
+            if executable('rg')
+                " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
+                let g:ctrlp_user_command = 'rg --files --smart-case --color "never" %s'
+                let g:ctrlp_use_caching = 0
+            elseif executable('ag')
                 let g:ctrlp_user_command = CreateIgnoredCommand('ctrlp_user_command')
                 let g:ctrlp_use_caching = 0
             else
