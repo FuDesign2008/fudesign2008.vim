@@ -1225,6 +1225,7 @@ augroup END
             let g:ale_linters = {
                         \ 'markdown': ['remark-lint', 'markdownlint'],
                         \ 'json': ['jsonlint'],
+                        \ 'jsonc': ['eslint'],
                         \ 'javascript': ['eslint'],
                         \ 'typescript': ['tsserver', 'eslint'],
                         \ 'typescriptreact': ['tsserver', 'eslint'],
@@ -1290,6 +1291,7 @@ augroup END
                         \ 'markdown': ['prettier'],
                         \ 'html': ['prettier'],
                         \ 'json': ['prettier', 'fixjson'],
+                        \ 'jsonc': ['prettier'],
                         \ 'css': ['prettier'],
                         \ 'less': ['prettier'],
                         \ 'scss': ['prettier'],
@@ -1538,7 +1540,7 @@ augroup END
      " }
 
      " jsonc {
-        autocmd vimrc FileType json syntax match Comment +\/\/.\+$+
+        " autocmd vimrc FileType json syntax match Comment +\/\/.\+$+
      " }
 
      " PyMode {
