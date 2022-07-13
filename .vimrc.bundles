@@ -314,7 +314,8 @@ set nocompatible        " must be first line
     "Colors
         if count(g:spf13_bundle_groups, 'colors')
             "lucius in vim-colorschemes is outdate
-            Bundle 'flazz/vim-colorschemes'
+            " Bundle 'flazz/vim-colorschemes'
+            Bundle 'rafi/awesome-vim-colorschemes'
             Bundle 'FuDesign2008/randomTheme.vim'
         endif
 
