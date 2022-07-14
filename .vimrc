@@ -857,62 +857,6 @@ augroup END
 
 
     " FuDesign2008/randomTheme.vim {
-        "let g:favorite_color_schemes = ['pyte',
-                        "\ 'summerfruit',
-                        "\ 'codeschool',
-                        "\ 'jellybeans',
-                        "\ 'railscasts',
-                        "\ 'twilight',
-                        "\ 'ir_black',
-                        "\ 'zenburn',
-                        "\ 'desert',
-                        "\ 'wombat',
-                        "\ 'lucius',
-                        "\ 'peaksea']
-        let g:favorite_color_schemes = [
-                        \ 'OceanicNext',
-                        \ 'Tomorrow',
-                        \ 'Tomorrow-Night',
-                        \ 'Tomorrow-Night-Bright',
-                        \ 'Tomorrow-Night-Eighties',
-                        \ 'afterglow',
-                        \ 'apprentice',
-                        \ 'autumnleaf',
-                        \ 'bclear',
-                        \ 'beauty256',
-                        \ 'codeschool',
-                        \ 'github',
-                        \ 'hybrid',
-                        \ 'jellybeans',
-                        \ 'lucius',
-                        \ 'molokai',
-                        \ 'pencil',
-                        \ 'solarized',
-                        \ 'summerfruit',
-                        \ 'vc'
-                        \]
-
-        if !has('gui_running')
-            let g:favorite_color_schemes = [
-                        \ 'afterglow',
-                        \ 'molokai',
-                        \ 'hybrid',
-                        \ 'Tomorrow',
-                        \ 'Tomorrow-Night',
-                        \ 'Tomorrow-Night-Bright',
-                        \ 'Tomorrow-Night-Eighties',
-                        \ 'jellybeans',
-                        \ 'OceanicNext',
-                        \ 'codeschool',
-                        \ 'beauty256',
-                        \ 'github',
-                        \ 'pencil',
-                        \ 'lucius',
-                        \ 'apprentice'
-                        \ ]
-        endif
-
-
         " @see https://forum.ubuntu.com.cn/viewtopic.php?t=45358
         " @see :help setting-guifont
         function! SetGuiFont(font, size)
@@ -957,7 +901,7 @@ augroup END
                     \]
 
 
-        let g:random_theme_start = 'favorite'
+        let g:random_theme_start = 'all:light'
 
     " }
 
