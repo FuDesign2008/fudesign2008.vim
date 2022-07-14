@@ -113,7 +113,7 @@ set nocompatible        " must be first line
 
             " airline is lightweight than powerline
             Bundle 'vim-airline/vim-airline'
-            " Bundle 'vim-airline/vim-airline-themes'
+            Bundle 'vim-airline/vim-airline-themes'
             " Bundle 'itchyny/lightline.vim'
 
             " Bundle 'vim-scripts/LanguageTool'
