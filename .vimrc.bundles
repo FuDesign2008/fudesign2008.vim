@@ -87,6 +87,8 @@ set nocompatible        " must be first line
 
     " lsp, ycm is better
     " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
+    " 可选的值: ycm/tabnine/deoplete/asyncomplete/coc
+    "
     let g:spf13_autocomplete_method='ycm'
 
     " To override all the included bundles, put
