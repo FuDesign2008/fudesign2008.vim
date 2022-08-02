@@ -1187,6 +1187,9 @@ augroup END
                         \ 'dockerfile': ['hadolint'],
                         \ 'tex': []
                         \ }
+            let g:ale_vue_vls_use_global = 1
+            let g:ale_vue_volar_use_global = 1
+
             if g:spf13_autocomplete_method ==# 'coc'
                 let g:ale_disable_lsp = 1
                 let g:ale_linters['typescript'] =   ['eslint']
