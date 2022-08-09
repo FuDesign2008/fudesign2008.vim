@@ -102,6 +102,7 @@ set nocompatible        " must be first line
             Bundle 'preservim/nerdtree'
             Bundle 'matchit.zip'
             Bundle 'ntpeters/vim-better-whitespace'
+            Bundle 'FuDesign2008/TrimWhiteSpaces.vim'
             " Bundle 'junegunn/rainbow_parentheses.vim'
 
             " Do NOT use, for `:ALEFix` will be run before save
