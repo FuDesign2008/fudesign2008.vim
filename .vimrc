@@ -1175,7 +1175,7 @@ augroup END
                         \ 'markdown': ['remark-lint', 'markdownlint'],
                         \ 'json': ['jsonlint'],
                         \ 'jsonc': ['eslint'],
-                        \ 'javascript': ['eslint'],
+                        \ 'javascript': ['eslint', 'tsserver'],
                         \ 'typescript': ['tsserver', 'eslint'],
                         \ 'typescriptreact': ['tsserver', 'eslint'],
                         \ 'vue': ['stylelint', 'vls', 'eslint'],
@@ -1262,12 +1262,12 @@ augroup END
             endif
 
             if g:use_jshint_for_javascript
-                let g:ale_linters['javascript'] = ['jshint']
+                let g:ale_linters['javascript'] = ['jshint', 'tsserver']
                 let g:ale_fixers['javascript'] = ['prettier']
             elseif g:use_eslint_for_javascript
                 let g:ale_fixers['javascript'] = ['prettier']
             elseif g:use_flow_for_javascript
-                let g:ale_linters['javascript'] = ['flow']
+                let g:ale_linters['javascript'] = ['flow', 'tsserver']
                 let g:ale_fixers['javascript'] = ['prettier']
             endif
 
