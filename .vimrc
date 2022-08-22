@@ -891,13 +891,14 @@ augroup END
         endif
 
 
-                    " \ 'JetBrains\ Mono:h15'
                     " \ 'Monaco:h14'
         let g:favorite_gui_fonts = [
-                    \ 'Source\ Code\ Variable:h'. (g:gui_font_size),
-                    \ 'Inconsolata:h'. (g:gui_font_size + 2),
-                    \ 'Cascadia\ Code:h' . g:gui_font_size,
-                    \ 'Fira\ Code:h' . (g:gui_font_size)
+                    \ 'source\ code\ pro:h'. (g:gui_font_size),
+                    \ 'ibm\ plex\ mono:h'. (g:gui_font_size),
+                    \ 'hack:h'. (g:gui_font_size),
+                    \ 'inconsolata:h'. (g:gui_font_size + 2),
+                    \ 'cascadia\ code:h' . g:gui_font_size,
+                    \ 'fira\ code:h' . (g:gui_font_size)
                     \]
 
 
