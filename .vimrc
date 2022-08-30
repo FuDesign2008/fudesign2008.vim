@@ -1689,7 +1689,7 @@ augroup END
      " }
      "
      " FuDesign2008/component-kit.vim {
-        let g:kit_component_template_dir = 'built-in'
+        " let g:kit_component_template_dir = 'built-in'
         let g:kit_component_auto_layout = 'disable'
      " }
 
