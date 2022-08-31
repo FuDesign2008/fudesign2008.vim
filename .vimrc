@@ -895,6 +895,7 @@ augroup END
         let g:favorite_gui_fonts = [
                     \ 'source\ code\ pro:h'. (g:gui_font_size),
                     \ 'ibm\ plex\ mono:h'. (g:gui_font_size),
+                    \ 'roboto\ mono:h' . g:gui_font_size,
                     \ 'hack:h'. (g:gui_font_size),
                     \ 'inconsolata:h'. (g:gui_font_size + 2),
                     \ 'cascadia\ code:h' . g:gui_font_size,
