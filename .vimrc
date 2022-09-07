@@ -1055,7 +1055,7 @@ augroup END
         \ '.flowconfig',
         \ ], 10)
     let g:use_jshint_for_javascript = stridx(g:find_file_name, 'jshintrc') > -1
-    let g:use_eslint_for_javascript = stridx(g:find_file_name, 'eslintrc') > -1
+    let g:use_eslint = stridx(g:find_file_name, 'eslintrc') > -1
     let g:use_flow_for_javascript = stridx(g:find_file_name, 'flowconfig') > -1
 
     let g:find_file_name = FindFilesUp([
@@ -1252,7 +1252,7 @@ augroup END
                         \ 'javascript': ['prettier'],
                         \ 'typescript': ['prettier'],
                         \ 'typescriptreact': ['prettier'],
-                        \ 'vue': ['prettier', 'stylelint'],
+                        \ 'vue': ['prettier'],
                         \ 'yaml': ['yamlfix', 'prettier'],
                         \ 'c': ['clang-format']
                         \}
@@ -1266,8 +1266,8 @@ augroup END
             if g:use_jshint_for_javascript
                 let g:ale_linters['javascript'] = ['jshint', 'tsserver']
                 let g:ale_fixers['javascript'] = ['prettier']
-            elseif g:use_eslint_for_javascript
-                let g:ale_fixers['javascript'] = ['prettier']
+            elseif g:use_eslint
+                let g:ale_fixers['javascript'] = ['eslint', 'prettier']
             elseif g:use_flow_for_javascript
                 let g:ale_linters['javascript'] = ['flow', 'tsserver']
                 let g:ale_fixers['javascript'] = ['prettier']
@@ -1275,9 +1275,8 @@ augroup END
 
             if g:use_tslint_for_typescript
                 let g:ale_linters['typescript'] = g:spf13_autocomplete_method ==# 'coc' ?  ['tslint'] : ['tslint', 'tsserver']
-                " let g:ale_linters['typescript'] = ['tslint']
-                " let g:ale_fixers['typescript'] = ['tslint', 'prettier']
                 let g:ale_fixers['typescript'] = ['prettier']
+
                 let g:ale_linters['typescriptreact'] = g:spf13_autocomplete_method ==# 'coc' ?  ['tslint'] : ['tslint', 'tsserver']
                 let g:ale_fixers['typescriptreact'] = ['tslint', 'prettier']
 
@@ -1289,6 +1288,9 @@ augroup END
                     " autocmd!
                     " au BufNewFile,BufRead,BufWritePre *.js set filetype=javascript.typescript
                 " augroup END
+            elseif g:use_eslint
+                let g:ale_fixers['typescript'] = ['eslint', 'prettier']
+                let g:ale_fixers['typescriptreact'] = ['eslint', 'prettier']
             endif
 
         endif
