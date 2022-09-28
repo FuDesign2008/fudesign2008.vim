@@ -87,9 +87,9 @@ set nocompatible        " must be first line
 
     " lsp, ycm is better
     " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
-    " 可选的值: ycm/tabnine/deoplete/asyncomplete/coc
+    " 可选的值: ycm/tabnine/deoplete/vim-lsp/coc
     "
-    let g:spf13_autocomplete_method='ycm'
+    let g:spf13_autocomplete_method='vim-lsp'
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -216,7 +216,7 @@ set nocompatible        " must be first line
                     " echo document
                     Bundle 'Shougo/echodoc.vim'
 
-                elseif g:spf13_autocomplete_method ==# 'asyncomplete'
+                elseif g:spf13_autocomplete_method ==# 'vim-lsp'
                     Bundle 'prabirshrestha/async.vim'
                     Bundle 'prabirshrestha/vim-lsp'
                     Bundle 'mattn/vim-lsp-settings'
