@@ -470,6 +470,8 @@ set nocompatible        " must be first line
 
             Bundle 'FuDesign2008/component-kit.vim'
 
+            Bundle 'maksimr/vim-jsbeautify'
+
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
                 Bundle 'leafgarland/typescript-vim'
