@@ -238,6 +238,7 @@ set nocompatible        " must be first line
                     Bundle 'hiterm/asyncomplete-look'
                     Bundle 'yami-beta/asyncomplete-omni.vim'
                     Bundle 'prabirshrestha/asyncomplete-emoji.vim'
+                    Bundle 'tsufeki/asyncomplete-fuzzy-match'
 
                 endif
 
