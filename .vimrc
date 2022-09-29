@@ -583,7 +583,7 @@ augroup END
                     nmap <silent> <leader>d <Plug>(coc-definition)
                     nmap <silent> <leader>t <Plug>(coc-type-definition)
                     nmap <silent> <leader>i <Plug>(coc-implementation)
-                    nmap <silent> <leader>r <Plug>(coc-references)
+                    nmap <silent> <leader>rf <Plug>(coc-references)
 
                     " Use K to show documentation in preview window
                     " ⚠️  same shortcut with YCMHover
@@ -601,7 +601,7 @@ augroup END
                     " autocmd vimrc CursorHold * silent call CocActionAsync('highlight')
 
                     " Remap for rename current word
-                    nmap <leader>rn <Plug>(coc-rename)
+                    nmap <leader>r <Plug>(coc-rename)
 
                     " Remap for format selected region
                     " xmap <leader>f  <Plug>(coc-format-selected)
@@ -1238,17 +1238,30 @@ augroup END
                 let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
             endif
 
+            let g:ale_disable_lsp = 0
 
             if count(g:spf13_autocomplete_method, 'coc')
                 let g:ale_disable_lsp = 1
                 let g:ale_linters['typescript'] =   ['eslint']
                 let g:ale_linters['typescriptreact'] =   ['eslint']
-            else
-                " same shortcut with coc
+            endif
+
+            if count(g:spf13_autocomplete_method, 'vim-lsp')
+                let g:ale_disable_lsp = 1
+                let g:ale_linters['typescript'] =   ['eslint']
+                let g:ale_linters['typescriptreact'] =   ['eslint']
+                nnoremap <silent> <leader>d <plug>(lsp-definition)
+                nnoremap <silent> <leader>p <plug>(lsp-peek-definition)
+                nnoremap <silent> <leader>r <plug>(lsp-rename)
+                nnoremap <silent> <leader>t <plug>(lsp-type-definition)
+                nnoremap <silent> K <plug>(lsp-hover)
+            endif
+
+            if g:ale_disable_lsp == 0
                 nmap <silent> <leader>d :ALEGoToDefinition <CR>
                 nmap <silent> <leader>t :ALEGoToTypeDefinition <CR>
-                nmap <leader>f   :ALEFix <CR>
             endif
+            nmap <leader>f   :ALEFix <CR>
 
             let g:ale_sign_column_always = 1
             " Prefer to use shortcut
