@@ -504,7 +504,7 @@ augroup END
                             if stridx(l:item['word'], l:base) == 0
                                 let l:startcols += [l:startcol]
                                 let l:item['priority'] =
-                                            \ get(asyncomplete#get_source_info(l:source_name), 'priority', 50)
+                                            \ get(asyncomplete#get_source_info(l:source_name), 'priority', 5)
                                 call add(l:items, l:item)
                             endif
                         endfor
@@ -522,21 +522,21 @@ augroup END
                 call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
                     \ 'name': 'ultisnips',
                     \ 'allowlist': ['*'],
-                    \ 'priority': 10,
+                    \ 'priority': 1,
                     \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
                     \ }))
 
                 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
                     \ 'name': 'file',
                     \ 'allowlist': ['*'],
-                    \ 'priority': 10,
+                    \ 'priority': 1,
                     \ 'completor': function('asyncomplete#sources#file#completor')
                     \ }))
 
                 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
                     \ 'name': 'buffer',
                     \ 'allowlist': ['*'],
-                    \ 'priority': 60,
+                    \ 'priority': 6,
                     \ 'blocklist': ['go'],
                     \ 'completor': function('asyncomplete#sources#buffer#completor'),
                     \ 'config': {
@@ -554,7 +554,7 @@ augroup END
                 autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
                     \ 'name': 'omni',
                     \ 'allowlist': ['*'],
-                    \ 'priority': 80,
+                    \ 'priority': 8,
                     \ 'blocklist': ['c', 'cpp', 'html'],
                     \ 'completor': function('asyncomplete#sources#omni#completor'),
                     \ 'config': {
@@ -564,7 +564,7 @@ augroup END
 
                 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
                     \ 'name': 'emoji',
-                    \ 'priority': 50,
+                    \ 'priority': 6,
                     \ 'allowlist': ['*'],
                     \ 'completor': function('asyncomplete#sources#emoji#completor'),
                     \ }))
