@@ -581,7 +581,7 @@ augroup END
                     " Remap keys for gotos
                     " ⚠️  same shortcut with ALE
                     nmap <silent> <leader>d <Plug>(coc-definition)
-                    nmap <silent> <leader>t <Plug>(coc-type-definition)
+                    nmap <silent> <leader>td <Plug>(coc-type-definition)
                     nmap <silent> <leader>i <Plug>(coc-implementation)
                     nmap <silent> <leader>rf <Plug>(coc-references)
 
@@ -1253,13 +1253,13 @@ augroup END
                 nnoremap <silent> <leader>d <plug>(lsp-definition)
                 nnoremap <silent> <leader>p <plug>(lsp-peek-definition)
                 nnoremap <silent> <leader>r <plug>(lsp-rename)
-                nnoremap <silent> <leader>t <plug>(lsp-type-definition)
+                nnoremap <silent> <leader>td <plug>(lsp-type-definition)
                 nnoremap <silent> K <plug>(lsp-hover)
             endif
 
             if g:ale_disable_lsp == 0
                 nmap <silent> <leader>d :ALEGoToDefinition <CR>
-                nmap <silent> <leader>t :ALEGoToTypeDefinition <CR>
+                nmap <silent> <leader>td :ALEGoToTypeDefinition <CR>
             endif
             nmap <leader>f   :ALEFix <CR>
 
