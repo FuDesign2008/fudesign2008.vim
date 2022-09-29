@@ -228,6 +228,12 @@ set nocompatible        " must be first line
 
                     Bundle 'prabirshrestha/asyncomplete.vim'
                     Bundle 'prabirshrestha/asyncomplete-lsp.vim'
+                    Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
+                    Bundle 'prabirshrestha/asyncomplete-file.vim'
+                    Bundle 'prabirshrestha/asyncomplete-buffer.vim'
+                    Bundle 'hiterm/asyncomplete-look'
+                    Bundle 'yami-beta/asyncomplete-omni.vim'
+                    Bundle 'prabirshrestha/asyncomplete-emoji.vim'
 
                     " UltiSnips
                     Bundle 'thomasfaingnaert/vim-lsp-snippets'
