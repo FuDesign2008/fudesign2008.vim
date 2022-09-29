@@ -492,7 +492,7 @@ augroup END
                 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
                 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-                let g:asyncomplete_matchfuzzy=0
+                " let g:asyncomplete_matchfuzzy=0
 
                 function! s:sort_by_priority_preprocessor(options, matches) abort
                     let l:items = []
