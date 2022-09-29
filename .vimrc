@@ -1191,6 +1191,33 @@ augroup END
                         \ }
             let g:ale_vue_vls_use_global = 1
             let g:ale_vue_volar_use_global = 1
+            let g:ale_vue_volar_executable = 'vue-language-server'
+
+            " @return {2|3}
+            function! DetectVueVersion()
+                let found =  FindFileUp('package.json', 15)
+                let file = get(found, 'file', '')
+                let l:version = 2
+                if empty(file)
+                    return l:version
+                endif
+                let lines = readfile(file)
+                let content = join(lines, '')
+                let data = json_decode(content)
+                let dependencies = get(data, 'dependencies', {})
+                let vue = get(dependencies, 'vue', '^2.0.0')
+                " vue value may  '^3.x.y' or '3.x.y'
+                if match(vue, '\^3\.') == 0 || match(vue, '3\.') == 0
+                    let l:version = 3
+                endif
+
+                return l:version
+            endfunction
+
+            if DetectVueVersion() == 3
+                let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
+            endif
+
 
             if g:spf13_autocomplete_method ==# 'coc'
                 let g:ale_disable_lsp = 1
