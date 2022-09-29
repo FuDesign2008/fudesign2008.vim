@@ -499,7 +499,7 @@ augroup END
                 let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
                 let g:lsp_settings = {
                     \  'typescript-language-server': {
-                    \    'disabled': 1,
+                    \    'disabled': 0,
                     \   }
                     \}
             "}
