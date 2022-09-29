@@ -492,10 +492,37 @@ augroup END
                 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
                 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
+                let g:asyncomplete_matchfuzzy=0
+
+                function! s:sort_by_priority_preprocessor(options, matches) abort
+                    let l:items = []
+                    let l:startcols = []
+                    for [l:source_name, l:matches] in items(a:matches)
+                        let l:startcol = l:matches['startcol']
+                        let l:base = a:options['typed'][l:startcol - 1:]
+                        for l:item in l:matches['items']
+                            if stridx(l:item['word'], l:base) == 0
+                                let l:startcols += [l:startcol]
+                                let l:item['priority'] =
+                                            \ get(asyncomplete#get_source_info(l:source_name), 'priority', 50)
+                                call add(l:items, l:item)
+                            endif
+                        endfor
+                    endfor
+
+                    let a:options['startcol'] = min(l:startcols)
+                    let l:items = sort(l:items, {a, b -> a['priority'] - b['priority']})
+
+                    call asyncomplete#preprocess_complete(a:options, l:items)
+                endfunction
+
+                let g:asyncomplete_preprocessor = [function('s:sort_by_priority_preprocessor')]
+
                 " let g:UltiSnipsExpandTrigger="<c-e>"
                 call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
                     \ 'name': 'ultisnips',
                     \ 'allowlist': ['*'],
+                    \ 'priority': 10,
                     \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
                     \ }))
 
@@ -509,6 +536,7 @@ augroup END
                 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
                     \ 'name': 'buffer',
                     \ 'allowlist': ['*'],
+                    \ 'priority': 60,
                     \ 'blocklist': ['go'],
                     \ 'completor': function('asyncomplete#sources#buffer#completor'),
                     \ 'config': {
@@ -526,6 +554,7 @@ augroup END
                 autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
                     \ 'name': 'omni',
                     \ 'allowlist': ['*'],
+                    \ 'priority': 80,
                     \ 'blocklist': ['c', 'cpp', 'html'],
                     \ 'completor': function('asyncomplete#sources#omni#completor'),
                     \ 'config': {
@@ -535,6 +564,7 @@ augroup END
 
                 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
                     \ 'name': 'emoji',
+                    \ 'priority': 50,
                     \ 'allowlist': ['*'],
                     \ 'completor': function('asyncomplete#sources#emoji#completor'),
                     \ }))
