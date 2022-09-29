@@ -354,7 +354,84 @@ augroup END
     map zh zH
 " }
 
-    let g:performance_low = has('linux')
+
+" helper {
+    "
+    " @param {String} fileName
+    " @param {Integer} limitTimes
+    " @return {Object}
+    function! FindFileUp(fileName, limitTimes)
+        let l:tempDir = fnamemodify(getcwd(), ':p:h')
+        let l:tempFile = ''
+        let l:counter = 0
+        let l:isExist = 0
+        let l:result = {}
+
+        while l:counter <= a:limitTimes
+            let l:tempFile = l:tempDir . '/' . a:fileName
+            let l:isExist = filereadable(l:tempFile)
+            if l:isExist
+                let l:result['file'] = l:tempFile
+                let l:result['filename']= a:fileName
+                let l:result['distance']  =  l:counter
+                return l:result
+            endif
+            let l:tempDir = fnamemodify(l:tempDir, ':p:h:h')
+            let l:counter = l:counter + 1
+        endwhile
+
+        return l:result
+    endfunction
+
+    " @param {List<String>} fileNames
+    " @param {Integer} limitTimes
+    " @return {String}
+    function! FindFilesUp(fileNames, limitTimes)
+        let l:minDistance = -1
+        let l:closestItem = {}
+
+        for l:item in a:fileNames
+            let l:found = FindFileUp(l:item, a:limitTimes)
+            let l:distance = get(l:found, 'distance', -1)
+            if l:distance > -1
+                if l:minDistance < 0
+                    let l:minDistance = l:distance
+                    let l:closestItem = l:found
+                elseif l:minDistance > l:distance
+                    let l:minDistance = l:distance
+                    let l:closestItem = l:found
+                endif
+            endif
+        endfor
+
+        let l:theFile = get(l:closestItem, 'filename', '')
+        return l:theFile
+    endfunction
+
+    " @return {2|3}
+    function! DetectVueVersion()
+        let found =  FindFileUp('package.json', 15)
+        let file = get(found, 'file', '')
+        let l:version = 2
+        if empty(file)
+            return l:version
+        endif
+        let lines = readfile(file)
+        let content = join(lines, '')
+        let data = json_decode(content)
+        let dependencies = get(data, 'dependencies', {})
+        let vue = get(dependencies, 'vue', '^2.0.0')
+        " vue value may  '^3.x.y' or '3.x.y'
+        if match(vue, '\^3\.') == 0 || match(vue, '3\.') == 0
+            let l:version = 3
+        endif
+
+        return l:version
+    endfunction
+
+    let g:vimrc_vue_version = DetectVueVersion()
+    let g:vimrc_performance_low = has('linux')
+" }
 
 " Plugins {
     " ack.vim/ag.vim {
@@ -418,7 +495,7 @@ augroup END
 
             "vim-lsp.vim
                 let g:lsp_ignorecase = 0
-                let g:lsp_settings_filetype_vue = DetectVueVersion() == 3 ? ['volar'] : ['vls']
+                let g:lsp_settings_filetype_vue = g:vimrc_vue_version == 3 ? ['volar'] : ['vls']
                 let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
                 let g:lsp_settings = {
                     \  'typescript-language-server': {
@@ -628,8 +705,8 @@ augroup END
                 let g:ycm_collect_identifiers_from_comments_and_strings = 1
                 let g:ycm_collect_identifiers_from_tags_files = 1
                 let g:ycm_seed_identifiers_with_syntax = 1
-                let g:ycm_min_num_of_chars_for_completion = g:performance_low ? 4 :  2
-                let g:ycm_min_num_identifier_candidate_chars = g:performance_low ? 4 : 2
+                let g:ycm_min_num_of_chars_for_completion = g:vimrc_performance_low ? 4 :  2
+                let g:ycm_min_num_identifier_candidate_chars = g:vimrc_performance_low ? 4 : 2
                 let g:ycm_always_populate_location_list = 0
 
                 let g:ycm_add_preview_to_completeopt = 0
@@ -642,7 +719,7 @@ augroup END
                 unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
-                if g:performance_low
+                if g:vimrc_performance_low
                     set updatetime=6000
                 else
                     set updatetime=3000
@@ -1002,57 +1079,6 @@ augroup END
     "ZoomWin {
         nnoremap <C-W>z <Plug>ZoomWin
     "}
-    "
-    " @param {String} fileName
-    " @param {Integer} limitTimes
-    " @return {Object}
-    function! FindFileUp(fileName, limitTimes)
-        let l:tempDir = fnamemodify(getcwd(), ':p:h')
-        let l:tempFile = ''
-        let l:counter = 0
-        let l:isExist = 0
-        let l:result = {}
-
-        while l:counter <= a:limitTimes
-            let l:tempFile = l:tempDir . '/' . a:fileName
-            let l:isExist = filereadable(l:tempFile)
-            if l:isExist
-                let l:result['file'] = l:tempFile
-                let l:result['filename']= a:fileName
-                let l:result['distance']  =  l:counter
-                return l:result
-            endif
-            let l:tempDir = fnamemodify(l:tempDir, ':p:h:h')
-            let l:counter = l:counter + 1
-        endwhile
-
-        return l:result
-    endfunction
-
-    " @param {List<String>} fileNames
-    " @param {Integer} limitTimes
-    " @return {String}
-    function! FindFilesUp(fileNames, limitTimes)
-        let l:minDistance = -1
-        let l:closestItem = {}
-
-        for l:item in a:fileNames
-            let l:found = FindFileUp(l:item, a:limitTimes)
-            let l:distance = get(l:found, 'distance', -1)
-            if l:distance > -1
-                if l:minDistance < 0
-                    let l:minDistance = l:distance
-                    let l:closestItem = l:found
-                elseif l:minDistance > l:distance
-                    let l:minDistance = l:distance
-                    let l:closestItem = l:found
-                endif
-            endif
-        endfor
-
-        let l:theFile = get(l:closestItem, 'filename', '')
-        return l:theFile
-    endfunction
 
     " support https://github.com/davidtheclark/cosmiconfig
     " try to find eslint first and then jshint in the same directory
@@ -1208,28 +1234,7 @@ augroup END
             let g:ale_vue_volar_use_global = 1
             let g:ale_vue_volar_executable = 'vue-language-server'
 
-            " @return {2|3}
-            function! DetectVueVersion()
-                let found =  FindFileUp('package.json', 15)
-                let file = get(found, 'file', '')
-                let l:version = 2
-                if empty(file)
-                    return l:version
-                endif
-                let lines = readfile(file)
-                let content = join(lines, '')
-                let data = json_decode(content)
-                let dependencies = get(data, 'dependencies', {})
-                let vue = get(dependencies, 'vue', '^2.0.0')
-                " vue value may  '^3.x.y' or '3.x.y'
-                if match(vue, '\^3\.') == 0 || match(vue, '3\.') == 0
-                    let l:version = 3
-                endif
-
-                return l:version
-            endfunction
-
-            if DetectVueVersion() == 3
+            if g:vimrc_vue_version == 3
                 let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
             endif
 
@@ -1258,7 +1263,7 @@ augroup END
             let g:ale_lint_on_enter=1
             let g:ale_lint_on_filetype_changed=1
 
-            if g:performance_low
+            if g:vimrc_performance_low
                 let g:ale_lint_on_text_changed = 0
                 let g:ale_lint_on_insert_leave = 1
                 let g:ale_lint_on_save=0
@@ -1836,7 +1841,10 @@ augroup END
 
 " }
 
-    unlet g:performance_low
+" unlet helper {
+    unlet g:vimrc_performance_low
+    unlet g:vimrc_vue_version
+"}
 
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
