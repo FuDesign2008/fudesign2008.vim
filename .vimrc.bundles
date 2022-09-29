@@ -89,7 +89,7 @@ set nocompatible        " must be first line
     " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
     " 可选的值: ycm/tabnine/deoplete/vim-lsp/coc
     "
-    let g:spf13_autocomplete_method='ycm'
+    let g:spf13_autocomplete_method=['ycm','vim-lsp']
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -184,9 +184,11 @@ set nocompatible        " must be first line
                 Bundle 'FuDesign2008/lsp-examples'
             else
 
-                if g:spf13_autocomplete_method ==# 'tabnine'
+                if count(g:spf13_autocomplete_method,'tabnine')
                     Bundle 'codota/tabnine-vim'
-                elseif g:spf13_autocomplete_method ==# 'deoplete'
+                endif
+
+                if count(g:spf13_autocomplete_method, 'deoplete')
                     Bundle 'Shougo/deoplete.nvim'
                     Bundle 'roxma/nvim-yarp'
                     Bundle 'roxma/vim-hug-neovim-rpc'
@@ -216,7 +218,9 @@ set nocompatible        " must be first line
                     " echo document
                     Bundle 'Shougo/echodoc.vim'
 
-                elseif g:spf13_autocomplete_method ==# 'vim-lsp'
+                endif
+
+                if count(g:spf13_autocomplete_method, 'vim-lsp')
                     Bundle 'prabirshrestha/async.vim'
                     Bundle 'prabirshrestha/vim-lsp'
                     Bundle 'mattn/vim-lsp-settings'
@@ -239,7 +243,9 @@ set nocompatible        " must be first line
                     " Bundle 'prabirshrestha/asyncomplete-file.vim'
 
                     " Bundle 'yami-beta/asyncomplete-omni.vim'
-                elseif g:spf13_autocomplete_method ==# 'coc'
+                endif
+
+                if count(g:spf13_autocomplete_method, 'coc')
                     Bundle 'neoclide/coc.nvim'
 
                     " viml
@@ -271,7 +277,9 @@ set nocompatible        " must be first line
 
                     Bundle 'fannheyward/coc-xml'
                     Bundle 'neoclide/coc-yaml'
-                else
+                endif
+
+                if count(g:spf13_autocomplete_method, 'ycm')
                     " YCM is better than NeoComplCache and supertab
                     " @see http://valloric.github.io/YouCompleteMe/
                     "

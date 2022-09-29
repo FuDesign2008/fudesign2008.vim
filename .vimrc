@@ -407,7 +407,8 @@ augroup END
 
 
 
-        if g:spf13_autocomplete_method ==# 'asyncomplete'
+        " if count(g:spf13_autocomplete_method, 'asyncomplete')
+        if count(g:spf13_autocomplete_method, 'vim-lsp')
          " asyncomplete.vim {
             "@see https://github.com/prabirshrestha/asyncomplete.vim#tab-completion
                 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -417,8 +418,17 @@ augroup END
 
             "vim-lsp.vim
                 let g:lsp_ignorecase = 0
+                let g:lsp_settings_filetype_vue = DetectVueVersion() == 3 ? ['volar'] : ['vls']
+                let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
+                let g:lsp_settings = {
+                    \  'typescript-language-server': {
+                    \    'disabled': 1,
+                    \   }
+                    \}
             "}
-        elseif g:spf13_autocomplete_method ==# 'deoplete'
+        endif
+
+        if count(g:spf13_autocomplete_method, 'deoplete')
             " Shougo/deoplete.nvim {
                 let g:deoplete#enable_at_startup = 1
                 call deoplete#custom#option({
@@ -450,7 +460,9 @@ augroup END
                             \ ]
             " }
 
-        elseif g:spf13_autocomplete_method ==# 'coc'
+        endif
+
+        if count(g:spf13_autocomplete_method, 'coc')
              " coc.nvim {
                     " Some servers have issues with backup files, see #649
                     set nobackup
@@ -605,7 +617,9 @@ augroup END
                     " \'coc-snippets'
                     " \)
 
-        else
+        endif
+
+        if count(g:spf13_autocomplete_method, 'ycm')
              " YCM.vim {
                 " the default .ycm_extra_conf.py
                 let g:ycm_global_ycm_extra_conf = expand('~/.ycm_extra_conf.py')
@@ -666,7 +680,8 @@ augroup END
                       \ 'vimwiki' : 1,
                       \ 'pandoc' : 1,
                       \ 'infolog' : 1,
-                      \ 'mail' : 1
+                      \ 'mail' : 1,
+                      \ 'vue' : 1
                       \}
 
                 if !exists('g:ycm_semantic_triggers')
@@ -1219,7 +1234,7 @@ augroup END
             endif
 
 
-            if g:spf13_autocomplete_method ==# 'coc'
+            if count(g:spf13_autocomplete_method, 'coc')
                 let g:ale_disable_lsp = 1
                 let g:ale_linters['typescript'] =   ['eslint']
                 let g:ale_linters['typescriptreact'] =   ['eslint']
@@ -1301,10 +1316,10 @@ augroup END
             endif
 
             if g:use_tslint_for_typescript
-                let g:ale_linters['typescript'] = g:spf13_autocomplete_method ==# 'coc' ?  ['tslint'] : ['tslint', 'tsserver']
+                let g:ale_linters['typescript'] = count(g:spf13_autocomplete_method, 'coc') ?  ['tslint'] : ['tslint', 'tsserver']
                 let g:ale_fixers['typescript'] = ['prettier']
 
-                let g:ale_linters['typescriptreact'] = g:spf13_autocomplete_method ==# 'coc' ?  ['tslint'] : ['tslint', 'tsserver']
+                let g:ale_linters['typescriptreact'] = count(g:spf13_autocomplete_method, 'coc') ?  ['tslint'] : ['tslint', 'tsserver']
                 let g:ale_fixers['typescriptreact'] = ['tslint', 'prettier']
 
                 " enable tslint to lint .js file
