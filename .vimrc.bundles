@@ -225,9 +225,13 @@ set nocompatible        " must be first line
                     Bundle 'prabirshrestha/vim-lsp'
                     Bundle 'mattn/vim-lsp-settings'
 
+                    " UltiSnips
+                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
+                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
                     Bundle 'prabirshrestha/asyncomplete.vim'
                     Bundle 'prabirshrestha/asyncomplete-lsp.vim'
+
                     Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
                     Bundle 'prabirshrestha/asyncomplete-file.vim'
                     Bundle 'prabirshrestha/asyncomplete-buffer.vim'
@@ -235,20 +239,6 @@ set nocompatible        " must be first line
                     Bundle 'yami-beta/asyncomplete-omni.vim'
                     Bundle 'prabirshrestha/asyncomplete-emoji.vim'
 
-                    " UltiSnips
-                    Bundle 'thomasfaingnaert/vim-lsp-snippets'
-                    Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
-
-                    " Buffer
-                    " Bundle 'prabirshrestha/asyncomplete-buffer.vim'
-
-                    " Emoji
-                    " Bundle 'prabirshrestha/asyncomplete-emoji.vim'
-
-                    " Filenames / directories
-                    " Bundle 'prabirshrestha/asyncomplete-file.vim'
-
-                    " Bundle 'yami-beta/asyncomplete-omni.vim'
                 endif
 
                 if count(g:spf13_autocomplete_method, 'coc')

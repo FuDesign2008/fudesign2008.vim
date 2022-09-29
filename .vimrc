@@ -491,6 +491,54 @@ augroup END
                 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
                 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
                 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+                " let g:UltiSnipsExpandTrigger="<c-e>"
+                call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+                    \ 'name': 'ultisnips',
+                    \ 'allowlist': ['*'],
+                    \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+                    \ }))
+
+                au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+                    \ 'name': 'file',
+                    \ 'allowlist': ['*'],
+                    \ 'priority': 10,
+                    \ 'completor': function('asyncomplete#sources#file#completor')
+                    \ }))
+
+                call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+                    \ 'name': 'buffer',
+                    \ 'allowlist': ['*'],
+                    \ 'blocklist': ['go'],
+                    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+                    \ 'config': {
+                    \    'max_buffer_size': 5000000,
+                    \  },
+                    \ }))
+
+                au User asyncomplete_setup call asyncomplete#register_source({
+                    \ 'name': 'look',
+                    \ 'allowlist': ['text', 'markdown'],
+                    \ 'completor': function('asyncomplete#sources#look#completor'),
+                    \ })
+
+
+                autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+                    \ 'name': 'omni',
+                    \ 'allowlist': ['*'],
+                    \ 'blocklist': ['c', 'cpp', 'html'],
+                    \ 'completor': function('asyncomplete#sources#omni#completor'),
+                    \ 'config': {
+                    \   'show_source_kind': 1,
+                    \ },
+                    \ }))
+
+                au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
+                    \ 'name': 'emoji',
+                    \ 'allowlist': ['*'],
+                    \ 'completor': function('asyncomplete#sources#emoji#completor'),
+                    \ }))
+
             " }
 
             "vim-lsp.vim
