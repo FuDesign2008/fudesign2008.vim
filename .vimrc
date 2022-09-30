@@ -492,6 +492,8 @@ augroup END
                 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
                 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
+                " disable diagnostics, use ALE instead
+                let g:lsp_diagnostics_enabled=0
                 " let g:asyncomplete_matchfuzzy=0
 
                 function! s:sort_by_priority_preprocessor(options, matches) abort
@@ -1326,20 +1328,21 @@ augroup END
                 let g:ale_linters['typescriptreact'] =   ['eslint']
             endif
 
-            if count(g:spf13_autocomplete_method, 'vim-lsp')
-                let g:ale_disable_lsp = 1
-                let g:ale_linters['typescript'] =   ['eslint']
-                let g:ale_linters['typescriptreact'] =   ['eslint']
-                nnoremap <silent> <leader>d <plug>(lsp-definition)
-                nnoremap <silent> <leader>p <plug>(lsp-peek-definition)
-                nnoremap <silent> <leader>r <plug>(lsp-rename)
-                nnoremap <silent> <leader>td <plug>(lsp-type-definition)
-                nnoremap <silent> K <plug>(lsp-hover)
-            endif
+            " if count(g:spf13_autocomplete_method, 'vim-lsp')
+                " let g:ale_disable_lsp = 0
+                " let g:ale_linters['typescript'] =   ['eslint']
+                " let g:ale_linters['typescriptreact'] =   ['eslint']
+                " nnoremap <silent> <leader>d <plug>(lsp-definition)
+                " nnoremap <silent> <leader>p <plug>(lsp-peek-definition)
+                " nnoremap <silent> <leader>r <plug>(lsp-rename)
+                " nnoremap <silent> <leader>td <plug>(lsp-type-definition)
+                " nnoremap <silent> K <plug>(lsp-hover)
+            " endif
 
             if g:ale_disable_lsp == 0
                 nmap <silent> <leader>d :ALEGoToDefinition <CR>
                 nmap <silent> <leader>td :ALEGoToTypeDefinition <CR>
+                nmap <silent> <leader>r :ALERename <CR>
             endif
             nmap <leader>f   :ALEFix <CR>
 
