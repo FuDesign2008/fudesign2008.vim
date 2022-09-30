@@ -230,6 +230,8 @@ set nocompatible        " must be first line
                     Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
 
                     Bundle 'prabirshrestha/asyncomplete.vim'
+                    Bundle 'machakann/asyncomplete-ezfilter.vim'
+
                     Bundle 'prabirshrestha/asyncomplete-lsp.vim'
 
                     Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
