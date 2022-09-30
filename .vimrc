@@ -540,10 +540,10 @@ augroup END
 
                 " let g:asyncomplete_preprocessor = [function('s:sort_by_priority_preprocessor')]
 
-                let g:asyncomplete#preprocessor#ezfilter#config = {}
-                let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
+                " let g:asyncomplete#preprocessor#ezfilter#config = {}
+                " let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
 
-                let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
+                " let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
 
 
                 " let g:UltiSnipsExpandTrigger="<c-e>"
