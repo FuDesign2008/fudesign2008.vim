@@ -498,6 +498,21 @@ augroup END
 
                 " let g:asyncomplete_matchfuzzy=0
 
+                " @param {Options} options
+                " @inteferce Options {
+                "   typed: String #?
+                " }
+                "
+                " @param {Record<string, Match>} matches
+                "
+                " @inteferce CompleteItem {  # @see :help complete-items
+                "   word: String
+                "   priority?: Integer  # added later by user
+                " }
+                " @inteferce Match {
+                "    startcol: Integer
+                "    items: CompleteItem[]
+                "}
                 function! s:sort_by_priority_preprocessor(options, matches) abort
                     let l:items = []
                     let l:startcols = []
