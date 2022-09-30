@@ -512,7 +512,7 @@ augroup END
 
                     let a:options['startcol'] = min(l:startcols)
                     let l:items = sort(l:items, {a, b -> a['priority'] - b['priority']})
-                    let l:items = slice(l:item, 0, 10)
+                    let l:items = slice(l:items, 0, 10)
 
                     call asyncomplete#preprocess_complete(a:options, l:items)
                 endfunction
