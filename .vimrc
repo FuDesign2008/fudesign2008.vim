@@ -497,6 +497,7 @@ augroup END
                 let g:lsp_document_code_action_signs_enabled=0
 
                 " let g:asyncomplete_matchfuzzy=0
+                let g:asyncomplete_max_num_candidates=10
 
                 " @param {Options} options
                 " @inteferce Options {
@@ -574,6 +575,7 @@ augroup END
                 au User asyncomplete_setup call asyncomplete#register_source({
                     \ 'name': 'look',
                     \ 'allowlist': ['text', 'markdown'],
+                    \ 'priority': 7,
                     \ 'completor': function('asyncomplete#sources#look#completor'),
                     \ })
 
@@ -591,7 +593,7 @@ augroup END
 
                 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
                     \ 'name': 'emoji',
-                    \ 'priority': 6,
+                    \ 'priority': 7,
                     \ 'allowlist': ['*'],
                     \ 'completor': function('asyncomplete#sources#emoji#completor'),
                     \ }))
