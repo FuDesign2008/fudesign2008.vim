@@ -559,7 +559,7 @@ augroup END
                     \ 'name': 'omni',
                     \ 'allowlist': ['*'],
                     \ 'priority': 8,
-                    \ 'blocklist': ['c', 'cpp', 'html'],
+                    \ 'blocklist': ['c', 'cpp', 'html', 'typescript'],
                     \ 'completor': function('asyncomplete#sources#omni#completor'),
                     \ 'config': {
                     \   'show_source_kind': 1,
