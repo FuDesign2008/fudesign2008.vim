@@ -496,7 +496,7 @@ augroup END
                 let g:lsp_diagnostics_enabled=0
                 let g:lsp_document_code_action_signs_enabled=0
 
-                " let g:asyncomplete_matchfuzzy=0
+                let g:asyncomplete_matchfuzzy=0
                 let g:asyncomplete_max_num_candidates=10
 
                 " @param {Options} options
@@ -532,18 +532,18 @@ augroup END
 
                     " let a:options['startcol'] = min(l:startcols)
                     " let l:items = sort(l:items, {a, b -> a['priority'] - b['priority']})
-                    " limit 10 for performance
-                    " let l:items = slice(l:items, 0, 10)
 
                     " call asyncomplete#preprocess_complete(a:options, l:items)
                 " endfunction
 
                 " let g:asyncomplete_preprocessor = [function('s:sort_by_priority_preprocessor')]
 
-                " let g:asyncomplete#preprocessor#ezfilter#config = {}
-                " let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
+                " Match items case-sensitive
+                " @see https://github.com/machakann/asyncomplete-ezfilter.vim
+                let g:asyncomplete#preprocessor#ezfilter#config = {}
+                let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
 
-                " let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
+                let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
 
 
                 " let g:UltiSnipsExpandTrigger="<c-e>"
