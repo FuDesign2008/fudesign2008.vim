@@ -617,7 +617,7 @@ augroup END
 
             "vim-lsp.vim
                 let g:lsp_ignorecase = 0
-                let g:lsp_settings_filetype_vue = g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7 ? ['volar'] : ['vls']
+                let g:lsp_settings_filetype_vue = g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7 ? ['volar-server'] : ['vls']
                 let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
                 let g:lsp_settings = {
                     \  'typescript-language-server': {
