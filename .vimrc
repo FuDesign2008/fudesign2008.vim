@@ -514,36 +514,36 @@ augroup END
                 "    startcol: Integer
                 "    items: CompleteItem[]
                 "}
-                function! s:sort_by_priority_preprocessor(options, matches) abort
-                    let l:items = []
-                    let l:startcols = []
-                    for [l:source_name, l:matches] in items(a:matches)
-                        let l:startcol = l:matches['startcol']
-                        let l:base = a:options['typed'][l:startcol - 1:]
-                        for l:item in l:matches['items']
-                            if stridx(l:item['word'], l:base) == 0
-                                let l:startcols += [l:startcol]
-                                let l:item['priority'] =
-                                            \ get(asyncomplete#get_source_info(l:source_name), 'priority', 5)
-                                call add(l:items, l:item)
-                            endif
-                        endfor
-                    endfor
+                " function! s:sort_by_priority_preprocessor(options, matches) abort
+                    " let l:items = []
+                    " let l:startcols = []
+                    " for [l:source_name, l:matches] in items(a:matches)
+                        " let l:startcol = l:matches['startcol']
+                        " let l:base = a:options['typed'][l:startcol - 1:]
+                        " for l:item in l:matches['items']
+                            " if stridx(l:item['word'], l:base) == 0
+                                " let l:startcols += [l:startcol]
+                                " let l:item['priority'] =
+                                            " \ get(asyncomplete#get_source_info(l:source_name), 'priority', 5)
+                                " call add(l:items, l:item)
+                            " endif
+                        " endfor
+                    " endfor
 
-                    let a:options['startcol'] = min(l:startcols)
-                    let l:items = sort(l:items, {a, b -> a['priority'] - b['priority']})
+                    " let a:options['startcol'] = min(l:startcols)
+                    " let l:items = sort(l:items, {a, b -> a['priority'] - b['priority']})
 
-                    call asyncomplete#preprocess_complete(a:options, l:items)
-                endfunction
+                    " call asyncomplete#preprocess_complete(a:options, l:items)
+                " endfunction
 
-                let g:asyncomplete_preprocessor = [function('s:sort_by_priority_preprocessor')]
+                " let g:asyncomplete_preprocessor = [function('s:sort_by_priority_preprocessor')]
 
                 " Match items case-sensitive
                 " @see https://github.com/machakann/asyncomplete-ezfilter.vim
-                " let g:asyncomplete#preprocessor#ezfilter#config = {}
-                " let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
+                let g:asyncomplete#preprocessor#ezfilter#config = {}
+                let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
 
-                " let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
+                let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
 
 
                 " let g:UltiSnipsExpandTrigger="<c-e>"
@@ -561,16 +561,16 @@ augroup END
                     \ 'completor': function('asyncomplete#sources#file#completor')
                     \ }))
 
-                call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-                    \ 'name': 'buffer',
-                    \ 'allowlist': ['*'],
-                    \ 'priority': 6,
-                    \ 'blocklist': ['go'],
-                    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-                    \ 'config': {
-                    \    'max_buffer_size': 5000,
-                    \  },
-                    \ }))
+                " call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+                    " \ 'name': 'buffer',
+                    " \ 'allowlist': ['*'],
+                    " \ 'priority': 6,
+                    " \ 'blocklist': ['go'],
+                    " \ 'completor': function('asyncomplete#sources#buffer#completor'),
+                    " \ 'config': {
+                    " \    'max_buffer_size': 5000,
+                    " \  },
+                    " \ }))
 
                 " au User asyncomplete_setup call asyncomplete#register_source({
                     " \ 'name': 'look',
@@ -606,7 +606,7 @@ augroup END
                 let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
                 let g:lsp_settings = {
                     \  'typescript-language-server': {
-                    \    'disabled': 0,
+                    \    'disabled': 1,
                     \   }
                     \}
             "}
