@@ -408,7 +408,7 @@ augroup END
         return l:theFile
     endfunction
 
-    " @return {2|3}
+    " @return {2|2.7|3}
     function! DetectVueVersion()
         let found =  FindFileUp('package.json', 15)
         let file = get(found, 'file', '')
@@ -421,9 +421,14 @@ augroup END
         let data = json_decode(content)
         let dependencies = get(data, 'dependencies', {})
         let vue = get(dependencies, 'vue', '^2.0.0')
+
         " vue value may  '^3.x.y' or '3.x.y'
         if match(vue, '\^3\.') == 0 || match(vue, '3\.') == 0
             let l:version = 3
+        endif
+
+        if match(vue, '\^2\.7') == 0 || match(vue, '2\.7') == 0
+            let l:version = 2.7
         endif
 
         return l:version
@@ -602,7 +607,7 @@ augroup END
 
             "vim-lsp.vim
                 let g:lsp_ignorecase = 0
-                let g:lsp_settings_filetype_vue = g:vimrc_vue_version == 3 ? ['volar'] : ['vls']
+                let g:lsp_settings_filetype_vue = g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7 ? ['volar'] : ['vls']
                 let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
                 let g:lsp_settings = {
                     \  'typescript-language-server': {
@@ -1341,7 +1346,7 @@ augroup END
             let g:ale_vue_volar_use_global = 1
             let g:ale_vue_volar_executable = 'vue-language-server'
 
-            if g:vimrc_vue_version == 3
+            if g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7
                 let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
             endif
 
