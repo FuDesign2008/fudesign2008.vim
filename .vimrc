@@ -419,8 +419,18 @@ augroup END
         let lines = readfile(file)
         let content = join(lines, '')
         let data = json_decode(content)
+
         let dependencies = get(data, 'dependencies', {})
-        let vue = get(dependencies, 'vue', '^2.0.0')
+        let vue = get(dependencies, 'vue', '')
+
+        if empty(vue)
+            let dependencies = get(data, 'devDependencies', {})
+            let vue = get(dependencies, 'vue', '')
+        endif
+
+        if empty(vue)
+            return l:version
+        endif
 
         " vue value may  '^3.x.y' or '3.x.y'
         if match(vue, '\^3\.') == 0 || match(vue, '3\.') == 0
