@@ -333,6 +333,7 @@ set nocompatible        " must be first line
 
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
+            Bundle 'tpope/vim-fugitive'
             " see http://editorconfig.org/
             Bundle 'editorconfig/editorconfig-vim'
 
@@ -373,7 +374,6 @@ set nocompatible        " must be first line
 
 
             if !g:is_win
-                " Bundle 'tpope/vim-fugitive'
 
                 "dash.vim needs funcoo.vim
                 "Bundle 'rizzatti/funcoo.vim'
