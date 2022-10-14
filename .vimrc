@@ -575,7 +575,7 @@ augroup END
                     endif
                     let l:reg = '\C'
                     for l:item in a:letters
-                        l:reg = l:reg . '[a-z]*' . l:item
+                        let l:reg = l:reg . '[a-z]*' . l:item
                     endfor
                     return l:reg
                 endfunction
