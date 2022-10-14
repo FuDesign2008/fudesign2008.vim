@@ -155,7 +155,7 @@ set nocompatible        " must be first line
             " Bundle 'FuDesign2008/ToggleNumber.vim'
             Bundle 'myusuf3/numbers.vim'
             " Bundle 'FuDesign2008/style.vim'
-            Bundle 'FuDesign2008/emoji-snippets.vim'
+            " Bundle 'FuDesign2008/emoji-snippets.vim'
 
             " Bundle 'vim-scripts/IndentAnything'
             "Bundle 'Yggdroot/indentLine'
@@ -241,7 +241,7 @@ set nocompatible        " must be first line
                     " Bundle 'prabirshrestha/asyncomplete-buffer.vim'
                     " Bundle 'hiterm/asyncomplete-look'
                     " Bundle 'yami-beta/asyncomplete-omni.vim'
-                    " Bundle 'prabirshrestha/asyncomplete-emoji.vim'
+                    Bundle 'prabirshrestha/asyncomplete-emoji.vim'
 
                 endif
 

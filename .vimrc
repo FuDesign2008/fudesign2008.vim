@@ -1741,7 +1741,6 @@ augroup END
                                 \ '.gitmodules',
                                 \ '.svn',
                                 \ '.settings',
-                                \ 'node_modules',
                                 \ 'bower_components',
                                 \ 'node_modules',
                                 \ 'dist',
@@ -1775,6 +1774,20 @@ augroup END
                     endfor
                     for l:item in l:fileListWithEndName
                         call add(l:strList, '*.' . l:item)
+                    endfor
+                elseif a:type ==# 'ctrlp_user_command_rg'
+                    " let g:ctrlp_user_command = 'rg --files --smart-case --color "never" %s'
+                    let l:prefix = 'rg --files --smart-case --color "never" %s'
+                    let l:suffix = ' --hidden'
+                    let l:splitter = ' '
+                    for l:item in l:directoryList
+                        call add(l:strList, "--iglob '!" . l:item . "'")
+                    endfor
+                    for l:item in l:fileListWithFullName
+                        call add(l:strList, "--iglob '!" . l:item . "'")
+                    endfor
+                    for l:item in l:fileListWithEndName
+                        call add(l:strList, "--iglob '!*." . l:item . "'")
                     endfor
                 elseif a:type ==# 'ctrlp_user_command'
                     let l:prefix = 'ag %s -i --nocolor --nogroup '
@@ -1826,7 +1839,7 @@ augroup END
 
             if executable('rg')
                 " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
-                let g:ctrlp_user_command = 'rg --files --smart-case --color "never" %s'
+                let g:ctrlp_user_command = CreateIgnoredCommand('ctrlp_user_command_rg')
                 let g:ctrlp_use_caching = 0
             elseif executable('ag')
                 let g:ctrlp_user_command = CreateIgnoredCommand('ctrlp_user_command')
@@ -1836,11 +1849,12 @@ augroup END
                 let g:ctrlp_clear_cache_on_exit = 1
                 let g:ctrlp_cache_dir = expand('~/.cache/ctrlp')
                 let g:ctrlp_show_hidden = 1
-                let g:ctrlp_max_files = 0
+                let g:ctrlp_max_files = 1000
                 let g:ctrlp_custom_ignore = {}
                 let g:ctrlp_custom_ignore['dir'] = CreateIgnoredCommand('ctrlp_custom_ignore_dir')
                 let g:ctrlp_custom_ignore['file'] = CreateIgnoredCommand('ctrlp_custom_ignore_file')
             endif
+
         endif
 
      "}
