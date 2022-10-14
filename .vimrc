@@ -615,10 +615,12 @@ augroup END
                                     let l:word = get(l:item, 'word')
                                     let l:upper_match = matchstrpos(l:word, l:pattern)
                                     if l:upper_match[1] != -1
+                                        let l:item['priority'] =  get(asyncomplete#get_source_info(l:source_name), 'priority', 5)
                                         call add(l:items, l:item)
                                         let l:startcols += [l:startcol]
                                     endif
                                 else
+                                    let l:item['priority'] =  get(asyncomplete#get_source_info(l:source_name), 'priority', 5)
                                     call add(l:items, l:item)
                                     let l:startcols += [l:startcol]
                                 endif
@@ -627,6 +629,7 @@ augroup END
                     endfor
 
                     let a:options['startcol'] = min(l:startcols)
+                    let l:items = sort(l:items, {a, b -> a['priority'] - b['priority']})
                     call asyncomplete#preprocess_complete(a:options, l:items)
                 endfunction
 
