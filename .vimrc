@@ -457,11 +457,11 @@ augroup END
             " @see https://github.com/BurntSushi/ripgrep/issues/425
             set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
             " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
-            let g:ackprg = 'rg --vimgrep --no-heading --smart-case'
+            let g:ackprg = 'rg --vimgrep --hidden --no-heading --smart-case'
         elseif executable('ag')
             " The Silver Searcher
             set grepprg=ag\ --nogroup\ --nocolor\ --smart-case
-            let g:ackprg = 'ag --vimgrep --smart-case'
+            let g:ackprg = 'ag --vimgrep --hidden --smart-case'
         endif
 
     " }
@@ -499,7 +499,6 @@ augroup END
 
 
 
-        " if count(g:spf13_autocomplete_method, 'asyncomplete')
         if count(g:spf13_autocomplete_method, 'vim-lsp')
          " asyncomplete.vim {
             "@see https://github.com/prabirshrestha/asyncomplete.vim#tab-completion
@@ -552,6 +551,43 @@ augroup END
                 " endfunction
 
                 " let g:asyncomplete_preprocessor = [function('s:sort_by_priority_preprocessor')]
+
+
+                " @param {Options} options
+                " @inteferce Options {
+                "   typed: String #?
+                " }
+                "
+                " @param {Record<string, Match>} matches
+                "
+                " @inteferce CompleteItem {  # @see :help complete-items
+                "   word: String
+                " }
+                " @inteferce Match {
+                "    startcol: Integer
+                "    items: CompleteItem[]
+                "}
+                " function! s:sort_by_fzf_preprocessor(options, matches) abort
+                    " let l:items = []
+                    " let l:startcols = []
+                    " for [l:source_name, l:matches] in items(a:matches)
+                        " let l:startcol = l:matches['startcol']
+                        " let l:base = a:options['typed'][l:startcol - 1:]
+                        " for l:item in l:matches['items']
+                            " if stridx(l:item['word'], l:base) == 0
+                                " let l:startcols += [l:startcol]
+                                " call add(l:items, l:item)
+                            " endif
+                        " endfor
+                    " endfor
+
+                    " let a:options['startcol'] = min(l:startcols)
+
+                    " call asyncomplete#preprocess_complete(a:options, l:items)
+                " endfunction
+
+                " let g:asyncomplete_preprocessor = [function('s:sort_by_fzf_preprocessor')]
+
 
                 " Match items case-sensitive
                 " @see https://github.com/machakann/asyncomplete-ezfilter.vim
