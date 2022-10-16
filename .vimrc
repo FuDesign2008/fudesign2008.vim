@@ -526,50 +526,44 @@ augroup END
                 call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
                     \ 'name': 'ultisnips',
                     \ 'allowlist': ['*'],
-                    \ 'priority': 1,
                     \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
                     \ }))
 
                 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
                     \ 'name': 'file',
                     \ 'allowlist': ['*'],
-                    \ 'priority': 1,
                     \ 'completor': function('asyncomplete#sources#file#completor')
                     \ }))
 
-                " call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-                    " \ 'name': 'buffer',
-                    " \ 'allowlist': ['*'],
-                    " \ 'priority': 6,
-                    " \ 'blocklist': ['go'],
-                    " \ 'completor': function('asyncomplete#sources#buffer#completor'),
-                    " \ 'config': {
-                    " \    'max_buffer_size': 5000,
-                    " \  },
-                    " \ }))
+                call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+                    \ 'name': 'buffer',
+                    \ 'allowlist': ['*'],
+                    \ 'blocklist': ['go', 'typescript', 'typescriptreact'],
+                    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+                    \ 'config': {
+                    \    'max_buffer_size': 5000,
+                    \  },
+                    \ }))
 
                 " au User asyncomplete_setup call asyncomplete#register_source({
                     " \ 'name': 'look',
                     " \ 'allowlist': ['text', 'markdown'],
-                    " \ 'priority': 7,
                     " \ 'completor': function('asyncomplete#sources#look#completor'),
                     " \ })
 
 
-                " autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-                    " \ 'name': 'omni',
-                    " \ 'allowlist': ['*'],
-                    " \ 'priority': 8,
-                    " \ 'blocklist': ['c', 'cpp', 'html', 'typescript'],
-                    " \ 'completor': function('asyncomplete#sources#omni#completor'),
-                    " \ 'config': {
-                    " \   'show_source_kind': 1,
-                    " \ },
-                    " \ }))
+                autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+                    \ 'name': 'omni',
+                    \ 'allowlist': ['*'],
+                    \ 'blocklist': ['c', 'cpp', 'html', 'typescript', 'typescriptreact'],
+                    \ 'completor': function('asyncomplete#sources#omni#completor'),
+                    \ 'config': {
+                    \   'show_source_kind': 1,
+                    \ },
+                    \ }))
 
                 " au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#emoji#get_source_options({
                     " \ 'name': 'emoji',
-                    " \ 'priority': 7,
                     " \ 'allowlist': ['*'],
                     " \ 'completor': function('asyncomplete#sources#emoji#completor'),
                     " \ }))
