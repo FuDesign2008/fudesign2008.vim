@@ -1406,7 +1406,7 @@ augroup END
                 let g:ale_fixers['javascript'] = ['prettier']
             elseif g:use_eslint
                 let g:ale_fixers['javascript'] = ['eslint', 'prettier']
-                let g:ale_fixers['vue'] = ['eslint', 'prettier']
+                let g:ale_fixers['vue'] = ['eslint']
             elseif g:use_flow_for_javascript
                 let g:ale_linters['javascript'] = ['flow', 'tsserver']
                 let g:ale_fixers['javascript'] = ['prettier']
