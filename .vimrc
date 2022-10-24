@@ -511,7 +511,7 @@ augroup END
                 let g:lsp_document_code_action_signs_enabled=0
 
                 let g:asyncomplete_matchfuzzy=0
-                let g:asyncomplete_max_num_candidates=10
+                let g:asyncomplete_max_num_candidates=15
 
                 if exists('*matchfuzzypos') == 0
                     " Match items case-sensitive
