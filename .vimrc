@@ -954,10 +954,7 @@ augroup END
 
                 " regular task
 
-                let g:plan_week_keypoint = [
-                    \ '1. 主要目标1;',
-                    \ '1. 次要目标2;'
-                    \]
+                let g:plan_week_keypoint = []
 
                 "0 = sunday
                 "1 = monday
@@ -971,14 +968,9 @@ augroup END
                     \ 0 : '1. 断舍离;   - 清理手机;    - 清理家庭居所;'
                     \}
 
-                let g:plan_week_review = [
-                    \ '1. 周回顾与下周规划;'
-                    \]
+                let g:plan_week_review = []
 
-                let g:plan_month_keypoint = [
-                    \ '1. 主要目标1;',
-                    \ '1. 次要目标2;'
-                    \]
+                let g:plan_month_keypoint = []
 
                 let g:plan_month_work = {}
                 let g:plan_month_personal = {
@@ -987,8 +979,7 @@ augroup END
                     \}
 
                 let g:plan_month_review = [
-                    \ '1. 家庭财产统计;',
-                    \ '1. 月回顾与下月规划;'
+                    \ '1. 家庭财产统计;'
                     \]
 
                 let g:plan_year_personal = {
