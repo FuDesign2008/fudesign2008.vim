@@ -65,7 +65,11 @@ augroup END
 
 " General {
     set background=dark         " Assume a dark background
-    set regexpengine=1
+
+    " use automatic for performance
+    " @see https://jameschambers.co.uk/vim-typescript-slow
+    set regexpengine=0
+
     "if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     "endif
