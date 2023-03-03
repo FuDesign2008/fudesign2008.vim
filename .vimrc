@@ -978,7 +978,6 @@ augroup END
 
                 let g:plan_month_work = {}
                 let g:plan_month_personal = {
-                    \ 1 : '1. 车贷(02);',
                     \ 5 : '1. 查询薪水发放;1. 孩子培养基金;1. 工行房贷(10);1. 天津农行房贷(06);'
                     \}
 
