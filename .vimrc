@@ -512,7 +512,7 @@ augroup END
 
                 " disable diagnostics, use ALE instead
                 " let g:lsp_diagnostics_enabled=1
-                " let g:lsp_diagnostics_echo_cursor=1
+                let g:lsp_diagnostics_echo_cursor=1
                 " let g:lsp_diagnostics_float_cursor=1
                 let g:lsp_document_code_action_signs_enabled=1
 
