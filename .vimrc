@@ -511,8 +511,8 @@ augroup END
                 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
                 " disable diagnostics, use ALE instead
-                let g:lsp_diagnostics_enabled=0
-                let g:lsp_document_code_action_signs_enabled=0
+                " let g:lsp_diagnostics_enabled=1
+                let g:lsp_document_code_action_signs_enabled=1
 
                 let g:asyncomplete_matchfuzzy=0
                 let g:asyncomplete_max_num_candidates=15
