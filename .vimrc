@@ -1322,13 +1322,13 @@ augroup END
             endif
 
             if count(g:spf13_autocomplete_method, 'vim-lsp')
-                " let g:ale_disable_lsp = 0
-                " let g:ale_linters['typescript'] =   ['eslint']
-                " let g:ale_linters['typescriptreact'] =   ['eslint']
-                " nnoremap <silent> <leader>d <plug>(lsp-definition)
+                let g:ale_disable_lsp = 1
+                let g:ale_linters['typescript'] =   ['eslint']
+                let g:ale_linters['typescriptreact'] =   ['eslint']
+                nnoremap <silent> <leader>d <plug>(lsp-definition)
                 " nnoremap <silent> <leader>p <plug>(lsp-peek-definition)
-                " nnoremap <silent> <leader>r <plug>(lsp-rename)
-                " nnoremap <silent> <leader>td <plug>(lsp-type-definition)
+                nnoremap <silent> <leader>r <plug>(lsp-rename)
+                nnoremap <silent> <leader>td <plug>(lsp-type-definition)
                 nnoremap <silent> K <plug>(lsp-hover)
             endif
 
