@@ -1,4 +1,6 @@
 set nocompatible        " must be first line
+let $LANG='en'
+set langmenu=en
 " FuDesign2008's vimrc
 
 " Environment {
