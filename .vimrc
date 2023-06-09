@@ -1,4 +1,5 @@
 set nocompatible        " must be first line
+" @see https://blog.csdn.net/njnu_mjn/article/details/7935103
 let $LANG='en'
 set langmenu=en
 " FuDesign2008's vimrc
@@ -425,6 +426,9 @@ augroup END
         let lines = readfile(file)
         let content = join(lines, '')
         let data = json_decode(content)
+        if empty(data)
+            return l:version
+        endif
 
         let dependencies = get(data, 'dependencies', {})
         let vue = get(dependencies, 'vue', '')
