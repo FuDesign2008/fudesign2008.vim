@@ -1962,7 +1962,9 @@ augroup END
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        set guioptions=egm           " remove the toolbar
+        " 1. remove the toolbar
+        " 2. f: run in foreground and not fork
+        set guioptions=egmf
         set lines=40                " 40 lines of text instead of 24,
     else
         if &term ==? 'xterm' || &term ==? 'screen'
