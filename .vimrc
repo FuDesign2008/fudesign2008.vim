@@ -1964,8 +1964,7 @@ augroup END
     if has('gui_running')
         " 1. remove the toolbar
         " 2. f: run in foreground and not fork
-        " set guioptions=egmf
-        set guioptions=egm
+        set guioptions=egmf
         set lines=40                " 40 lines of text instead of 24,
     else
         if &term ==? 'xterm' || &term ==? 'screen'
