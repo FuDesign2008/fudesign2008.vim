@@ -98,10 +98,10 @@ augroup END
                 nmap <c-s-v> "+gP
             endif
         else
-            echomsg 'no clipboard feature, no clipboard shortcuts'
+            " echomsg 'no clipboard feature, no clipboard shortcuts'
         endif
     else
-        echomsg 'no clipboard feature, no clipboard shortcuts'
+        " echomsg 'no clipboard feature, no clipboard shortcuts'
     endif
 
 
