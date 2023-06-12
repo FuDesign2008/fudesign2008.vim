@@ -910,112 +910,112 @@ augroup END
 
     " FuDesign2008/plan.vim {
     "
-        if !g:is_win
-            function! ConfigPlanPlugin()
-
+        function! ConfigPlanPlugin()
+            if g:is_win
+                let philosophyDir = '/e/workspace/github2008/philosophy'
+            else
                 let philosophyDir = '~/workspace/github2008/philosophy'
-                let g:p_edit_files = {
-                    \ 'profession': expand(philosophyDir . '/profession'),
-                    \ 'patents': expand(philosophyDir . '/profession/patents'),
-                    \ 'interview': expand(philosophyDir . '/profession/interview'),
-                    \ 'small-family': expand(philosophyDir . '/small-family'),
-                    \ 'pwd': expand(philosophyDir . '/pwd'),
-                    \ 'log': expand(philosophyDir . '/log'),
-                    \ 'vlog': expand(philosophyDir . '/investing/log'),
-                    \ 'philosophy': expand(philosophyDir)
-                    \}
+            endif
+            let g:p_edit_files = {
+                \ 'profession': expand(philosophyDir . '/profession'),
+                \ 'patents': expand(philosophyDir . '/profession/patents'),
+                \ 'interview': expand(philosophyDir . '/profession/interview'),
+                \ 'small-family': expand(philosophyDir . '/small-family'),
+                \ 'pwd': expand(philosophyDir . '/pwd'),
+                \ 'log': expand(philosophyDir . '/log'),
+                \ 'vlog': expand(philosophyDir . '/investing/log'),
+                \ 'philosophy': expand(philosophyDir)
+                \}
 
 
-                let l:cur_year = strftime('%Y')
-                "01-12
-                let l:cur_month = strftime('%m')
-                let l:cur_month = l:cur_year . '-' . l:cur_month
+            let l:cur_year = strftime('%Y')
+            "01-12
+            let l:cur_month = strftime('%m')
+            let l:cur_month = l:cur_year . '-' . l:cur_month
 
-                let l:plan_year_path =  philosophyDir . '/plan/' . l:cur_year
-                let l:plan_file_pattern = l:plan_year_path .'/' . l:cur_month . '/plan.*'
+            let l:plan_year_path =  philosophyDir . '/plan/' . l:cur_year
+            let l:plan_file_pattern = l:plan_year_path .'/' . l:cur_month . '/plan.*'
 
-                "  ~/workspace/github2008/philosophy/plan/2013/2013-04/2013-04.*
-                "  the plan file may has different file extension
-                let l:plan_file_pattern_old = l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month . '.*'
-                let l:diary_file_pattern = l:plan_year_path .'/' . l:cur_month . '/diary.*'
+            "  ~/workspace/github2008/philosophy/plan/2013/2013-04/2013-04.*
+            "  the plan file may has different file extension
+            let l:plan_file_pattern_old = l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month . '.*'
+            let l:diary_file_pattern = l:plan_year_path .'/' . l:cur_month . '/diary.*'
 
-                let l:team_work_file_path = expand(l:plan_year_path .'/' . l:cur_month . '/team-work.md')
-                let g:p_edit_files['teamwork'] = l:team_work_file_path
+            let l:team_work_file_path = expand(l:plan_year_path .'/' . l:cur_month . '/team-work.md')
+            let g:p_edit_files['teamwork'] = l:team_work_file_path
 
-                "
-                let l:fileList = glob(l:plan_file_pattern, 0, 1)
+            "
+            let l:fileList = glob(l:plan_file_pattern, 0, 1)
+            let l:plan_file_path = get(l:fileList, 0, '')
+            if strlen(l:plan_file_path) > 0
+                let g:p_edit_files['plan'] = l:plan_file_path
+            else
+                let l:fileList = glob(l:plan_file_pattern_old, 0, 1)
                 let l:plan_file_path = get(l:fileList, 0, '')
                 if strlen(l:plan_file_path) > 0
                     let g:p_edit_files['plan'] = l:plan_file_path
                 else
-                    let l:fileList = glob(l:plan_file_pattern_old, 0, 1)
-                    let l:plan_file_path = get(l:fileList, 0, '')
-                    if strlen(l:plan_file_path) > 0
-                        let g:p_edit_files['plan'] = l:plan_file_path
-                    else
-                        let g:p_edit_files['plan'] = l:plan_year_path
-                    endif
+                    let g:p_edit_files['plan'] = l:plan_year_path
                 endif
+            endif
 
-                let l:fileList = glob(l:diary_file_pattern, 0, 1)
-                let l:diary_file_path = get(l:fileList, 0, '')
-                if strlen(l:diary_file_path) > 0
-                    let g:p_edit_files['diary'] = l:diary_file_path
-                else
-                    let g:p_edit_files['diary'] = l:plan_year_path
-                endif
+            let l:fileList = glob(l:diary_file_pattern, 0, 1)
+            let l:diary_file_path = get(l:fileList, 0, '')
+            if strlen(l:diary_file_path) > 0
+                let g:p_edit_files['diary'] = l:diary_file_path
+            else
+                let g:p_edit_files['diary'] = l:plan_year_path
+            endif
 
-                " regular task
+            " regular task
 
-                let g:plan_week_keypoint = []
+            let g:plan_week_keypoint = []
 
-                "0 = sunday
-                "1 = monday
-                "...
-                "6 = sat
-                    " \ 2 : '1. 工作周报;'
-                let g:plan_week_work = {
-                    \ 1 : '1. 电脑移除与升级软件;'
-                    \}
-                let g:plan_week_personal = {
-                    \ 0 : '1. 断舍离;   - 清理手机;    - 清理家庭居所;'
-                    \}
+            "0 = sunday
+            "1 = monday
+            "...
+            "6 = sat
+                " \ 2 : '1. 工作周报;'
+            let g:plan_week_work = {
+                \ 1 : '1. 电脑移除与升级软件;'
+                \}
+            let g:plan_week_personal = {
+                \ 0 : '1. 断舍离;   - 清理手机;    - 清理家庭居所;'
+                \}
 
-                let g:plan_week_review = []
+            let g:plan_week_review = []
 
-                let g:plan_month_keypoint = []
+            let g:plan_month_keypoint = []
 
-                let g:plan_month_work = {}
-                let g:plan_month_personal = {
-                    \ 5 : '1. 查询薪水发放;1. 孩子培养基金;1. 工行房贷(10);1. 天津农行房贷(06);'
-                    \}
+            let g:plan_month_work = {}
+            let g:plan_month_personal = {
+                \ 5 : '1. 查询薪水发放;1. 孩子培养基金;1. 工行房贷(10);1. 天津农行房贷(06);'
+                \}
 
-                let g:plan_month_review = [
-                    \ '1. 家庭财产统计;'
-                    \]
+            let g:plan_month_review = [
+                \ '1. 家庭财产统计;'
+                \]
 
-                    " \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
-                    " \ '05-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
-                    " \ '09-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
-                let g:plan_year_personal = {
-                    \ '02-25': '1. 检查住房公积金提取;',
-                    \ '05-25': '1. 检查住房公积金提取;',
-                    \ '06-24': '1. 半年回顾与规划;',
-                    \ '06-30': '1. 🎂生日快乐;',
-                    \ '08-25': '1. 检查住房公积金提取;',
-                    \ '09-12': '1. 纪念日;',
-                    \ '11-25': '1. 检查住房公积金提取;',
-                    \ '12-24': '1. 半年回顾与规划;',
-                    \ '12-30': '1. 结婚纪念日;'
-                    \}
+                " \ '01-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                " \ '05-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+                " \ '09-01': '1. 修改密-码: corp 邮箱, rd邮箱, wifi网络;',
+            let g:plan_year_personal = {
+                \ '02-25': '1. 检查住房公积金提取;',
+                \ '05-25': '1. 检查住房公积金提取;',
+                \ '06-24': '1. 半年回顾与规划;',
+                \ '06-30': '1. 🎂生日快乐;',
+                \ '08-25': '1. 检查住房公积金提取;',
+                \ '09-12': '1. 纪念日;',
+                \ '11-25': '1. 检查住房公积金提取;',
+                \ '12-24': '1. 半年回顾与规划;',
+                \ '12-30': '1. 结婚纪念日;'
+                \}
 
-                unlet philosophyDir
+            unlet philosophyDir
 
-            endfunction
+        endfunction
 
-            call ConfigPlanPlugin()
-
-        endif
+        call ConfigPlanPlugin()
 
     "}
 
