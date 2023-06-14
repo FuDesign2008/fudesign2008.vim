@@ -62,11 +62,11 @@ set nocompatible        " must be first line
             "\ 'ctags',
             "\ 'ios',
             " \ 'haskell',
+            " \ 'fzf',
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
             \ 'programming',
-            \ 'fzf',
             \ 'snip',
             \ 'javascript',
             \ 'java',
@@ -84,6 +84,9 @@ set nocompatible        " must be first line
             \ 'ai',
             \ 'bash'
             \ ]
+        if g:is_win == 0
+            call add(g:spf13_bundle_groups, 'fzf')
+        endif
     endif
 
     " lsp, ycm is better
@@ -276,7 +279,7 @@ set nocompatible        " must be first line
             endif
 
 
-            if count(g:spf13_bundle_groups, 'fzf') && !g:is_win
+            if count(g:spf13_bundle_groups, 'fzf')
                 Bundle 'junegunn/fzf.vim'
             else
                 Bundle 'ctrlpvim/ctrlp.vim'
