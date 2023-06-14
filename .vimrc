@@ -1659,6 +1659,9 @@ augroup END
             " diable preview window for performance
             let g:fzf_preview_window = []
             let g:fzf_in_scoop=expand('~/scoop/apps/fzf/current')
+            if g:is_win && filereadable("D:\\Program\ Files\\Git\\bin\\bash.exe")
+                let g:fzf_preview_bash="D:\\Program\ Files\\Git\\bin\\bash.exe"
+            endif
 
             if isdirectory('/usr/local/opt/fzf')
                 " for mac os,  fzf installed by brew
