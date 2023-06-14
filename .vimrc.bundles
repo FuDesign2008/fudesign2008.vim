@@ -276,7 +276,7 @@ set nocompatible        " must be first line
             endif
 
 
-            if count(g:spf13_bundle_groups, 'fzf')
+            if count(g:spf13_bundle_groups, 'fzf') && !g:is_win
                 Bundle 'junegunn/fzf.vim'
             else
                 Bundle 'ctrlpvim/ctrlp.vim'
