@@ -12,7 +12,8 @@ set langmenu=en
         if g:is_win
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
           " use zsh as default shell
-          set shell=D:\\Program\ Files\\Git\usr\\bin\\zsh.exe\ -i
+          " Conflict with fzf.vim， @see https://github.com/junegunn/fzf.vim/issues/1432
+          " set shell=D:\\Program\ Files\\Git\usr\\bin\\zsh.exe\ -i
         else
             " use bash as the default shell for vim
             " @see http://dailyvim.tumblr.com/post/66708941289/fish
