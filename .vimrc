@@ -1077,6 +1077,7 @@ augroup END
                     \ 'source\ code\ pro:h'. (g:gui_font_size),
                     \ 'ibm\ plex\ mono:h'. (g:gui_font_size),
                     \ 'roboto\ mono:h' . g:gui_font_size,
+                    \ 'intelone\ mono:h' . g:gui_font_size,
                     \ 'hack:h'. (g:gui_font_size)
                     \]
 
