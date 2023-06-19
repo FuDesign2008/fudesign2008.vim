@@ -915,7 +915,7 @@ augroup END
     "
         function! ConfigPlanPlugin()
             if g:is_win
-                let philosophyDir = '/e/workspace/github2008/philosophy'
+                let philosophyDir = 'E:\workspace\github2008\philosophy'
             else
                 let philosophyDir = '~/workspace/github2008/philosophy'
             endif
@@ -936,14 +936,13 @@ augroup END
             let l:cur_month = strftime('%m')
             let l:cur_month = l:cur_year . '-' . l:cur_month
 
-            let l:plan_year_path =  philosophyDir . '/plan/' . l:cur_year
-            let l:plan_file_pattern = l:plan_year_path .'/' . l:cur_month . '/plan.*'
+            let l:plan_year_path =  expand(philosophyDir . '/plan/' . l:cur_year)
+            let l:plan_file_pattern = expand(l:plan_year_path .'/' . l:cur_month . '/plan') . '.*'
 
             "  ~/workspace/github2008/philosophy/plan/2013/2013-04/2013-04.*
             "  the plan file may has different file extension
-            let l:plan_file_pattern_old = l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month . '.*'
-            let l:diary_file_pattern = l:plan_year_path .'/' . l:cur_month . '/diary.*'
-
+            let l:plan_file_pattern_old = expand(l:plan_year_path .'/' . l:cur_month . '/' . l:cur_month) . '.*'
+            let l:diary_file_pattern = expand(l:plan_year_path .'/' . l:cur_month . '/diary') . '*'
             let l:team_work_file_path = expand(l:plan_year_path .'/' . l:cur_month . '/team-work.md')
             let g:p_edit_files['teamwork'] = l:team_work_file_path
 
