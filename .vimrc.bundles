@@ -62,11 +62,11 @@ set nocompatible        " must be first line
             "\ 'ctags',
             "\ 'ios',
             " \ 'haskell',
+            " \ 'fzf',  " conflict with windows + gvim + git-bash, use CtrlP instead
         let g:spf13_bundle_groups=[
             \ 'general',
             \ 'colors',
             \ 'programming',
-            \ 'fzf',
             \ 'snip',
             \ 'javascript',
             \ 'java',
