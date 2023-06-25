@@ -1709,8 +1709,7 @@ augroup END
                                 \ '.settings',
                                 \ 'bower_components',
                                 \ 'node_modules',
-                                \ 'dist',
-                                \ 'libs'
+                                \ 'dist'
                             \]
                 let l:fileListWithFullName = [
                         \ '.DS_Store'
