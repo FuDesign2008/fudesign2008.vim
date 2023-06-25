@@ -1743,7 +1743,7 @@ augroup END
                     endfor
                 elseif a:type ==# 'ctrlp_user_command_rg'
                     " let g:ctrlp_user_command = 'rg --files --smart-case --color "never" %s'
-                    let l:prefix = 'rg --files --smart-case --color "never" %s '
+                    let l:prefix = 'rg %s --files --smart-case --color=never --glob "" '
                     let l:suffix = ' --hidden'
                     let l:splitter = ' '
                     for l:item in l:directoryList
