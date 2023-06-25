@@ -1743,17 +1743,17 @@ augroup END
                     endfor
                 elseif a:type ==# 'ctrlp_user_command_rg'
                     " let g:ctrlp_user_command = 'rg --files --smart-case --color "never" %s'
-                    let l:prefix = 'rg %s --files --smart-case --color=never --glob "" '
-                    let l:suffix = ' --hidden'
+                    let l:prefix = 'rg %s --files --hidden --smart-case --color=never '
+                    let l:suffix = ' --glob ""'
                     let l:splitter = ' '
                     for l:item in l:directoryList
-                        call add(l:strList, "--iglob '!" . l:item . "'")
+                        call add(l:strList, '--iglob "!' . l:item . '"')
                     endfor
                     for l:item in l:fileListWithFullName
-                        call add(l:strList, "--iglob '!" . l:item . "'")
+                        call add(l:strList, '--iglob "!' . l:item . '"')
                     endfor
                     for l:item in l:fileListWithEndName
-                        call add(l:strList, "--iglob '!*." . l:item . "'")
+                        call add(l:strList, '--iglob "!*.' . l:item . '"')
                     endfor
                 elseif a:type ==# 'ctrlp_user_command'
                     let l:prefix = 'ag %s -i --nocolor --nogroup '
