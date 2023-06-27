@@ -84,6 +84,9 @@ set nocompatible        " must be first line
             \ 'ai',
             \ 'bash'
             \ ]
+        if g:is_win == 0
+            call add(g:spf13_bundle_groups, 'fzf')
+        endif
     endif
 
     " lsp, ycm is better
