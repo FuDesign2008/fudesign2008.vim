@@ -210,7 +210,8 @@ set nocompatible        " must be first line
 
             if count(g:spf13_autocomplete_method, 'vim-lsp')
                 Bundle 'prabirshrestha/async.vim'
-                Bundle 'prabirshrestha/vim-lsp'
+                " Bundle 'prabirshrestha/vim-lsp'
+                Bundle 'FuDesign2008/vim-lsp'
                 Bundle 'mattn/vim-lsp-settings'
 
                 " UltiSnips
