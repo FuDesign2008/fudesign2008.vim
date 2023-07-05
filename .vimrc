@@ -1302,14 +1302,16 @@ augroup END
             let g:ale_linter_aliases = {
                         \ 'vue': ['vue', 'html', 'javascript', 'typescript', 'css', 'scss']
                         \ }
+            " linters do not use lsp server
+            " ycm/vim-lsp ... support lsp
             let g:ale_linters = {
                         \ 'markdown': ['remark-lint', 'markdownlint'],
                         \ 'json': ['jsonlint'],
                         \ 'jsonc': ['eslint'],
-                        \ 'javascript': ['eslint', 'tsserver'],
-                        \ 'typescript': ['tsserver', 'eslint'],
-                        \ 'typescriptreact': ['tsserver', 'eslint'],
-                        \ 'vue': ['stylelint', 'vls', 'eslint'],
+                        \ 'javascript': ['eslint'],
+                        \ 'typescript': ['eslint'],
+                        \ 'typescriptreact': ['eslint'],
+                        \ 'vue': ['stylelint', 'eslint'],
                         \ 'shell': ['shellcheck', 'language_server'],
                         \ 'c': [],
                         \ 'cpp': [],
@@ -1318,26 +1320,19 @@ augroup END
                         \ 'dockerfile': ['hadolint'],
                         \ 'tex': []
                         \ }
-            let g:ale_vue_vls_use_global = 1
-            let g:ale_vue_volar_use_global = 1
-            let g:ale_vue_volar_executable = 'vue-language-server'
 
-            if g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7
-                let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
-            endif
+            " *.vue do not use vls or volar for use of vim-lsp
 
-            let g:ale_disable_lsp = 0
+            " let g:ale_vue_vls_use_global = 1
+            " let g:ale_vue_volar_use_global = 1
+            " let g:ale_vue_volar_executable = 'vue-language-server'
+            " if g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7
+                " let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
+            " endif
 
-            if count(g:spf13_autocomplete_method, 'coc')
-                let g:ale_disable_lsp = 1
-                let g:ale_linters['typescript'] =   ['eslint']
-                let g:ale_linters['typescriptreact'] =   ['eslint']
-            endif
+            let g:ale_disable_lsp = 1
 
             if count(g:spf13_autocomplete_method, 'vim-lsp')
-                let g:ale_disable_lsp = 1
-                let g:ale_linters['typescript'] =   ['eslint']
-                let g:ale_linters['typescriptreact'] =   ['eslint']
                 nnoremap <silent> <leader>d <plug>(lsp-definition)
                 " nnoremap <silent> <leader>p <plug>(lsp-peek-definition)
                 nnoremap <silent> <leader>r <plug>(lsp-rename)
@@ -1350,6 +1345,7 @@ augroup END
                 nmap <silent> <leader>td :ALEGoToTypeDefinition <CR>
                 nmap <silent> <leader>r :ALERename <CR>
             endif
+
             nmap <leader>f   :ALEFix <CR>
 
             let g:ale_sign_column_always = 1
@@ -1419,15 +1415,15 @@ augroup END
                 let g:ale_fixers['javascript'] = ['eslint', 'prettier']
                 let g:ale_fixers['vue'] = ['eslint', 'prettier']
             elseif g:use_flow_for_javascript
-                let g:ale_linters['javascript'] = ['flow', 'tsserver']
+                let g:ale_linters['javascript'] = ['flow']
                 let g:ale_fixers['javascript'] = ['eslint', 'prettier']
             endif
 
             if g:use_tslint_for_typescript
-                let g:ale_linters['typescript'] = count(g:spf13_autocomplete_method, 'coc') ?  ['tslint'] : ['tslint', 'tsserver']
+                let g:ale_linters['typescript'] = ['tslint']
                 let g:ale_fixers['typescript'] = ['prettier']
 
-                let g:ale_linters['typescriptreact'] = count(g:spf13_autocomplete_method, 'coc') ?  ['tslint'] : ['tslint', 'tsserver']
+                let g:ale_linters['typescriptreact'] = ['tslint']
                 let g:ale_fixers['typescriptreact'] = ['tslint', 'prettier']
 
                 " enable tslint to lint .js file
