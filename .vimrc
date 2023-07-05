@@ -459,7 +459,7 @@ augroup END
     endfunction
 
     let g:vimrc_vue_version = DetectVueVersion()
-    let g:vimrc_performance_low = has('linux')
+    let g:vimrc_performance_mode = 1
 " }
 
 " Plugins {
@@ -799,8 +799,8 @@ augroup END
                 let g:ycm_collect_identifiers_from_comments_and_strings = 1
                 let g:ycm_collect_identifiers_from_tags_files = 1
                 let g:ycm_seed_identifiers_with_syntax = 1
-                let g:ycm_min_num_of_chars_for_completion = g:vimrc_performance_low ? 4 :  2
-                let g:ycm_min_num_identifier_candidate_chars = g:vimrc_performance_low ? 4 : 2
+                let g:ycm_min_num_of_chars_for_completion = g:vimrc_performance_mode ? 3 :  2
+                let g:ycm_min_num_identifier_candidate_chars = g:vimrc_performance_mode ? 3 : 2
                 let g:ycm_always_populate_location_list = 0
 
                 let g:ycm_add_preview_to_completeopt = 0
@@ -813,7 +813,7 @@ augroup END
                 unlet g:ycm_lsp_examples_vimrc
 
                 set completeopt="menu,popup"
-                if g:vimrc_performance_low
+                if g:vimrc_performance_mode
                     set updatetime=6000
                 else
                     set updatetime=3000
@@ -1361,16 +1361,16 @@ augroup END
             let g:ale_lint_on_enter=1
             let g:ale_lint_on_filetype_changed=1
 
-            if g:vimrc_performance_low
+            if g:vimrc_performance_mode
                 let g:ale_lint_on_text_changed = 0
-                let g:ale_lint_on_insert_leave = 1
-                let g:ale_lint_on_save=0
-                let g:ale_lint_delay = 400
+                let g:ale_lint_on_insert_leave = 0
+                let g:ale_lint_on_save=1
+                let g:ale_lint_delay=400
             else
                 let g:ale_lint_on_text_changed = 1
                 let g:ale_lint_on_insert_leave = 1
                 let g:ale_lint_on_save=1
-                let g:ale_lint_delay = 200
+                let g:ale_lint_delay=200
             endif
 
             let g:ale_completion_max_suggestions = 5
@@ -1954,7 +1954,7 @@ augroup END
 " }
 
 " unlet helper {
-    unlet g:vimrc_performance_low
+    unlet g:vimrc_performance_mode
     unlet g:vimrc_vue_version
 "}
 
