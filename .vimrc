@@ -572,7 +572,7 @@ augroup END
                 autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
                     \ 'name': 'omni',
                     \ 'allowlist': ['*'],
-                    \ 'blocklist': ['c', 'cpp', 'html', 'typescript', 'typescriptreact'],
+                    \ 'blocklist': ['c', 'cpp', 'html', 'javascript', 'vue', 'typescript', 'typescriptreact'],
                     \ 'completor': function('asyncomplete#sources#omni#completor'),
                     \ 'config': {
                     \   'show_source_kind': 1,

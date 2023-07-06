@@ -221,8 +221,9 @@ set nocompatible        " must be first line
                 " Bundle 'prabirshrestha/asyncomplete.vim'
                 " @see https://github.com/prabirshrestha/asyncomplete.vim/pull/280
                 Bundle 'FuDesign2008/asyncomplete.vim'
-                " Bundle 'machakann/asyncomplete-ezfilter.vim'
                 Bundle 'FuDesign2008/asyncomplete-smart-fuzzy.vim'
+
+                Bundle 'machakann/asyncomplete-ezfilter.vim'
 
                 Bundle 'prabirshrestha/asyncomplete-lsp.vim'
 
@@ -230,7 +231,7 @@ set nocompatible        " must be first line
                 Bundle 'prabirshrestha/asyncomplete-file.vim'
                 Bundle 'prabirshrestha/asyncomplete-buffer.vim'
                 " Bundle 'hiterm/asyncomplete-look'
-                " Bundle 'yami-beta/asyncomplete-omni.vim'
+                Bundle 'yami-beta/asyncomplete-omni.vim'
                 " Bundle 'prabirshrestha/asyncomplete-emoji.vim'
 
             endif
