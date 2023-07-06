@@ -91,12 +91,12 @@ set nocompatible        " must be first line
 
     " 可选的值:
     "  ycm (YouCompleteMe)
+    "  vim-lsp (vim-lsp + asyncomplete)
     "  tabnine
     "  deoplete
-    "  vim-lsp (vim-lsp + asyncomplete)
     "  coc
     "
-    let g:spf13_autocomplete_method=['ycm']
+    let g:spf13_autocomplete_method=['vim-lsp']
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
