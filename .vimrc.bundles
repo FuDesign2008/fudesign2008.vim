@@ -89,8 +89,6 @@ set nocompatible        " must be first line
         endif
     endif
 
-    " lsp, ycm is better
-    " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
     " 可选的值:
     "  ycm (YouCompleteMe)
     "  tabnine
