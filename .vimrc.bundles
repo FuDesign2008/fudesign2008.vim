@@ -280,7 +280,8 @@ set nocompatible        " must be first line
                 " But YCM does not have good-enough support for obj-c
                 " @see https://github.com/Valloric/YouCompleteMe/issues/84
                 Bundle 'Valloric/YouCompleteMe'
-                Bundle 'FuDesign2008/lsp-examples'
+                Bundle 'ycm-core/lsp-examples'
+                " Bundle 'FuDesign2008/lsp-examples'
             endif
 
 
