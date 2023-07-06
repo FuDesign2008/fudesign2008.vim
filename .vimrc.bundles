@@ -96,7 +96,7 @@ set nocompatible        " must be first line
     "  deoplete
     "  coc
     "
-    let g:spf13_autocomplete_method=['vim-lsp']
+    let g:spf13_autocomplete_method=['ycm']
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
