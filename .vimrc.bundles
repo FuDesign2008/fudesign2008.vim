@@ -93,7 +93,7 @@ set nocompatible        " must be first line
     " let g:spf13_autocomplete_method= has('mac') || has('macunix') ? 'ycm' : 'coc'
     " 可选的值: ycm/tabnine/deoplete/vim-lsp/coc
     "
-    let g:spf13_autocomplete_method=['vim-lsp']
+    let g:spf13_autocomplete_method=['ycm']
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
