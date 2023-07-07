@@ -29,7 +29,6 @@ set nocompatible        " must be first line
     call plug#begin('~/.vim/bundle')
 
     " Deps
-        Plug 'gmarik/vundle'
         Plug 'MarcWeber/vim-addon-mw-utils'
         Plug 'tomtom/tlib_vim'
 
