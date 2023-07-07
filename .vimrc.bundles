@@ -274,7 +274,11 @@ set nocompatible        " must be first line
                 "
                 " But YCM does not have good-enough support for obj-c
                 " @see https://github.com/Valloric/YouCompleteMe/issues/84
-                Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer  --system-libclang --verbose' }
+                Plug 'Valloric/YouCompleteMe', { 'do': '
+                            \ ./install.py --clang-completer --ts-completer  --system-libclang --verbose &&
+                            \ cd ./third_party/ycmd/third_party/tsserver &&
+                            \ yarn add typescript@latest typescript-plugin-css-modules@latest'
+                            \ }
                 Plug 'ycm-core/lsp-examples', { 'do': './install.py --enable-bash --enable-docker --enable-json --enable-viml --enable-vue --enable-yaml' }
                 " Plug 'FuDesign2008/lsp-examples' , { 'do': 'python3 ./install.py --enable-bash --enable-docker --enable-json --enable-viml --enable-vue --enable-yaml' }
             endif
