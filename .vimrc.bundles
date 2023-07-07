@@ -192,7 +192,7 @@ set nocompatible        " must be first line
                 " jedi source for Python
                 Plug 'deoplete-plugins/deoplete-jedi'
                 " typescript
-                " Plug 'mhartington/nvim-typescript'
+                " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
                 " viml
                 Plug 'Shougo/neco-vim'
                 " zsh
@@ -275,9 +275,9 @@ set nocompatible        " must be first line
                 "
                 " But YCM does not have good-enough support for obj-c
                 " @see https://github.com/Valloric/YouCompleteMe/issues/84
-                Plug 'Valloric/YouCompleteMe'
-                Plug 'ycm-core/lsp-examples'
-                " Plug 'FuDesign2008/lsp-examples'
+                Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --ts-completer  --system-libclang --verbose' }
+                Plug 'ycm-core/lsp-examples', { 'do': './install.py --enable-bash --enable-docker --enable-json --enable-viml --enable-vue --enable-yaml' }
+                " Plug 'FuDesign2008/lsp-examples' , { 'do': 'python3 ./install.py --enable-bash --enable-docker --enable-json --enable-viml --enable-vue --enable-yaml' }
             endif
 
 
@@ -451,7 +451,7 @@ set nocompatible        " must be first line
             " tern is used in YCM
             " Plug 'marijnh/tern_for_vim'
 
-            Plug 'heavenshell/vim-jsdoc'
+            Plug 'heavenshell/vim-jsdoc', { 'do': 'mark clean && make install' }
             " Plug 'FuDesign2008/vim-jsdoc'
 
             " Plug 'Quramy/vim-js-pretty-template'
@@ -467,7 +467,7 @@ set nocompatible        " must be first line
 
             Plug 'FuDesign2008/component-kit.vim'
 
-            Plug 'maksimr/vim-jsbeautify'
+            Plug 'maksimr/vim-jsbeautify', { 'do': 'git submodule update --init --recursive' }
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
@@ -475,7 +475,7 @@ set nocompatible        " must be first line
                 " had some performance issues when highlighting large TSX files
                 " @see https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
                 " Plug 'peitalin/vim-jsx-typescript'
-                Plug 'FuDesign2008/json2ts.vim'
+                Plug 'FuDesign2008/json2ts.vim', { 'do': 'npm install' }
                 " yats has UltiSnips for typescript - which is not wanted
                 " Plug 'HerringtonDarkholme/yats.vim'
             endif
@@ -563,10 +563,10 @@ set nocompatible        " must be first line
 
             Plug 'FuDesign2008/mkdInput.vim'
             Plug 'FuDesign2008/mermaidViewer.vim'
-            Plug 'FuDesign2008/MarkdownViewer.vim'
+            Plug 'FuDesign2008/MarkdownViewer.vim', {'do': 'npm install'}
             Plug 'FuDesign2008/markdown-snippets.vim'
 
-            " Plug 'iamcco/markdown-preview.nvim'
+            " Plug 'iamcco/markdown-preview.nvim', {'do': 'cd ./app && yarn install'}
             " Plug 'mzlogin/vim-markdown-toc'
             Plug 'plasticboy/vim-markdown'
             Plug 'lervag/vimtex'
