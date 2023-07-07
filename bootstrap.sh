@@ -32,7 +32,7 @@ if [ ! -e "$endpath/.git" ]; then
     git clone --recursive -b fuyg/plug https://github.com/FuDesign2008/fudesign2008.vim.git "$endpath"
 else
     echo "updating fudesign2008.vim"
-    cd "$endpath" && git checkout fuyg/plug && git pull
+    cd "$endpath" && git pull && git checkout fuyg/plug
 fi
 
 

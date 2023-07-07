@@ -22,10 +22,10 @@ set nocompatible        " must be first line
         endif
     " }
     "
-
 " }
 
 " Bundles {
+
     call plug#begin('~/.vim/bundle')
 
     " Deps
