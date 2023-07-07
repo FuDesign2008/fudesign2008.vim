@@ -101,7 +101,7 @@ set nocompatible        " must be first line
     " General
         if count(g:spf13_bundle_groups, 'general')
             " Plug 'mhinz/vim-startify'
-            Plug 'preservim/nerdtree'
+            Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
             Plug 'vim-scripts/matchit.zip'
             Plug 'ntpeters/vim-better-whitespace'
             Plug 'FuDesign2008/TrimWhiteSpaces.vim'
@@ -319,7 +319,7 @@ set nocompatible        " must be first line
             "lucius in vim-colorschemes is outdate
             " Plug 'flazz/vim-colorschemes'
             Plug 'FuDesign2008/awesome-vim-colorschemes'
-            Plug 'FuDesign2008/randomTheme.vim'
+            Plug 'FuDesign2008/randomTheme.vim', { 'do': './install_fonts_mac.sh' }
         endif
 
 
@@ -396,9 +396,9 @@ set nocompatible        " must be first line
                 Plug 'SirVer/ultisnips'
 
                 "snippets
-                Plug 'honza/vim-snippets'
+                Plug 'honza/vim-snippets', { 'for': 'vim' }
 
-                Plug 'FuDesign2008/viml-snippets.vim'
+                Plug 'FuDesign2008/viml-snippets.vim', { 'for': 'vim' }
             endif
 
         endif
@@ -406,8 +406,8 @@ set nocompatible        " must be first line
     " PHP
         if count(g:spf13_bundle_groups, 'php')
             " better syntax hilight
-            Plug 'shawncplus/php.vim'
-            Plug 'shawncplus/phpcomplete.vim'
+            Plug 'shawncplus/php.vim', { 'for': 'php' }
+            " Plug 'shawncplus/phpcomplete.vim'
             "Plug 'spf13/PIV'
         endif
 
@@ -418,10 +418,10 @@ set nocompatible        " must be first line
             " YouCompleteMe will use Jedi for python completion
 
             " syntax checker
-            Plug 'nvie/vim-flake8'
+            Plug 'nvie/vim-flake8', { 'for': 'python' }
             " document
-            Plug 'fs111/pydoc.vim'
-            Plug 'FuDesign2008/python-snippets'
+            Plug 'fs111/pydoc.vim', { 'for': 'python' }
+            Plug 'FuDesign2008/python-snippets', { 'for': 'python' }
 
         endif
 
@@ -449,9 +449,8 @@ set nocompatible        " must be first line
 
             "Plug 'mattn/jscomplete-vim'
 
-            Plug 'FuDesign2008/javascript-snippets.vim'
+            Plug 'FuDesign2008/javascript-snippets.vim', { 'for': 'javascript' }
 
-            " tern is used in YCM
             " Plug 'marijnh/tern_for_vim'
 
             Plug 'heavenshell/vim-jsdoc', { 'do': 'make clean && make install' }
@@ -474,11 +473,14 @@ set nocompatible        " must be first line
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
-                Plug 'leafgarland/typescript-vim'
+                Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
                 " had some performance issues when highlighting large TSX files
                 " @see https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
                 " Plug 'peitalin/vim-jsx-typescript'
-                Plug 'FuDesign2008/json2ts.vim', { 'do': 'npm install' }
+                Plug 'FuDesign2008/json2ts.vim', {
+                            \ 'do': 'npm install',
+                            \ 'for': 'typescript'
+                            \ }
                 " yats has UltiSnips for typescript - which is not wanted
                 " Plug 'HerringtonDarkholme/yats.vim'
             endif
@@ -519,10 +521,10 @@ set nocompatible        " must be first line
     " css
         if count(g:spf13_bundle_groups, 'css')
             " Plug 'hail2u/vim-css3-syntax'
-            Plug 'groenewege/vim-less'
+            Plug 'groenewege/vim-less', { 'for': 'less' }
             " Plug 'wavded/vim-stylus'
 
-            Plug 'cakebaker/scss-syntax.vim'
+            Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
             "Plug 'tpope/vim-haml'
 
             " use ap/vim-css-color instead of skammer/vim-css-color
@@ -550,8 +552,8 @@ set nocompatible        " must be first line
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
-            Plug 'vim-ruby/vim-ruby'
-            Plug 'tpope/vim-rails'
+            Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+            Plug 'tpope/vim-rails', { 'for': 'ruby' }
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
@@ -560,18 +562,21 @@ set nocompatible        " must be first line
     " Document
         if count(g:spf13_bundle_groups, 'document')
             " useful when show code
-            Plug 'junegunn/goyo.vim'
+            Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
             Plug 'FuDesign2008/vim-carbon-now-sh'
             " Plug 'jszakmeister/markdown2ctags'
 
-            Plug 'FuDesign2008/mkdInput.vim'
+            Plug 'FuDesign2008/mkdInput.vim', { 'for': 'markdown' }
             Plug 'FuDesign2008/mermaidViewer.vim'
-            Plug 'FuDesign2008/MarkdownViewer.vim', {'do': 'npm install'}
-            Plug 'FuDesign2008/markdown-snippets.vim'
+            Plug 'FuDesign2008/MarkdownViewer.vim', {
+                    \ 'do': 'npm install',
+                    \ 'for': 'markdown'
+                    \ }
+            Plug 'FuDesign2008/markdown-snippets.vim', { 'for': 'markdown' }
 
             " Plug 'iamcco/markdown-preview.nvim', {'do': 'cd ./app && yarn install'}
             " Plug 'mzlogin/vim-markdown-toc'
-            Plug 'plasticboy/vim-markdown'
+            Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
             Plug 'lervag/vimtex'
 
 
