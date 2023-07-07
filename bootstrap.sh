@@ -52,14 +52,6 @@ if [ ! -d "$endpath/.vim/bundle" ]; then
     mkdir -p "$endpath/.vim/bundle"
 fi
 
-# if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
-    # echo "Installing Vundle"
-    # git clone http://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
-# fi
-
-# echo "update/install plugins using Vundle"
-# vim -u "$endpath/.vimrc.bundles" +BundleInstall! +BundleClean +qall
-
 
 
 if [ ! -e "$endpath/.vim/autoload/plug.vim" ];then
