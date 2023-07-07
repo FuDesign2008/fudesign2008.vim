@@ -235,32 +235,32 @@ set nocompatible        " must be first line
             endif
 
             if count(g:spf13_autocomplete_method, 'coc')
-                Plug 'neoclide/coc.nvim'
+                Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile && npm run build' }
 
                 " viml
-                Plug 'iamcco/coc-vimlsp'
+                Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
 
                 "common source
-                Plug 'neoclide/coc-sources'
+                Plug 'neoclide/coc-sources', { 'do': 'yarn install --frozen-lockfile' }
 
 
                 Plug 'iamcco/coc-spell-checker'
 
-                Plug 'neoclide/coc-tsserver'
+                Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
 
-                Plug 'neoclide/coc-json'
+                Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
 
-                Plug 'neoclide/coc-html'
+                Plug 'neoclide/coc-html', { 'do': 'yarn install --frozen-lockfile' }
                 Plug 'yaegassy/coc-htmlhint'
                 Plug 'yaegassy/coc-html-css-support'
-                Plug 'neoclide/coc-css'
+                Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
                 Plug 'antonk52/coc-cssmodules'
                 Plug 'iamcco/coc-svg'
 
-                Plug 'neoclide/coc-vetur'
-                " Plug 'neoclide/coc-python'
-                " Plug 'neoclide/coc-git'
-                Plug 'neoclide/coc-snippets'
+                Plug 'neoclide/coc-vetur', { 'do': 'yarn install --frozen-lockfile' }
+                " Plug 'neoclide/coc-python', { 'do': 'yarn install --frozen-lockfile' }
+                " Plug 'neoclide/coc-git', { 'do': 'yarn install --frozen-lockfile' }
+                Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile' }
 
                 Plug 'josa42/coc-sh'
 
