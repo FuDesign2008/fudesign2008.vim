@@ -451,7 +451,7 @@ set nocompatible        " must be first line
             " tern is used in YCM
             " Plug 'marijnh/tern_for_vim'
 
-            Plug 'heavenshell/vim-jsdoc', { 'do': 'mark clean && make install' }
+            Plug 'heavenshell/vim-jsdoc', { 'do': 'make clean && make install' }
             " Plug 'FuDesign2008/vim-jsdoc'
 
             " Plug 'Quramy/vim-js-pretty-template'
