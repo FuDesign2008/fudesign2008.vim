@@ -48,9 +48,9 @@ lnif "$endpath/coc-settings.json" "$HOME/.vim/coc-settings.json"
 
 
 
-# if [ ! -d "$endpath/.vim/bundle" ]; then
-    # mkdir -p "$endpath/.vim/bundle"
-# fi
+if [ ! -d "$endpath/.vim/bundle" ]; then
+    mkdir -p "$endpath/.vim/bundle"
+fi
 
 # if [ ! -e "$HOME/.vim/bundle/vundle" ]; then
     # echo "Installing Vundle"
