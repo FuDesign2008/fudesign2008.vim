@@ -22,20 +22,16 @@ set nocompatible        " must be first line
         endif
     " }
     "
-    " Setup Bundle Support {
-    " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype off
-        set runtimepath+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }
 
 " }
 
 " Bundles {
+    call plug#begin('~/.vim/bundle')
+
     " Deps
-        Bundle 'gmarik/vundle'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
+        Plug 'gmarik/vundle'
+        Plug 'MarcWeber/vim-addon-mw-utils'
+        Plug 'tomtom/tlib_vim'
 
     " Use local bundles if available {
         if filereadable(expand('~/.vimrc.bundles.local'))
@@ -105,172 +101,172 @@ set nocompatible        " must be first line
 
     " General
         if count(g:spf13_bundle_groups, 'general')
-            " Bundle 'mhinz/vim-startify'
-            Bundle 'preservim/nerdtree'
-            Bundle 'matchit.zip'
-            Bundle 'ntpeters/vim-better-whitespace'
-            Bundle 'FuDesign2008/TrimWhiteSpaces.vim'
-            " Bundle 'junegunn/rainbow_parentheses.vim'
+            " Plug 'mhinz/vim-startify'
+            Plug 'preservim/nerdtree'
+            Plug 'matchit.zip'
+            Plug 'ntpeters/vim-better-whitespace'
+            Plug 'FuDesign2008/TrimWhiteSpaces.vim'
+            " Plug 'junegunn/rainbow_parentheses.vim'
 
             " Do NOT use, for `:ALEFix` will be run before save
-            " Bundle '907th/vim-auto-save'
+            " Plug '907th/vim-auto-save'
             " disable :ALEFix when auto-save
             " vim-auto-save will breaking undo
-            " Bundle 'FuDesign2008/vim-auto-save'
+            " Plug 'FuDesign2008/vim-auto-save'
 
-            " Bundle 'haya14busa/incsearch.vim'
-            " Bundle 'haya14busa/incsearch-fuzzy.vim'
+            " Plug 'haya14busa/incsearch.vim'
+            " Plug 'haya14busa/incsearch-fuzzy.vim'
 
             " airline is lightweight than powerline
-            Bundle 'vim-airline/vim-airline'
-            Bundle 'vim-airline/vim-airline-themes'
-            " Bundle 'itchyny/lightline.vim'
+            Plug 'vim-airline/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+            " Plug 'itchyny/lightline.vim'
 
-            " Bundle 'vim-scripts/LanguageTool'
+            " Plug 'vim-scripts/LanguageTool'
 
-            "Bundle 'Lokaltog/vim-easymotion'
+            "Plug 'Lokaltog/vim-easymotion'
             "NOTE: csapprox cause errors
-            "Bundle 'godlygeek/csapprox'
-            "Bundle 'jistr/vim-nerdtree-tabs'
-            "Bundle 'mbbill/undotree'
+            "Plug 'godlygeek/csapprox'
+            "Plug 'jistr/vim-nerdtree-tabs'
+            "Plug 'mbbill/undotree'
             "if !exists('g:spf13_no_views')
-                "Bundle 'vim-scripts/restore_view.vim'
+                "Plug 'vim-scripts/restore_view.vim'
             "endif
-            "Bundle 'tpope/vim-abolish.git'
+            "Plug 'tpope/vim-abolish.git'
 
             "Provides tab completion while inside the “/” search
             " useless!!! not able for search and repalce
-            "Bundle 'vim-scripts/SearchComplete'
+            "Plug 'vim-scripts/SearchComplete'
 
             " to zoomin/out/reset guifont size
-            " Bundle 'FuDesign2008/zoom.vim'
-            "Bundle 'vim-scripts/ZoomWin'
+            " Plug 'FuDesign2008/zoom.vim'
+            "Plug 'vim-scripts/ZoomWin'
 
-            " Bundle 'FuDesign2008/WebSearch.vim'
+            " Plug 'FuDesign2008/WebSearch.vim'
 
             " 1. http://aftnn.org/post/75730734352/vim-auto-closers-compared
             " 2. https://github.com/kana/vim-smartinput/issues/65
-            "Bundle 'kana/vim-smartinput'
+            "Plug 'kana/vim-smartinput'
             " use delimitMate instead vim-closetag
             " for vim-closetag conflicts with YCM
-            " Bundle 'alvan/vim-closetag'
-            Bundle 'Raimondi/delimitMate'
+            " Plug 'alvan/vim-closetag'
+            Plug 'Raimondi/delimitMate'
 
-            Bundle 'FuDesign2008/OpenUrl.vim'
-            " Bundle 'tyru/open-browser.vim'
+            Plug 'FuDesign2008/OpenUrl.vim'
+            " Plug 'tyru/open-browser.vim'
 
-            " Bundle 'FuDesign2008/ToggleNumber.vim'
-            Bundle 'myusuf3/numbers.vim'
-            " Bundle 'FuDesign2008/style.vim'
-            " Bundle 'FuDesign2008/emoji-snippets.vim'
+            " Plug 'FuDesign2008/ToggleNumber.vim'
+            Plug 'myusuf3/numbers.vim'
+            " Plug 'FuDesign2008/style.vim'
+            " Plug 'FuDesign2008/emoji-snippets.vim'
 
-            " Bundle 'vim-scripts/IndentAnything'
-            "Bundle 'Yggdroot/indentLine'
-            "Bundle 'nathanaelkane/vim-indent-guides'
+            " Plug 'vim-scripts/IndentAnything'
+            "Plug 'Yggdroot/indentLine'
+            "Plug 'nathanaelkane/vim-indent-guides'
 
             " how to use
             " @see https://yanpritzker.com/learn-to-speak-vim-verbs-nouns-and-modifiers-d7bfed1f6b2d
-            Bundle 'tpope/vim-surround'
+            Plug 'tpope/vim-surround'
 
-            "Bundle 'terryma/vim-multiple-cursors'
+            "Plug 'terryma/vim-multiple-cursors'
 
 
             if count(g:spf13_autocomplete_method,'tabnine')
-                Bundle 'codota/tabnine-vim'
+                Plug 'codota/tabnine-vim'
             endif
 
             if count(g:spf13_autocomplete_method, 'deoplete')
-                Bundle 'Shougo/deoplete.nvim'
-                Bundle 'roxma/nvim-yarp'
-                Bundle 'roxma/vim-hug-neovim-rpc'
+                Plug 'Shougo/deoplete.nvim'
+                Plug 'roxma/nvim-yarp'
+                Plug 'roxma/vim-hug-neovim-rpc'
 
 
                 " misc
-                Bundle 'fszymanski/deoplete-emoji'
-                Bundle 'thalesmello/webcomplete.vim'
+                Plug 'fszymanski/deoplete-emoji'
+                Plug 'thalesmello/webcomplete.vim'
 
                 " common
-                Bundle 'Shougo/neco-syntax'
+                Plug 'Shougo/neco-syntax'
                 " javascript
-                Bundle 'carlitux/deoplete-ternjs'
+                Plug 'carlitux/deoplete-ternjs'
                 " jedi source for Python
-                Bundle 'deoplete-plugins/deoplete-jedi'
+                Plug 'deoplete-plugins/deoplete-jedi'
                 " typescript
-                " Bundle 'mhartington/nvim-typescript'
+                " Plug 'mhartington/nvim-typescript'
                 " viml
-                Bundle 'Shougo/neco-vim'
+                Plug 'Shougo/neco-vim'
                 " zsh
-                Bundle 'deoplete-plugins/deoplete-zsh'
+                Plug 'deoplete-plugins/deoplete-zsh'
                 " shell terminal in vim
-                Bundle 'Shougo/deol.nvim'
+                Plug 'Shougo/deol.nvim'
                 " asm
-                Bundle 'deoplete-plugins/deoplete-asm'
+                Plug 'deoplete-plugins/deoplete-asm'
 
                 " echo document
-                Bundle 'Shougo/echodoc.vim'
+                Plug 'Shougo/echodoc.vim'
 
             endif
 
             if count(g:spf13_autocomplete_method, 'vim-lsp')
-                Bundle 'prabirshrestha/async.vim'
-                " Bundle 'prabirshrestha/vim-lsp'
-                Bundle 'FuDesign2008/vim-lsp'
-                Bundle 'mattn/vim-lsp-settings'
+                Plug 'prabirshrestha/async.vim'
+                " Plug 'prabirshrestha/vim-lsp'
+                Plug 'FuDesign2008/vim-lsp'
+                Plug 'mattn/vim-lsp-settings'
 
                 " UltiSnips
-                Bundle 'thomasfaingnaert/vim-lsp-snippets'
-                Bundle 'thomasfaingnaert/vim-lsp-ultisnips'
+                Plug 'thomasfaingnaert/vim-lsp-snippets'
+                Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
-                " Bundle 'prabirshrestha/asyncomplete.vim'
+                " Plug 'prabirshrestha/asyncomplete.vim'
                 " @see https://github.com/prabirshrestha/asyncomplete.vim/pull/280
-                Bundle 'FuDesign2008/asyncomplete.vim'
-                Bundle 'FuDesign2008/asyncomplete-smart-fuzzy.vim'
+                Plug 'FuDesign2008/asyncomplete.vim'
+                Plug 'FuDesign2008/asyncomplete-smart-fuzzy.vim'
 
-                Bundle 'machakann/asyncomplete-ezfilter.vim'
+                Plug 'machakann/asyncomplete-ezfilter.vim'
 
-                Bundle 'prabirshrestha/asyncomplete-lsp.vim'
+                Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-                Bundle 'prabirshrestha/asyncomplete-ultisnips.vim'
-                Bundle 'prabirshrestha/asyncomplete-file.vim'
-                Bundle 'prabirshrestha/asyncomplete-buffer.vim'
-                " Bundle 'hiterm/asyncomplete-look'
-                Bundle 'yami-beta/asyncomplete-omni.vim'
-                " Bundle 'prabirshrestha/asyncomplete-emoji.vim'
+                Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+                Plug 'prabirshrestha/asyncomplete-file.vim'
+                Plug 'prabirshrestha/asyncomplete-buffer.vim'
+                " Plug 'hiterm/asyncomplete-look'
+                Plug 'yami-beta/asyncomplete-omni.vim'
+                " Plug 'prabirshrestha/asyncomplete-emoji.vim'
 
             endif
 
             if count(g:spf13_autocomplete_method, 'coc')
-                Bundle 'neoclide/coc.nvim'
+                Plug 'neoclide/coc.nvim'
 
                 " viml
-                Bundle 'iamcco/coc-vimlsp'
+                Plug 'iamcco/coc-vimlsp'
 
                 "common source
-                Bundle 'neoclide/coc-sources'
+                Plug 'neoclide/coc-sources'
 
 
-                Bundle 'iamcco/coc-spell-checker'
+                Plug 'iamcco/coc-spell-checker'
 
-                Bundle 'neoclide/coc-tsserver'
+                Plug 'neoclide/coc-tsserver'
 
-                Bundle 'neoclide/coc-json'
+                Plug 'neoclide/coc-json'
 
-                Bundle 'neoclide/coc-html'
-                Bundle 'yaegassy/coc-htmlhint'
-                Bundle 'yaegassy/coc-html-css-support'
-                Bundle 'neoclide/coc-css'
-                Bundle 'antonk52/coc-cssmodules'
-                Bundle 'iamcco/coc-svg'
+                Plug 'neoclide/coc-html'
+                Plug 'yaegassy/coc-htmlhint'
+                Plug 'yaegassy/coc-html-css-support'
+                Plug 'neoclide/coc-css'
+                Plug 'antonk52/coc-cssmodules'
+                Plug 'iamcco/coc-svg'
 
-                Bundle 'neoclide/coc-vetur'
-                " Bundle 'neoclide/coc-python'
-                " Bundle 'neoclide/coc-git'
-                Bundle 'neoclide/coc-snippets'
+                Plug 'neoclide/coc-vetur'
+                " Plug 'neoclide/coc-python'
+                " Plug 'neoclide/coc-git'
+                Plug 'neoclide/coc-snippets'
 
-                Bundle 'josa42/coc-sh'
+                Plug 'josa42/coc-sh'
 
-                Bundle 'fannheyward/coc-xml'
-                Bundle 'neoclide/coc-yaml'
+                Plug 'fannheyward/coc-xml'
+                Plug 'neoclide/coc-yaml'
             endif
 
             if count(g:spf13_autocomplete_method, 'ycm')
@@ -279,98 +275,98 @@ set nocompatible        " must be first line
                 "
                 " But YCM does not have good-enough support for obj-c
                 " @see https://github.com/Valloric/YouCompleteMe/issues/84
-                Bundle 'Valloric/YouCompleteMe'
-                Bundle 'ycm-core/lsp-examples'
-                " Bundle 'FuDesign2008/lsp-examples'
+                Plug 'Valloric/YouCompleteMe'
+                Plug 'ycm-core/lsp-examples'
+                " Plug 'FuDesign2008/lsp-examples'
             endif
 
 
             if count(g:spf13_bundle_groups, 'fzf')
-                Bundle 'junegunn/fzf.vim'
+                Plug 'junegunn/fzf.vim'
             else
-                Bundle 'ctrlpvim/ctrlp.vim'
+                Plug 'ctrlpvim/ctrlp.vim'
             endif
 
-            Bundle 'FuDesign2008/plan.vim'
+            Plug 'FuDesign2008/plan.vim'
 
             " ack
             "if executable('ack-grep')
                 "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-                "Bundle 'mileszs/ack.vim'
+                "Plug 'mileszs/ack.vim'
             "elseif executable('ack')
-                "Bundle 'mileszs/ack.vim'
+                "Plug 'mileszs/ack.vim'
             "endif
 
             " use the_silver_searcher which if faster
             " instead of ack
             " @see https://github.com/rking/ag.vim/issues/124#issuecomment-227038003
-            Bundle 'FuDesign2008/ack.vim'
+            Plug 'FuDesign2008/ack.vim'
 
             " conflict with delimitMate
-            " Bundle 'jiangmiao/auto-pairs'
+            " Plug 'jiangmiao/auto-pairs'
 
-            " Bundle 'FuDesign2008/toggle-maximize.vim'
-            Bundle 'FuDesign2008/only.vim'
-            Bundle 'jamessan/vim-gnupg'
-            Bundle 'AdamWhittingham/vim-copy-filename'
+            " Plug 'FuDesign2008/toggle-maximize.vim'
+            Plug 'FuDesign2008/only.vim'
+            Plug 'jamessan/vim-gnupg'
+            Plug 'AdamWhittingham/vim-copy-filename'
         endif
 
     "Colors
         if count(g:spf13_bundle_groups, 'colors')
             "lucius in vim-colorschemes is outdate
-            " Bundle 'flazz/vim-colorschemes'
-            Bundle 'FuDesign2008/awesome-vim-colorschemes'
-            Bundle 'FuDesign2008/randomTheme.vim'
+            " Plug 'flazz/vim-colorschemes'
+            Plug 'FuDesign2008/awesome-vim-colorschemes'
+            Plug 'FuDesign2008/randomTheme.vim'
         endif
 
 
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
-            " Bundle 'tpope/vim-fugitive'
+            " Plug 'tpope/vim-fugitive'
             " see http://editorconfig.org/
-            Bundle 'editorconfig/editorconfig-vim'
+            Plug 'editorconfig/editorconfig-vim'
 
             " conflicts with delimitMate
             " @see https://github.com/Raimondi/delimitMate/issues/236
-            " Bundle 'tpope/vim-endwise'
+            " Plug 'tpope/vim-endwise'
 
             " ALE and Syntastic are conflict
-            " Bundle 'scrooloose/syntastic'
-            " Bundle 'mtscout6/syntastic-local-eslint.vim'
-            " Bundle 'dense-analysis/ale'
-            Bundle 'FuDesign2008/ale'
-            Bundle 'FuDesign2008/ale-shim.vim'
+            " Plug 'scrooloose/syntastic'
+            " Plug 'mtscout6/syntastic-local-eslint.vim'
+            " Plug 'dense-analysis/ale'
+            Plug 'FuDesign2008/ale'
+            Plug 'FuDesign2008/ale-shim.vim'
 
-            "Bundle 'mattn/webapi-vim'
-            "Bundle 'mattn/gist-vim'
-            " Bundle 'preservim/nerdcommenter'
-            Bundle 'FuDesign2008/nerdcommenter'
-            "Bundle 'dimasg/vim-mark'
+            "Plug 'mattn/webapi-vim'
+            "Plug 'mattn/gist-vim'
+            " Plug 'preservim/nerdcommenter'
+            Plug 'FuDesign2008/nerdcommenter'
+            "Plug 'dimasg/vim-mark'
 
             "@see http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-            " Bundle 'godlygeek/tabular'
+            " Plug 'godlygeek/tabular'
 
-            Bundle 'FuDesign2008/autoHighlight.vim'
-            Bundle 'FuDesign2008/smartRename.vim'
+            Plug 'FuDesign2008/autoHighlight.vim'
+            Plug 'FuDesign2008/smartRename.vim'
 
-            Bundle 'will133/vim-dirdiff'
-            " Bundle 'junkblocker/patchreview-vim'
-            Bundle 'chrisbra/vim-diff-enhanced'
-            " Bundle 'Chiel92/vim-autoformat'
+            Plug 'will133/vim-dirdiff'
+            " Plug 'junkblocker/patchreview-vim'
+            Plug 'chrisbra/vim-diff-enhanced'
+            " Plug 'Chiel92/vim-autoformat'
 
-            " Bundle 'KabbAmine/zeavim.vim'
+            " Plug 'KabbAmine/zeavim.vim'
 
-            Bundle 'ekalinin/Dockerfile.vim'
-            Bundle 'cespare/vim-toml'
+            Plug 'ekalinin/Dockerfile.vim'
+            Plug 'cespare/vim-toml'
 
-            " Bundle 'christoomey/vim-system-copy'
+            " Plug 'christoomey/vim-system-copy'
 
 
             if !g:is_win
 
                 "dash.vim needs funcoo.vim
-                "Bundle 'rizzatti/funcoo.vim'
-                "Bundle 'rizzatti/dash.vim'
+                "Plug 'rizzatti/funcoo.vim'
+                "Plug 'rizzatti/dash.vim'
 
             endif
 
@@ -378,28 +374,28 @@ set nocompatible        " must be first line
 
     " ctags
         if count(g:spf13_bundle_groups, 'ctags') && executable('ctags') && !g:is_win
-            Bundle 'majutsushi/tagbar'
+            Plug 'majutsushi/tagbar'
 
-            Bundle 'xolox/vim-misc'
+            Plug 'xolox/vim-misc'
             " Use easytas with YCM for NOT C-family languages like html,
             " css, scss
-            Bundle 'xolox/vim-easytags'
+            Plug 'xolox/vim-easytags'
         endif
 
     " Snippets
         if count(g:spf13_bundle_groups, 'snip')
-            "Bundle 'garbas/vim-snipmate'
+            "Plug 'garbas/vim-snipmate'
 
             if !g:is_win
                 " ultisnips is better
                 "YCM can integeting with ultisnips
                 "snippets engine
-                Bundle 'SirVer/ultisnips'
+                Plug 'SirVer/ultisnips'
 
                 "snippets
-                Bundle 'honza/vim-snippets'
+                Plug 'honza/vim-snippets'
 
-                Bundle 'FuDesign2008/viml-snippets.vim'
+                Plug 'FuDesign2008/viml-snippets.vim'
             endif
 
         endif
@@ -407,98 +403,98 @@ set nocompatible        " must be first line
     " PHP
         if count(g:spf13_bundle_groups, 'php')
             " better syntax hilight
-            Bundle 'shawncplus/php.vim'
-            Bundle 'shawncplus/phpcomplete.vim'
-            "Bundle 'spf13/PIV'
+            Plug 'shawncplus/php.vim'
+            Plug 'shawncplus/phpcomplete.vim'
+            "Plug 'spf13/PIV'
         endif
 
     " Python
         if count(g:spf13_bundle_groups, 'python')
-            "Bundle 'klen/python-mode'
+            "Plug 'klen/python-mode'
 
             " YouCompleteMe will use Jedi for python completion
 
             " syntax checker
-            Bundle 'nvie/vim-flake8'
+            Plug 'nvie/vim-flake8'
             " document
-            Bundle 'fs111/pydoc.vim'
-            Bundle 'FuDesign2008/python-snippets'
+            Plug 'fs111/pydoc.vim'
+            Plug 'FuDesign2008/python-snippets'
 
         endif
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
-            Bundle 'leshill/vim-json'
-            Bundle 'gutenye/json5.vim'
-            Bundle 'neoclide/jsonc.vim'
-            " Bundle 'kevinoid/vim-jsonc'
+            Plug 'leshill/vim-json'
+            Plug 'gutenye/json5.vim'
+            Plug 'neoclide/jsonc.vim'
+            " Plug 'kevinoid/vim-jsonc'
 
 
-            Bundle 'pangloss/vim-javascript'
-            "Bundle 'jelera/vim-javascript-syntax'
+            Plug 'pangloss/vim-javascript'
+            "Plug 'jelera/vim-javascript-syntax'
 
             " support javascript and typescript
             " @see https://github.com/Galooshi/import-js/issues/503
-            Bundle 'galooshi/vim-import-js'
+            Plug 'galooshi/vim-import-js'
 
             " disable othree/yajs.vim for performance
             " @see https://github.com/othree/yajs.vim#performance-issue
             " > yajs.vim is not good on performance
-            " Bundle 'othree/es.next.syntax.vim'
-            " Bundle 'othree/yajs.vim'
-            " Bundle 'othree/javascript-libraries-syntax.vim'
+            " Plug 'othree/es.next.syntax.vim'
+            " Plug 'othree/yajs.vim'
+            " Plug 'othree/javascript-libraries-syntax.vim'
 
-            "Bundle 'mattn/jscomplete-vim'
+            "Plug 'mattn/jscomplete-vim'
 
-            Bundle 'FuDesign2008/javascript-snippets.vim'
+            Plug 'FuDesign2008/javascript-snippets.vim'
 
             " tern is used in YCM
-            " Bundle 'marijnh/tern_for_vim'
+            " Plug 'marijnh/tern_for_vim'
 
-            Bundle 'heavenshell/vim-jsdoc'
-            " Bundle 'FuDesign2008/vim-jsdoc'
+            Plug 'heavenshell/vim-jsdoc'
+            " Plug 'FuDesign2008/vim-jsdoc'
 
-            " Bundle 'Quramy/vim-js-pretty-template'
+            " Plug 'Quramy/vim-js-pretty-template'
 
-            " Bundle 'flowtype/vim-flow'
+            " Plug 'flowtype/vim-flow'
 
             " for wxapp
-            " Bundle 'chemzqm/wxapp.vim'
+            " Plug 'chemzqm/wxapp.vim'
 
-            " Bundle 'mxw/vim-jsx'
+            " Plug 'mxw/vim-jsx'
             " vim-jsx-pretty may be better than vim-jsx
-            Bundle 'maxmellon/vim-jsx-pretty'
+            Plug 'maxmellon/vim-jsx-pretty'
 
-            Bundle 'FuDesign2008/component-kit.vim'
+            Plug 'FuDesign2008/component-kit.vim'
 
-            Bundle 'maksimr/vim-jsbeautify'
+            Plug 'maksimr/vim-jsbeautify'
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
-                Bundle 'leafgarland/typescript-vim'
+                Plug 'leafgarland/typescript-vim'
                 " had some performance issues when highlighting large TSX files
                 " @see https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
-                " Bundle 'peitalin/vim-jsx-typescript'
-                Bundle 'FuDesign2008/json2ts.vim'
+                " Plug 'peitalin/vim-jsx-typescript'
+                Plug 'FuDesign2008/json2ts.vim'
                 " yats has UltiSnips for typescript - which is not wanted
-                " Bundle 'HerringtonDarkholme/yats.vim'
+                " Plug 'HerringtonDarkholme/yats.vim'
             endif
 
             " coffeescript
             if count(g:spf13_bundle_groups, 'coffeescript')
-                Bundle 'kchmck/vim-coffee-script'
+                Plug 'kchmck/vim-coffee-script'
             endif
 
             if count(g:spf13_bundle_groups, 'react')
-                Bundle 'FuDesign2008/react-snippets.vim'
+                Plug 'FuDesign2008/react-snippets.vim'
             endif
 
             " vue
             if count(g:spf13_bundle_groups, 'vue')
-                Bundle 'posva/vim-vue'
-                Bundle 'FuDesign2008/vue-snippets.vim'
-                " Bundle 'FuDesign2008/element-ui.vim'
-                Bundle 'FuDesign2008/element-ui-snippets.vim'
+                Plug 'posva/vim-vue'
+                Plug 'FuDesign2008/vue-snippets.vim'
+                " Plug 'FuDesign2008/element-ui.vim'
+                Plug 'FuDesign2008/element-ui-snippets.vim'
             endif
 
 
@@ -509,50 +505,50 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'node')
 
             " for node
-            " Bundle 'myhere/vim-nodejs-complete'
-            Bundle 'guileen/vim-node-dict'
-            " Bundle 'sidorares/node-vim-debugger'
-            Bundle 'moll/vim-node'
-            " Bundle 'digitaltoad/vim-pug'
+            " Plug 'myhere/vim-nodejs-complete'
+            Plug 'guileen/vim-node-dict'
+            " Plug 'sidorares/node-vim-debugger'
+            Plug 'moll/vim-node'
+            " Plug 'digitaltoad/vim-pug'
 
         endif
 
     " css
         if count(g:spf13_bundle_groups, 'css')
-            " Bundle 'hail2u/vim-css3-syntax'
-            Bundle 'groenewege/vim-less'
-            " Bundle 'wavded/vim-stylus'
+            " Plug 'hail2u/vim-css3-syntax'
+            Plug 'groenewege/vim-less'
+            " Plug 'wavded/vim-stylus'
 
-            Bundle 'cakebaker/scss-syntax.vim'
-            "Bundle 'tpope/vim-haml'
+            Plug 'cakebaker/scss-syntax.vim'
+            "Plug 'tpope/vim-haml'
 
             " use ap/vim-css-color instead of skammer/vim-css-color
             " @see https://github.com/jvortmann/vim-files/issues/2
-            Bundle 'ap/vim-css-color'
-            " Bundle 'amadeus/vim-convert-color-to'
+            Plug 'ap/vim-css-color'
+            " Plug 'amadeus/vim-convert-color-to'
 
-            Bundle 'FuDesign2008/css-snippets.vim'
+            Plug 'FuDesign2008/css-snippets.vim'
         endif
 
     " scala
         if count(g:spf13_bundle_groups, 'scala')
-            Bundle 'derekwyatt/vim-scala'
-            Bundle 'derekwyatt/vim-sbt'
+            Plug 'derekwyatt/vim-scala'
+            Plug 'derekwyatt/vim-sbt'
         endif
 
     " HTML
         if count(g:spf13_bundle_groups, 'html')
-            " Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'othree/html5.vim'
-            Bundle 'mattn/emmet-vim'
-            "Bundle 'lepture/vim-velocity'
+            " Plug 'amirh/HTML-AutoCloseTag'
+            Plug 'othree/html5.vim'
+            Plug 'mattn/emmet-vim'
+            "Plug 'lepture/vim-velocity'
         endif
 
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
-            Bundle 'vim-ruby/vim-ruby'
-            Bundle 'tpope/vim-rails'
+            Plug 'vim-ruby/vim-ruby'
+            Plug 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
@@ -561,57 +557,57 @@ set nocompatible        " must be first line
     " Document
         if count(g:spf13_bundle_groups, 'document')
             " useful when show code
-            Bundle 'junegunn/goyo.vim'
-            Bundle 'FuDesign2008/vim-carbon-now-sh'
-            " Bundle 'jszakmeister/markdown2ctags'
+            Plug 'junegunn/goyo.vim'
+            Plug 'FuDesign2008/vim-carbon-now-sh'
+            " Plug 'jszakmeister/markdown2ctags'
 
-            Bundle 'FuDesign2008/mkdInput.vim'
-            Bundle 'FuDesign2008/mermaidViewer.vim'
-            Bundle 'FuDesign2008/MarkdownViewer.vim'
-            Bundle 'FuDesign2008/markdown-snippets.vim'
+            Plug 'FuDesign2008/mkdInput.vim'
+            Plug 'FuDesign2008/mermaidViewer.vim'
+            Plug 'FuDesign2008/MarkdownViewer.vim'
+            Plug 'FuDesign2008/markdown-snippets.vim'
 
-            " Bundle 'iamcco/markdown-preview.nvim'
-            " Bundle 'mzlogin/vim-markdown-toc'
-            Bundle 'plasticboy/vim-markdown'
-            Bundle 'lervag/vimtex'
+            " Plug 'iamcco/markdown-preview.nvim'
+            " Plug 'mzlogin/vim-markdown-toc'
+            Plug 'plasticboy/vim-markdown'
+            Plug 'lervag/vimtex'
 
 
 
-            "Bundle 'vim-scripts/Figlet.vim'
-            "Bundle 'vim-scripts/wiki.vim'
-            "Bundle 'chase/vim-ansible-yaml'
-            "Bundle 'hotoo/pangu.vim'
-            "Bundle 'spf13/vim-preview'
-            "Bundle 'tpope/vim-cucumber'
-            "Bundle 'quentindecock/vim-cucumber-align-pipes'
-            "Bundle 'Puppet-Syntax-Highlighting'
+            "Plug 'vim-scripts/Figlet.vim'
+            "Plug 'vim-scripts/wiki.vim'
+            "Plug 'chase/vim-ansible-yaml'
+            "Plug 'hotoo/pangu.vim'
+            "Plug 'spf13/vim-preview'
+            "Plug 'tpope/vim-cucumber'
+            "Plug 'quentindecock/vim-cucumber-align-pipes'
+            "Plug 'Puppet-Syntax-Highlighting'
         endif
 
     " Twig
         "if count(g:spf13_bundle_groups, 'twig')
-            "Bundle 'beyondwords/vim-twig'
+            "Plug 'beyondwords/vim-twig'
         "endif
 
     "Java
         "
         if count(g:spf13_bundle_groups, 'java') && !g:is_win
-            " Bundle 'artur-shaik/vim-javacomplete2'
-            Bundle 'udalov/kotlin-vim'
+            " Plug 'artur-shaik/vim-javacomplete2'
+            Plug 'udalov/kotlin-vim'
         endif
 
     "iOS
         "
         if count(g:spf13_bundle_groups, 'ios') && !g:is_win
-            "Bundle 'msanders/cocoa.vim'
-            Bundle 'b4winckler/vim-objc'
-            "Bundle 'eraserhd/vim-ios'
-            Bundle 'nacitar/a.vim'
+            "Plug 'msanders/cocoa.vim'
+            Plug 'b4winckler/vim-objc'
+            "Plug 'eraserhd/vim-ios'
+            Plug 'nacitar/a.vim'
         endif
 
 
     " ai
         if count(g:spf13_bundle_groups, 'ai')
-            Bundle 'github/copilot.vim'
+            Plug 'github/copilot.vim'
         endif
 
     " bash
@@ -619,7 +615,7 @@ set nocompatible        " must be first line
 
             if !has('win32') && has('unix')
                 " for man page
-                " Bundle 'jez/vim-superman'
+                " Plug 'jez/vim-superman'
             endif
 
         endif
@@ -627,11 +623,13 @@ set nocompatible        " must be first line
 
     " haskell
         if count(g:spf13_bundle_groups, 'haskell')
-            Bundle 'neovimhaskell/haskell-vim'
+            Plug 'neovimhaskell/haskell-vim'
         endif
 
 
     endif
+
+    call plug#end()
 " }
 
 " General {

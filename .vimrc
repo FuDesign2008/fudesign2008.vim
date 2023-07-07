@@ -24,13 +24,6 @@ set langmenu=en
         endif
     " }
 
-    " Setup Bundle Support {
-    " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype on
-        filetype off
-        set runtimepath+=~/.vim/bundle/vundle
-        call vundle#rc()
-    " }
     " { for python3
     "  fix https://blog.csdn.net/f4prime/article/details/113783784
     "  @see https://zhuanlan.zhihu.com/p/139746816
