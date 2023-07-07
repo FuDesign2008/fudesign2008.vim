@@ -69,6 +69,7 @@ fi
 
 
 echo "update/install plugins using Plug"
-vim -es -u "$endpath/.vimrc.bundles" -i NONE -c "PlugInstall" -c "qa"
+# vim -es -u "$endpath/.vimrc.bundles" -i NONE -c "PlugInstall" -c "qa"
+vim -u "$endpath/.vimrc.bundles" +PlugInstall! +PlugClean +qall
 
 

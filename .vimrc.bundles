@@ -103,7 +103,7 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'general')
             " Plug 'mhinz/vim-startify'
             Plug 'preservim/nerdtree'
-            Plug 'matchit.zip'
+            Plug 'vim-scripts/matchit.zip'
             Plug 'ntpeters/vim-better-whitespace'
             Plug 'FuDesign2008/TrimWhiteSpaces.vim'
             " Plug 'junegunn/rainbow_parentheses.vim'
