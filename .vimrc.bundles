@@ -24,6 +24,17 @@ set nocompatible        " must be first line
     "
 " }
 
+" Plug config {
+    " default: 'https://git::@github.com/%s.git'
+    "
+    " e.g.
+    "
+    " 1. https://github.com/FuDesign2008/fudesign2008.vim.git
+    " 2. git@github.com:FuDesign2008/fudesign2008.vim.git
+    "
+    let g:plug_url_format='git@github.com:%s.git'
+" }
+
 " Bundles {
 
     call plug#begin('~/.vim/bundle')
