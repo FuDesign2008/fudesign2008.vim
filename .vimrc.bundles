@@ -91,7 +91,7 @@ set nocompatible        " must be first line
     "  deoplete
     "  coc
     "
-    let g:spf13_autocomplete_method=['ycm']
+    let g:spf13_autocomplete_method=['vim-lsp']
 
     " To override all the included bundles, put
     " g:override_spf13_bundles = 1
@@ -278,7 +278,7 @@ set nocompatible        " must be first line
                     \ './install.py --clang-completer --ts-completer  --system-libclang --verbose &&  cd ./third_party/ycmd/third_party/tsserver && yarn add typescript@latest typescript-plugin-css-modules@latest'
                     \ }
                 Plug 'ycm-core/lsp-examples', { 'do':
-                    \ './install.py --all'
+                        \ './install.py --enable-bash --enable-docker --enable-json --enable-viml --enable-vue --enable-yaml'
                     \ }
                 " Plug 'FuDesign2008/lsp-examples' , { 'do': 'python3 ./install.py --enable-bash --enable-docker --enable-json --enable-viml --enable-vue --enable-yaml' }
             endif
