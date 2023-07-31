@@ -400,7 +400,7 @@ set nocompatible        " must be first line
                 Plug 'SirVer/ultisnips'
 
                 "snippets
-                Plug 'honza/vim-snippets', { 'for': 'vim' }
+                Plug 'honza/vim-snippets'
 
                 Plug 'FuDesign2008/viml-snippets.vim', { 'for': 'vim' }
             endif
