@@ -366,6 +366,8 @@ set nocompatible        " must be first line
             Plug 'ekalinin/Dockerfile.vim'
             Plug 'cespare/vim-toml'
 
+            Plug 'ashishbinu/vim-dotenv'
+
             " Plug 'christoomey/vim-system-copy'
 
 
