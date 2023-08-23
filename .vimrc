@@ -464,7 +464,7 @@ augroup END
             " @see https://github.com/BurntSushi/ripgrep/issues/425
             set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
             " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
-            let g:ackprg = 'rg --vimgrep --hidden --no-heading --smart-case'
+            let g:ackprg = substitute('rg --vimgrep --hidden --no-heading --smart-case --glob "!.git" ', '"', "'", 'g')
         elseif executable('ag')
             " The Silver Searcher
             set grepprg=ag\ --nogroup\ --nocolor\ --smart-case
