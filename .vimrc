@@ -468,7 +468,7 @@ augroup END
         elseif executable('ag')
             " The Silver Searcher
             set grepprg=ag\ --nogroup\ --nocolor\ --smart-case
-            let g:ackprg = 'ag --vimgrep --hidden --smart-case'
+            let g:ackprg = 'ag --vimgrep --hidden --smart-case --ignore-dir .git'
         endif
 
     " }
