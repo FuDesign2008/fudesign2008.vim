@@ -830,16 +830,20 @@ augroup END
                       " \ }
                 " augroup END
 
-                function s:vimrc_ycm_rename(newName)
-                    exec ':YcmCompleter RefactorRename ' . a:newName
+                function s:vimrc_ycm_rename()
+                    let l:old_name = expand('<cword>')
+                    let l:new_name = ale#util#Input('New name: ', l:old_name)
+                    if empty(l:new_name)
+                        echom 'New name cannot be empty!'
+                        return
+                    endif
+                    exec ':YcmCompleter RefactorRename ' . l:new_name
                 endfunction
-
-                command! -nargs=1 -complete=var YcmRename call s:vimrc_ycm_rename("<args>")
 
 
                 nmap <silent> <leader>d :YcmCompleter GoToDefinition <CR>
                 nmap <silent> <leader>td :YcmCompleter GoToDeclaration <CR>
-                nmap <silent> <leader>r :YcmRename <CR>
+                nmap <silent> <leader>r :call s:vimrc_ycm_rename() <CR>
 
 
                 " default
