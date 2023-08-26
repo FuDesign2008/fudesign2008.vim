@@ -837,8 +837,8 @@ augroup END
                 command! -nargs=1 -complete=var YcmRename call s:vimrc_ycm_rename("<args>")
 
 
-                nmap <silent> <leader>d :YcmCompleter GotoDefinition <CR>
-                nmap <silent> <leader>td :YcmCompleter GotoDeclaration <CR>
+                nmap <silent> <leader>d :YcmCompleter GoToDefinition <CR>
+                nmap <silent> <leader>td :YcmCompleter GoToDeclaration <CR>
                 nmap <silent> <leader>r :YcmRename <CR>
 
 
