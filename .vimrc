@@ -811,9 +811,9 @@ augroup END
 
                 set completeopt="menu,popup"
                 if g:vimrc_performance_low
-                    set updatetime=4000
+                    set updatetime=2000
                 else
-                    set updatetime=3000
+                    set updatetime=500
                 endif
 
                 " prefer to use shortcut
@@ -829,6 +829,17 @@ augroup END
                       " \ 'syntax': &filetype
                       " \ }
                 " augroup END
+
+                function s:vimrc_ycm_rename(newName)
+                    exec ':YcmCompleter RefactorRename ' . a:newName
+                endfunction
+
+                command! -nargs=1 -complete=var YcmRename call s:vimrc_ycm_rename("<args>")
+
+
+                nmap <silent> <leader>d :YcmCompleter GotoDefinition <CR>
+                nmap <silent> <leader>td :YcmCompleter GotoDeclaration <CR>
+                nmap <silent> <leader>r :YcmRename <CR>
 
 
                 " default
