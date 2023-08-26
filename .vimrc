@@ -830,7 +830,7 @@ augroup END
                       " \ }
                 " augroup END
 
-                function s:vimrc_ycm_rename()
+                function! VimrcYcmRename()
                     let l:old_name = expand('<cword>')
                     let l:new_name = ale#util#Input('New name: ', l:old_name)
                     if empty(l:new_name)
@@ -843,7 +843,7 @@ augroup END
 
                 nmap <silent> <leader>d :YcmCompleter GoToDefinition <CR>
                 nmap <silent> <leader>td :YcmCompleter GoToDeclaration <CR>
-                nmap <silent> <leader>r :call s:vimrc_ycm_rename() <CR>
+                nmap <silent> <leader>r :call VimrcYcmRename() <CR>
 
 
                 " default
