@@ -122,17 +122,17 @@ Each section is labeled and each option is commented.
 
 It fixes many of the inconveniences of vanilla vim including
 
--   A single config can be used across Windows, Mac and linux
--   Eliminates swap and backup files from littering directories, preferring to store in a central location.
--   Fixes common typos like :W, :Q, etc
--   Setup a solid set of settings for Formatting (change to meet your needs)
--   Setup the interface to take advantage of vim's features including
-    -   omnicomplete
-    -   line numbers
-    -   syntax highlighting
-    -   A better ruler & status line
-    -   & more
--   Configuring included plugins
+- A single config can be used across Windows, Mac and linux
+- Eliminates swap and backup files from littering directories, preferring to store in a central location.
+- Fixes common typos like :W, :Q, etc
+- Setup a solid set of settings for Formatting (change to meet your needs)
+- Setup the interface to take advantage of vim's features including
+  - omnicomplete
+  - line numbers
+  - syntax highlighting
+  - A better ruler & status line
+  - & more
+- Configuring included plugins
 
 ## Customization
 
@@ -218,10 +218,10 @@ functionality to your vim editing. You can learn more about it with
 
 **Customizations**:
 
--   Use `<C-E>` to toggle NERDTree
--   Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
--   Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
--   Treat NERDTree more like a panel than a split.
+- Use `<C-E>` to toggle NERDTree
+- Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
+- Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
+- Treat NERDTree more like a panel than a split.
 
 ## [ctrlp]
 
@@ -266,9 +266,9 @@ NeoComplCache is an amazing autocomplete plugin with additional support for snip
 
 **Customizations**:
 
--   Automatically present the autocomplete menu
--   Support tab and enter for autocomplete
--   `<C-k>` for completing snippets.
+- Automatically present the autocomplete menu
+- Support tab and enter for autocomplete
+- `<C-k>` for completing snippets.
 
 ![neocomplcache image][autocomplete-img]
 
@@ -301,13 +301,13 @@ file
 
 **Customizations**:
 
--   `<leader>gs` :Gstatus<CR>
--   `<leader>gd` :Gdiff<CR>
--   `<leader>gc` :Gcommit<CR>
--   `<leader>gb` :Gblame<CR>
--   `<leader>gl` :Glog<CR>
--   `<leader>gp` :Git push<CR>
--   :Git \_\_\_ will pass anything along to git.
+- `<leader>gs` :Gstatus<CR>
+- `<leader>gd` :Gdiff<CR>
+- `<leader>gc` :Gcommit<CR>
+- `<leader>gb` :Gblame<CR>
+- `<leader>gl` :Glog<CR>
+- `<leader>gp` :Git push<CR>
+- :Git \_\_\_ will pass anything along to git.
 
 ![fugitive image][fugitive-img]
 
@@ -317,11 +317,11 @@ The most feature complete and up to date PHP Integration for Vim with proper sup
 
 PIV provides:
 
--   PHP 5.3 support
--   Auto generation of PHP Doc (,pd on (function, variable, class) definition line)
--   Autocomplete of classes, functions, variables, constants and language keywords
--   Better indenting
--   Full PHP documentation manual (hit K on any function for full docs)
+- PHP 5.3 support
+- Auto generation of PHP Doc (,pd on (function, variable, class) definition line)
+- Autocomplete of classes, functions, variables, constants and language keywords
+- Better indenting
+- Full PHP documentation manual (hit K on any function for full docs)
 
 ![php vim itegration image][phpmanual-img]
 
@@ -338,11 +338,11 @@ Tabularize lets you align statements on their equal signs and other characters
 
 **Customizations**:
 
--   `<Leader>a= :Tabularize /=<CR>`
--   `<Leader>a: :Tabularize /:<CR>`
--   `<Leader>a:: :Tabularize /:\zs<CR>`
--   `<Leader>a, :Tabularize /,<CR>`
--   `<Leader>a<Bar> :Tabularize /<Bar><CR>`
+- `<Leader>a= :Tabularize /=<CR>`
+- `<Leader>a: :Tabularize /:<CR>`
+- `<Leader>a:: :Tabularize /:\zs<CR>`
+- `<Leader>a, :Tabularize /,<CR>`
+- `<Leader>a<Bar> :Tabularize /<Bar><CR>`
 
 ## [Tagbar]
 
@@ -379,17 +379,17 @@ For example this screen shot demonstrates pressing `,,w`
 
 spf13-vim ships with a few additional syntaxes:
 
--   Markdown (bound to \*.markdown, \*.md, and \*.mk)
--   Twig
--   Git commits (set your `EDITOR` to `mvim -f`)
+- Markdown (bound to \*.markdown, \*.md, and \*.mk)
+- Twig
+- Git commits (set your `EDITOR` to `mvim -f`)
 
 ## Amazing Colors
 
 spf13-vim includes [solarized] and [spf13 vim color pack](https://github.com/spf13/vim-colors/):
 
--   ir_black
--   molokai
--   peaksea
+- ir_black
+- molokai
+- peaksea
 
 Use `:color molokai` to switch to a color scheme.
 
@@ -403,25 +403,25 @@ Here's some tips if you've never used VIM before:
 
 ## Tutorials
 
--   Type `vimtutor` into a shell to go through a brief interactive
-    tutorial inside VIM.
--   Read the slides at [VIM: Walking Without Crutches](http://walking-without-crutches.heroku.com/#1).
+- Type `vimtutor` into a shell to go through a brief interactive
+  tutorial inside VIM.
+- Read the slides at [VIM: Walking Without Crutches](http://walking-without-crutches.heroku.com/#1).
 
 ## Modes
 
--   VIM has two (common) modes:
-    -   insert mode- stuff you type is added to the buffer
-    -   normal mode- keys you hit are interpreted as commands
--   To enter insert mode, hit `i`
--   To exit insert mode, hit `<ESC>`
+- VIM has two (common) modes:
+  - insert mode- stuff you type is added to the buffer
+  - normal mode- keys you hit are interpreted as commands
+- To enter insert mode, hit `i`
+- To exit insert mode, hit `<ESC>`
 
 ## Useful commands
 
--   Use `:q` to exit vim
--   Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
-    Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
-    convenient location.
--   Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
+- Use `:q` to exit vim
+- Certain commands are prefixed with a `<Leader>` key, which by default maps to `\`.
+  Spf13-vim uses `let mapleader = ","` to change this to `,` which is in a consistent and
+  convenient location.
+- Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
 [git]: http://git-scm.com
 [curl]: http://curl.haxx.se
@@ -457,11 +457,27 @@ Here's some tips if you've never used VIM before:
 ## Speed up vim
 
 1. vim
-    - [Improving Performance in Vim. This time I want to share with you some… | by Santiago Agüero | Medium](https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf)
+   - [Improving Performance in Vim. This time I want to share with you some… | by Santiago Agüero | Medium](https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf)
 1. fzf
-    - [How to search faster in Vim with FZF.vim - DEV](https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko)
-    - [How FZF and ripgrep improved my workflow | by Sidney Liebrand | Medium](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861)
+   - [How to search faster in Vim with FZF.vim - DEV](https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko)
+   - [How FZF and ripgrep improved my workflow | by Sidney Liebrand | Medium](https://medium.com/@sidneyliebrand/how-fzf-and-ripgrep-improved-my-workflow-61c7ca212861)
 1. ctrp
-    - [Making Vim CtrlP load time100x faster | by Felippe Nardi | A Tiny Piece of Vim | Medium](https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6)
+   - [Making Vim CtrlP load time100x faster | by Felippe Nardi | A Tiny Piece of Vim | Medium](https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6)
 1. YCM
-    - [GitHub - ackyshake/VimCompletesMe: You don&#39;t Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.](https://github.com/ackyshake/VimCompletesMe)
+   - [GitHub - ackyshake/VimCompletesMe: You don&#39;t Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.](https://github.com/ackyshake/VimCompletesMe)
+
+## 快捷键
+
+源自 `.vimrc` 的快捷键
+
+| 快捷键       | 功能                             | 插件映射            | 备注 |
+| :----------- | :------------------------------- | :------------------ | :--- |
+| `<leader>d`  | goto definition                  | YCM/ALE/vim-lsp/coc |      |
+| `<leader>td` | goto declaration                 | YCM/ALE/vim-lsp/coc |      |
+| `<leader>r`  | 重命名                           | YCM/ALE/vim-lsp/coc |      |
+| `<leader>rf` | 显示工程中的 refers              | YCM/coc             |      |
+| `<leader>k`  | 独立窗口显示文档                 | YCM                 |      |
+| `K`          | hover窗口显示文档                | YCM/ALE/vim-lsp/coc |      |
+| `<leader>f`  | fix 当前行                       | ALE/coc             |      |
+| `<leader>ff` | 显示`<cword>` 在文档中的所有出现 |                     |      |
+| `<leader>tt` | 运行 `:NERDTreeToggle`           | NERDTree            |      |

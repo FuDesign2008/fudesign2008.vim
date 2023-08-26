@@ -673,8 +673,10 @@ augroup END
                     " ⚠️  same shortcut with ALE
                     nmap <silent> <leader>d <Plug>(coc-definition)
                     nmap <silent> <leader>td <Plug>(coc-type-definition)
-                    nmap <silent> <leader>i <Plug>(coc-implementation)
+                    " nmap <silent> <leader>i <Plug>(coc-implementation)
                     nmap <silent> <leader>rf <Plug>(coc-references)
+                    " Remap for rename current word
+                    nmap <leader>r <Plug>(coc-rename)
 
                     " Use K to show documentation in preview window
                     " ⚠️  same shortcut with YCMHover
@@ -691,8 +693,6 @@ augroup END
                     " Highlight symbol under cursor on CursorHold
                     " autocmd vimrc CursorHold * silent call CocActionAsync('highlight')
 
-                    " Remap for rename current word
-                    nmap <leader>r <Plug>(coc-rename)
 
                     " Remap for format selected region
                     " xmap <leader>f  <Plug>(coc-format-selected)
@@ -820,8 +820,6 @@ augroup END
                 let g:ycm_auto_hover = ''
                 " let g:ycm_auto_hover = 'CursorHold'
 
-                " ⚠️  same shortcut with show_documentation of coc
-                nnoremap K <plug>(YCMHover)
                 " augroup MyYCMCustom
                     " autocmd!
                     " autocmd FileType typescript,javascript let b:ycm_hover = {
@@ -844,6 +842,10 @@ augroup END
                 nmap <silent> <leader>d :YcmCompleter GoToDefinition <CR>
                 nmap <silent> <leader>td :YcmCompleter GoToDeclaration <CR>
                 nmap <silent> <leader>r :call VimrcYcmRename() <CR>
+                nmap <silent> <leader>rf :YcmCompleter  GoToReferences <CR>
+                nmap <silent> <leader>k :YcmCompleter  GetDoc <CR>
+                " ⚠️  same shortcut with show_documentation of coc
+                nnoremap K <plug>(YCMHover)
 
 
                 " default
