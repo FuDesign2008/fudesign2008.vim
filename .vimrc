@@ -460,7 +460,7 @@ augroup END
         "  @param {0|1} isRg is rg or ag
         "  @param {0|1} isArg
         function! AckPrgAddIgnoreDirs(isAg, prg)
-            let l:ignore_dirs = ['.git', 'esm']
+            let l:ignore_dirs = ['.git', 'esm', 'cjs']
             let l:wholePrg  = a:prg
             for l:ignore_item in l:ignore_dirs
                 if a:isAg
