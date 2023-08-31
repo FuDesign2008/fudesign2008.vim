@@ -457,18 +457,30 @@ augroup END
 
 " Plugins {
     " ack.vim/ag.vim {
-        " @see http://robots.thoughtbot.com/faster-grepping-in-vim
-        "set grepprg=ack
-        "
+        "  @param {0|1} isRg is rg or ag
+        "  @param {0|1} isArg
+        function! AckPrgAddIgnoreDirs(isAg, prg)
+            let l:ignore_dirs = ['.git', 'esm']
+            let l:wholePrg  = a:prg
+            for l:ignore_item in l:ignore_dirs
+                if a:isAg
+                    let l:wrappered = "'!" . l:ignore_item . "'"
+                    let l:wholePrg  = l:wholePrg . ' --glob ' . l:wrappered
+                else
+                    let l:wholePrg  = l:wholePrg . ' --ignore-dir ' . l:ignore_item
+                endif
+            endfor
+            return l:wholePrg
+        endfunction
         if executable('rg')
             " @see https://github.com/BurntSushi/ripgrep/issues/425
             set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
             " @see https://www.philipbradley.net/posts/2017-03-29-ripgrep-with-ctrlp-and-vim/
-            let g:ackprg = substitute('rg --vimgrep --hidden --no-heading --smart-case --glob "!.git" ', '"', "'", 'g')
+            let g:ackprg = AckPrgAddIgnoreDirs(1, 'rg --vimgrep --hidden --no-heading --smart-case')
         elseif executable('ag')
             " The Silver Searcher
             set grepprg=ag\ --nogroup\ --nocolor\ --smart-case
-            let g:ackprg = 'ag --vimgrep --hidden --smart-case --ignore-dir .git'
+            let g:ackprg = AckPrgAddIgnoreDirs(0, 'ag --vimgrep --hidden --smart-case')
         endif
 
     " }
