@@ -1939,6 +1939,10 @@ augroup END
         "let g:indent_guides_enable_on_vim_startup = 1
      " }
 
+     "  APZelos/blamer.nvim {
+        let g:blamer_enabled = 1
+     " }
+
      " lervag/vimtex {
         let g:tex_flavor='latex'
      " }
