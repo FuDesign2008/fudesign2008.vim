@@ -593,7 +593,7 @@ augroup END
             " }
 
             " FuDesign2008/asyncomplete-smart-fuzzy.vim {
-                let g:asf_min_num_of_chars_for_completion=0
+                let g:asf_min_num_of_chars_for_completion=1
             " }
 
             "vim-lsp.vim
