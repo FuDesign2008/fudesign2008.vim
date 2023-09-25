@@ -225,7 +225,7 @@ set nocompatible        " must be first line
                 Plug 'FuDesign2008/asyncomplete.vim'
                 Plug 'FuDesign2008/asyncomplete-smart-fuzzy.vim'
 
-                Plug 'machakann/asyncomplete-ezfilter.vim'
+                " Plug 'machakann/asyncomplete-ezfilter.vim'
 
                 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 

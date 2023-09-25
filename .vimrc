@@ -535,13 +535,13 @@ augroup END
                 let g:asyncomplete_matchfuzzy=0
                 let g:asyncomplete_max_num_candidates=25
 
-                if exists('*matchfuzzypos') == 0
+                " if exists('*matchfuzzypos') == 0
                     " Match items case-sensitive
                     " @see https://github.com/machakann/asyncomplete-ezfilter.vim
-                    let g:asyncomplete#preprocessor#ezfilter#config = {}
-                    let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
-                    let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
-                endif
+                    " let g:asyncomplete#preprocessor#ezfilter#config = {}
+                    " let g:asyncomplete#preprocessor#ezfilter#config['*'] =  {ctx, items -> ctx.filter(items, 0)}
+                    " let g:asyncomplete_preprocessor =  [function('asyncomplete#preprocessor#ezfilter#filter')]
+                " endif
 
 
                 " let g:UltiSnipsExpandTrigger="<c-e>"
