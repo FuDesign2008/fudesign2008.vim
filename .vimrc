@@ -601,7 +601,8 @@ augroup END
                 if &diff
                     let g:lsp_auto_enable=0
                 endif
-                let g:lsp_ignorecase = 0
+                " ignorecase and use smart case in FuDesign2008/asyncomplete-smart-fuzzy.vim
+                let g:lsp_ignorecase = 1
                 let g:lsp_settings_filetype_vue = g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7 ? ['volar-server'] : ['vls']
                 let g:lsp_settings_root_markers = ['package.json', '.git', '.git/']
                 let g:lsp_settings = {
