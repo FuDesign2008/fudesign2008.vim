@@ -526,7 +526,7 @@ augroup END
                 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
                 " disable diagnostics, use ALE instead
-                " let g:lsp_diagnostics_enabled=1
+                let g:lsp_diagnostics_enabled=1
                 let g:lsp_diagnostics_echo_cursor=1
                 let g:lsp_diagnostics_virtual_text_enabled=0
                 " let g:lsp_diagnostics_float_cursor=1
