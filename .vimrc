@@ -559,10 +559,10 @@ augroup END
                     \ 'completor': function('asyncomplete#sources#file#completor')
                     \ }))
 
+                    " \ 'blocklist': ['go', 'typescript', 'typescriptreact'],
                 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
                     \ 'name': 'buffer',
                     \ 'allowlist': ['*'],
-                    \ 'blocklist': ['go', 'typescript', 'typescriptreact'],
                     \ 'completor': function('asyncomplete#sources#buffer#completor'),
                     \ 'config': {
                     \    'max_buffer_size': 5000,
