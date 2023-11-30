@@ -1116,7 +1116,7 @@ augroup END
                     \]
 
 
-        let g:random_theme_start = 'all:light'
+        let g:random_theme_start = 'all:auto'
 
     " }
 
