@@ -623,7 +623,7 @@ set nocompatible        " must be first line
 
     " ai
         if count(g:spf13_bundle_groups, 'ai')
-            Plug 'github/copilot.vim'
+            " Plug 'github/copilot.vim'
         endif
 
     " bash
