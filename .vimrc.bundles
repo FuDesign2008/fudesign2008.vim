@@ -329,7 +329,7 @@ set nocompatible        " must be first line
 
     " General Programming
         if count(g:spf13_bundle_groups, 'programming')
-            Plug 'APZelos/blamer.nvim'
+            " Plug 'APZelos/blamer.nvim'
             " Plug 'tpope/vim-fugitive'
 
             " see http://editorconfig.org/
