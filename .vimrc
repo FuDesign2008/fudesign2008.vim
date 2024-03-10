@@ -821,6 +821,7 @@ augroup END
 
                 let g:ycm_add_preview_to_completeopt = 0
                 let g:ycm_autoclose_preview_window_after_insertion = 0
+                let g:ycm_echo_current_diagnostic = 'virtual-text'
 
                 let g:ycm_lsp_examples_vimrc = expand('~/.vim/bundle/lsp-examples/vimrc.generated')
                 if filereadable(g:ycm_lsp_examples_vimrc)
@@ -1366,7 +1367,7 @@ augroup END
             let g:ale_disable_lsp = 1
             let g:ale_virtualtext_cursor = 'disabled'
             let g:ale_echo_cursor = 1
-            let g:ale_cursor_detail = 1
+            let g:ale_cursor_detail = 0
             let g:ale_set_balloons = 0
 
             if count(g:spf13_autocomplete_method, 'vim-lsp')
