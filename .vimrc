@@ -1367,7 +1367,7 @@ augroup END
             let g:ale_virtualtext_cursor = 'disabled'
             let g:ale_echo_cursor = 0
             let g:ale_cursor_detail = 0
-            let g:ale_set_balloons =1
+            let g:ale_set_balloons = 'hover'
 
             if count(g:spf13_autocomplete_method, 'vim-lsp')
                 nnoremap <silent> <leader>d <plug>(lsp-definition)
