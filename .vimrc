@@ -84,6 +84,10 @@ augroup END
     set encoding=utf-8
     scriptencoding utf-8
 
+    "disable bell audio
+    set visualbell
+    set t_vb=
+
     if has('clipboard')
         if has ('gui')
             if has('unnamedplus')
