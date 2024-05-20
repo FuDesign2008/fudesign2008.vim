@@ -34,5 +34,5 @@ IF NOT EXIST "%HOME%/.vim/autoload/plug.vim" (
 )
 
 @REM call vim -u "%BASE_DIR%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
-call vim -u "$endpath/.vimrc.bundles" +PlugUpdate! +PlugClean +qall
+call vim -u "%BASE_DIR%/.vimrc.bundles" +PlugUpdate! +PlugClean +qall
 
