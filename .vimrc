@@ -8,7 +8,7 @@ set langmenu=en
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        let g:is_win = has('win32') || has('win64')
+        let g:is_win = has('win32') || has('win64') || has('win32unix')
         if g:is_win
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
           " use zsh as default shell
