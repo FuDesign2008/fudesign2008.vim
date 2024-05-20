@@ -10,6 +10,7 @@ IF NOT EXIST "%BASE_DIR%" (
     echo updating fudesign2008.vim
     chdir /d "%BASE_DIR%"
     call git pull
+    call git checkout "fuyg/plug"
     chdir /d "%ORIGINAL_DIR%"
     call cd "%BASE_DIR%"
 )
@@ -25,9 +26,13 @@ IF NOT EXIST "%BASE_DIR%\.vim\bundle" (
     call mkdir "%BASE_DIR%\.vim\bundle"
 )
 
-IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-    call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+IF NOT EXIST "%HOME%/.vim/autoload/plug.vim" (
+    @REM call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+    @REM call iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    @REM ni $HOME/vimfiles/autoload/plug.vim -Force
+    call curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 )
 
-call vim -u "%BASE_DIR%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+@REM call vim -u "%BASE_DIR%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+call vim -u "$endpath/.vimrc.bundles" +PlugUpdate! +PlugClean +qall
 
