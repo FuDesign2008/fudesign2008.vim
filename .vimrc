@@ -32,7 +32,7 @@ set langmenu=en
         " scoop log
         " Linking ~\scoop\apps\python\current => ~\scoop\apps\python\3.12.3
         let g:python3_in_scoop=expand('~/scoop/apps/python/current')
-        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python310.dll')
+        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python3.dll')
         if isdirectory(g:python3_in_scoop)
             execute 'set pythonthreehome=' . g:python3_in_scoop
             execute 'set pythonthreedll=' . g:python3_dll_in_scoop
