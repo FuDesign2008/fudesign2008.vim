@@ -8,7 +8,7 @@ set langmenu=en
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
-        let g:is_win = has('win32') || has('win64')
+        let g:is_win = has('win32') || has('win64') || has('win32unix') ? 1 : 0
         if g:is_win
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
           " use zsh as default shell
@@ -25,12 +25,14 @@ set langmenu=en
     " }
 
     " { for python3
-    "  fix https://blog.csdn.net/f4prime/article/details/113783784
-    "  @see https://zhuanlan.zhihu.com/p/139746816
-    "  python -c "import sys; print(sys.path)"
-    "
-        let g:python3_in_scoop=expand('~/scoop/apps/python/3.10.4')
-        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/3.10.4/python310.dll')
+        "  fix https://blog.csdn.net/f4prime/article/details/113783784
+        "  @see https://zhuanlan.zhihu.com/p/139746816
+        "  python -c "import sys; print(sys.path)"
+        "
+        " scoop log
+        " Linking ~\scoop\apps\python\current => ~\scoop\apps\python\3.12.3
+        let g:python3_in_scoop=expand('~/scoop/apps/python/current')
+        let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python310.dll')
         if isdirectory(g:python3_in_scoop)
             execute 'set pythonthreehome=' . g:python3_in_scoop
             execute 'set pythonthreedll=' . g:python3_dll_in_scoop
