@@ -4,7 +4,7 @@
 
 @set BASE_DIR=%HOME%\.fudesign2008.vim
 IF NOT EXIST "%BASE_DIR%" (
-    call git clone --recursive -b "fuyg/plug" https://github.com/FuDesign2008/fudesign2008.vim.git "%BASE_DIR%"
+    call git clone --depth 1 --recursive -b "fuyg/plug" https://github.com/FuDesign2008/fudesign2008.vim.git "%BASE_DIR%"
 ) ELSE (
     @set ORIGINAL_DIR=%CD%
     echo updating fudesign2008.vim
