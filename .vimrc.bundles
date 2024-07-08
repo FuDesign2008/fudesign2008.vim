@@ -324,7 +324,7 @@ set nocompatible        " must be first line
             "lucius in vim-colorschemes is outdate
             " Plug 'flazz/vim-colorschemes'
             Plug 'FuDesign2008/awesome-vim-colorschemes'
-            Plug 'FuDesign2008/randomTheme.vim', { 'do': './install_fonts_mac.sh' }
+            Plug 'FuDesign2008/randomTheme.vim', { 'do': './install_fonts.sh' }
         endif
 
 
