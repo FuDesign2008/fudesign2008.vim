@@ -1352,7 +1352,7 @@ augroup END
                         \ 'typescript': ['eslint', 'prettier'],
                         \ 'typescriptreact': ['eslint', 'prettier'],
                         \ 'vue': ['stylelint', 'eslint'],
-                        \ 'shell': ['shellcheck', 'language_server'],
+                        \ 'shell': ['shellcheck', 'language_server', 'shfmt'],
                         \ 'c': [],
                         \ 'cpp': [],
                         \ 'java': ['javac', 'checkstyle'],
