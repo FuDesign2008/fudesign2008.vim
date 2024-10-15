@@ -1705,7 +1705,7 @@ augroup END
             let g:fzf_preview_window = []
             let g:fzf_in_scoop=expand('~/scoop/apps/fzf/current')
 
-            if isdirectory('/opt/homebrew/bin/fzf')
+            if exists('/opt/homebrew/bin/fzf')
                 " for mac os,  fzf installed by brew
                 set runtimepath+=/opt/homebrew/bin/fzf
             elseif isdirectory(g:fzf_in_scoop)
