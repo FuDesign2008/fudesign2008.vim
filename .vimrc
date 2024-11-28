@@ -1509,7 +1509,7 @@ augroup END
                     \ 'mermaid_img': 0
                 \},
             \  'weixin': {
-                    \ 'theme': 'github2',
+                    \ 'theme': 'weixin',
                     \ 'highlight_code': 1,
                     \ 'code_theme': 'default',
                     \ 'mermaid_img': 1
