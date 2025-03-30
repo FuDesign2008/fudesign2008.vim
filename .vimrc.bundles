@@ -84,9 +84,11 @@ set nocompatible        " must be first line
             \ 'ai',
             \ 'bash'
             \ ]
-        " if g:is_win == 0
-        call add(g:spf13_bundle_groups, 'fzf')
-        " endif
+
+        if g:is_win == 0
+            call add(g:spf13_bundle_groups, 'fzf')
+        endif
+
     endif
 
     " 可选的值:
@@ -624,7 +626,7 @@ set nocompatible        " must be first line
 
     " ai
         if count(g:spf13_bundle_groups, 'ai')
-            Plug 'github/copilot.vim'
+            " Plug 'github/copilot.vim'
         endif
 
     " bash
