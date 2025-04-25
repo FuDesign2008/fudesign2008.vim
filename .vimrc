@@ -1925,7 +1925,7 @@ augroup END
         let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang'
 
      " will133/vim-dirdiff' {
-        let g:DirDiffExcludes = '.*'
+        let g:DirDiffExcludes = '.*,node_modules'
         let g:DirDiffPreventSyntasticOpenLocationList = 1
      "}
 
