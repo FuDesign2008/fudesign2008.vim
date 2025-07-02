@@ -1020,17 +1020,17 @@ augroup END
             "6 = sat
                 " \ 2 : '1. 工作周报;'
             let g:plan_week_work = {
-                \ 1 : '1. 电脑移除与升级软件;'
                 \}
             let g:plan_week_personal = {
-                \ 0 : '1. 断舍离;   - 清理手机;    - 清理家庭居所;'
                 \}
 
             let g:plan_week_review = []
 
             let g:plan_month_keypoint = []
 
-            let g:plan_month_work = {}
+            let g:plan_month_work = {
+                \ 1 : '1. 电脑移除与升级软件;'
+                \}
             let g:plan_month_personal = {
                 \ 5 : '1. 查询薪水发放;1. 孩子培养基金;1. 工行房贷(10);1. 北京银行房贷(15);'
                 \}
