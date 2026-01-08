@@ -20,7 +20,12 @@ set langmenu=en
             " @see http://dailyvim.tumblr.com/post/66708941289/fish
             " set shell=/bin/bash
             " @see https://stackoverflow.com/questions/11415428/terminal-vim-not-loading-zshrc
-            set shell=zsh\ -i
+            " Only use interactive shell in GUI mode to avoid issues with git diff and other tools
+            if has('gui_running')
+                set shell=zsh\ -i
+            else
+                set shell=zsh
+            endif
         endif
     " }
 
