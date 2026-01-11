@@ -289,8 +289,10 @@ augroup END
     " autocmd vimrc BufNewFile,BufRead * call SetFolding()
 
     " diff 模式下启用 fold，折叠未变更的文本
-    autocmd vimrc DiffRead * setlocal foldenable foldmethod=diff foldlevel=0
-    autocmd vimrc DiffWinEnter * setlocal foldenable foldmethod=diff foldlevel=0
+    autocmd vimrc OptionSet diff
+        \ if v:option_new |
+        \   setlocal foldenable foldmethod=diff foldlevel=0 |
+        \ endif
 
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
