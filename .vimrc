@@ -150,10 +150,39 @@ augroup END
     " setting up for diff mode {
         set diffopt-=horizontal
         set diffopt+=vertical
+        set diffopt+=filler              " 用填充行对齐
+        set diffopt+=context:3           " 减少上下文行数（默认6），减少计算量
+        set diffopt+=indent-heuristic    " 使用缩进启发式，减少误判
         if has('patch-8.1.0360')
             set diffopt+=internal,algorithm:patience
         endif
     " }
+
+    " 根据文件大小动态选择 diff 算法
+    " 大文件使用 myers 算法（速度快），小文件使用 patience 算法（精度高）
+    function! s:optimize_diff_algorithm()
+        if &diff && line('$') > 5000
+            setlocal diffopt+=algorithm:myers
+            setlocal diffopt-=algorithm:patience
+        endif
+    endfunction
+
+    autocmd vimrc DiffRead * call s:optimize_diff_algorithm()
+
+    " diff 模式下优化滚动行为
+    autocmd vimrc DiffRead * setlocal scrollbind scrolloff=0
+
+    " 大文件 diff 时禁用语法高亮等功能以提升性能
+    function! s:optimize_diff_performance()
+        if &diff && line('$') > 5000
+            syntax clear
+            setlocal nocursorline
+            setlocal nocursorcolumn
+            setlocal lazyredraw
+        endif
+    endfunction
+
+    autocmd vimrc DiffRead * call s:optimize_diff_performance()
 
     " If you have vim >=8.0 or Neovim >= 0.1.5
     " if has('termguicolors')
@@ -258,6 +287,10 @@ augroup END
         endif
     endfunction
     " autocmd vimrc BufNewFile,BufRead * call SetFolding()
+
+    " diff 模式下启用 fold，折叠未变更的文本
+    autocmd vimrc DiffRead * setlocal foldenable foldmethod=diff foldlevel=0
+    autocmd vimrc DiffWinEnter * setlocal foldenable foldmethod=diff foldlevel=0
 
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
@@ -819,6 +852,14 @@ augroup END
 
         if count(g:spf13_autocomplete_method, 'ycm')
              " YCM.vim {
+                " diff mode 下禁用 YCM 以提升性能
+                if &diff
+                    let g:ycm_auto_trigger = 0
+                    let g:ycm_echo_current_diagnostic = ''
+                    let g:ycm_enable_diagnostic_signs = 0
+                    let g:ycm_enable_diagnostic_highlight = 0
+                endif
+
                 " the default .ycm_extra_conf.py
                 let g:ycm_global_ycm_extra_conf = expand('~/.ycm_extra_conf.py')
                 let g:ycm_confirm_extra_conf = 0
@@ -1930,7 +1971,7 @@ augroup END
         let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang'
 
      " will133/vim-dirdiff' {
-        let g:DirDiffExcludes = '.*,node_modules'
+        let g:DirDiffExcludes = '.*,node_modules,dist,build,coverage,*.min.js,*.min.css,*.map,lock-files'
         let g:DirDiffPreventSyntasticOpenLocationList = 1
      "}
 
