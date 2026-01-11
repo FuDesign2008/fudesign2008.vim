@@ -167,10 +167,10 @@ augroup END
         endif
     endfunction
 
-    autocmd vimrc DiffRead * call s:optimize_diff_algorithm()
+    autocmd vimrc BufWinEnter * call s:optimize_diff_algorithm()
 
     " diff 模式下优化滚动行为
-    autocmd vimrc DiffRead * setlocal scrollbind scrolloff=0
+    autocmd vimrc BufWinEnter * if &diff | setlocal scrollbind scrolloff=0 | endif
 
     " 大文件 diff 时禁用语法高亮等功能以提升性能
     function! s:optimize_diff_performance()
@@ -182,7 +182,7 @@ augroup END
         endif
     endfunction
 
-    autocmd vimrc DiffRead * call s:optimize_diff_performance()
+    autocmd vimrc BufWinEnter * call s:optimize_diff_performance()
 
     " If you have vim >=8.0 or Neovim >= 0.1.5
     " if has('termguicolors')
