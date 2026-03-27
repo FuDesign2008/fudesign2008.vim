@@ -33,9 +33,6 @@ set nocompatible        " must be first line
 
     call plug#begin('~/.vim/bundle')
 
-    " Deps
-        Plug 'MarcWeber/vim-addon-mw-utils'
-        Plug 'tomtom/tlib_vim'
 
     " Use local bundles if available {
         if filereadable(expand('~/.vimrc.bundles.local'))
@@ -108,7 +105,6 @@ set nocompatible        " must be first line
             " Plug 'mhinz/vim-startify'
             Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
             Plug 'vim-scripts/matchit.zip'
-            Plug 'ntpeters/vim-better-whitespace'
             Plug 'FuDesign2008/TrimWhiteSpaces.vim'
             " Plug 'junegunn/rainbow_parentheses.vim'
 
@@ -160,7 +156,6 @@ set nocompatible        " must be first line
             " Plug 'tyru/open-browser.vim'
 
             " Plug 'FuDesign2008/ToggleNumber.vim'
-            Plug 'myusuf3/numbers.vim'
             " Plug 'FuDesign2008/style.vim'
             " Plug 'FuDesign2008/emoji-snippets.vim'
 
@@ -173,105 +168,6 @@ set nocompatible        " must be first line
             Plug 'tpope/vim-surround'
 
             "Plug 'terryma/vim-multiple-cursors'
-
-
-            if count(g:spf13_autocomplete_method,'tabnine')
-                Plug 'codota/tabnine-vim'
-            endif
-
-            if count(g:spf13_autocomplete_method, 'deoplete')
-                Plug 'Shougo/deoplete.nvim'
-                Plug 'roxma/nvim-yarp'
-                Plug 'roxma/vim-hug-neovim-rpc'
-
-
-                " misc
-                Plug 'fszymanski/deoplete-emoji'
-                Plug 'thalesmello/webcomplete.vim'
-
-                " common
-                Plug 'Shougo/neco-syntax'
-                " javascript
-                Plug 'carlitux/deoplete-ternjs'
-                " jedi source for Python
-                Plug 'deoplete-plugins/deoplete-jedi'
-                " typescript
-                " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-                " viml
-                Plug 'Shougo/neco-vim'
-                " zsh
-                Plug 'deoplete-plugins/deoplete-zsh'
-                " shell terminal in vim
-                Plug 'Shougo/deol.nvim'
-                " asm
-                Plug 'deoplete-plugins/deoplete-asm'
-
-                " echo document
-                Plug 'Shougo/echodoc.vim'
-
-            endif
-
-            if count(g:spf13_autocomplete_method, 'vim-lsp')
-                Plug 'prabirshrestha/async.vim'
-                " Plug 'prabirshrestha/vim-lsp'
-                Plug 'FuDesign2008/vim-lsp'
-                Plug 'mattn/vim-lsp-settings'
-
-                " UltiSnips
-                Plug 'thomasfaingnaert/vim-lsp-snippets'
-                Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-
-                " Plug 'prabirshrestha/asyncomplete.vim'
-                " @see https://github.com/prabirshrestha/asyncomplete.vim/pull/280
-                Plug 'FuDesign2008/asyncomplete.vim'
-                Plug 'FuDesign2008/asyncomplete-smart-fuzzy.vim'
-
-                " Plug 'machakann/asyncomplete-ezfilter.vim'
-
-                Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-                Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-                Plug 'prabirshrestha/asyncomplete-file.vim'
-                Plug 'prabirshrestha/asyncomplete-buffer.vim'
-                " Plug 'hiterm/asyncomplete-look'
-                Plug 'yami-beta/asyncomplete-omni.vim'
-                " Plug 'prabirshrestha/asyncomplete-emoji.vim'
-
-            endif
-
-            if count(g:spf13_autocomplete_method, 'coc')
-                Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile && npm run build' }
-
-                " viml
-                Plug 'iamcco/coc-vimlsp', { 'do': 'yarn install --frozen-lockfile' }
-
-                "common source
-                Plug 'neoclide/coc-sources', { 'do': 'yarn install --frozen-lockfile' }
-
-
-                Plug 'iamcco/coc-spell-checker'
-
-                Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
-
-                Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
-
-                Plug 'neoclide/coc-html', { 'do': 'yarn install --frozen-lockfile' }
-                Plug 'yaegassy/coc-htmlhint'
-                Plug 'yaegassy/coc-html-css-support'
-                Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
-                Plug 'antonk52/coc-cssmodules'
-                Plug 'iamcco/coc-svg'
-
-                Plug 'neoclide/coc-vetur', { 'do': 'yarn install --frozen-lockfile' }
-                " Plug 'neoclide/coc-python', { 'do': 'yarn install --frozen-lockfile' }
-                " Plug 'neoclide/coc-git', { 'do': 'yarn install --frozen-lockfile' }
-                Plug 'neoclide/coc-snippets', { 'do': 'yarn install --frozen-lockfile' }
-
-                Plug 'josa42/coc-sh'
-
-                Plug 'fannheyward/coc-xml'
-                Plug 'neoclide/coc-yaml'
-            endif
 
             if count(g:spf13_autocomplete_method, 'ycm')
                 " YCM is better than NeoComplCache and supertab
@@ -388,10 +284,6 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'ctags') && executable('ctags') && !g:is_win
             Plug 'majutsushi/tagbar'
 
-            Plug 'xolox/vim-misc'
-            " Use easytas with YCM for NOT C-family languages like html,
-            " css, scss
-            Plug 'xolox/vim-easytags'
         endif
 
     " Snippets
@@ -436,7 +328,6 @@ set nocompatible        " must be first line
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
-            Plug 'leshill/vim-json', { 'for': 'json' }
             Plug 'gutenye/json5.vim', { 'for': 'json5' }
             Plug 'neoclide/jsonc.vim', { 'for': 'jsonc' }
             " Plug 'kevinoid/vim-jsonc'
@@ -447,7 +338,6 @@ set nocompatible        " must be first line
 
             " support javascript and typescript
             " @see https://github.com/Galooshi/import-js/issues/503
-            Plug 'galooshi/vim-import-js', { 'for': 'javascript' }
 
             " disable othree/yajs.vim for performance
             " @see https://github.com/othree/yajs.vim#performance-issue
@@ -478,7 +368,6 @@ set nocompatible        " must be first line
 
             Plug 'FuDesign2008/component-kit.vim', { 'for': ['vue', 'javascript'] }
 
-            Plug 'maksimr/vim-jsbeautify', { 'do': 'git submodule update --init --recursive', 'for': ['javascript', 'html', 'css', 'json'] }
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
@@ -494,10 +383,10 @@ set nocompatible        " must be first line
                 " Plug 'HerringtonDarkholme/yats.vim'
             endif
 
-            " coffeescript
-            if count(g:spf13_bundle_groups, 'coffeescript')
-                Plug 'kchmck/vim-coffee-script'
-            endif
+            " coffeescript (not in bundle_groups, disabled)
+            " if count(g:spf13_bundle_groups, 'coffeescript')
+            "     Plug 'kchmck/vim-coffee-script'
+            " endif
 
             if count(g:spf13_bundle_groups, 'react')
                 Plug 'FuDesign2008/react-snippets.vim', { 'for': ['javascript', 'javascriptreact'] }
@@ -520,9 +409,7 @@ set nocompatible        " must be first line
 
             " for node
             " Plug 'myhere/vim-nodejs-complete'
-            Plug 'guileen/vim-node-dict', { 'for': 'javascript' }
             " Plug 'sidorares/node-vim-debugger'
-            Plug 'moll/vim-node', { 'for': 'javascript' }
             " Plug 'digitaltoad/vim-pug'
 
         endif
@@ -544,11 +431,11 @@ set nocompatible        " must be first line
             Plug 'FuDesign2008/css-snippets.vim', { 'for': ['css', 'scss', 'less'] }
         endif
 
-    " scala
-        if count(g:spf13_bundle_groups, 'scala')
-            Plug 'derekwyatt/vim-scala'
-            Plug 'derekwyatt/vim-sbt'
-        endif
+    " scala (not in bundle_groups, disabled)
+        " if count(g:spf13_bundle_groups, 'scala')
+        "     Plug 'derekwyatt/vim-scala'
+        "     Plug 'derekwyatt/vim-sbt'
+        " endif
 
     " HTML
         if count(g:spf13_bundle_groups, 'html')
