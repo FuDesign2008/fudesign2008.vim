@@ -200,7 +200,7 @@ augroup END
         language message zh_CN.UTF-8
     endif
     set fileencoding=utf-8  "vim当前编辑的文件在存储时的编码
-    set fileencodings=utf-8,gb2312,gbk,gb18030,big5   "vim 打开文件时的尝试使用的编码
+    set fileencodings=utf-8,gb18030,big5   "vim 打开文件时的尝试使用的编码 (gb18030 向下兼容 gb2312/gbk)
     "set fileformat=unix,dos
     set fileformats=unix,dos
     set ambiwidth=double
@@ -293,7 +293,7 @@ augroup END
 
     set list
     set listchars=tab:\:\ ,trail:~,extends:>,precedes:<,nbsp:.
-    set path=.,,,**                 " set path for find file
+    set path=.,,                     " set path for find file (removed ** to avoid expensive recursive scan)
 
 
 " }
@@ -563,11 +563,7 @@ augroup END
         "let g:SuperTabLongestEnhanced = 1
      "}
 
-     " FuDesign2008/vim-auto-save{
-         let g:auto_save = 1
-         let g:auto_save_write_all_buffers = 1
-         let g:auto_save_silent = 1
-     "}
+
 
 
 
@@ -1113,7 +1109,8 @@ augroup END
 
         endfunction
 
-        call ConfigPlanPlugin()
+        " defer plan config to after initial render via timer (Vim 8+)
+        call timer_start(0, { -> ConfigPlanPlugin() })
 
     "}
 
@@ -1153,12 +1150,7 @@ augroup END
                 " for linux + 2k display
                 let g:gui_font_size = '10'
             elseif has('macunix')
-                if system('arch') ==? 'arm64'
-                    " for m1 macbook air
-                    let g:gui_font_size = '14'
-                else
-                    let g:gui_font_size = '14'
-                endif
+                let g:gui_font_size = '14'
             elseif g:is_win
                 let g:gui_font_size = '10'
             endif
@@ -1203,15 +1195,6 @@ augroup END
         let g:javascript_conceal_prototype  = '¶'
         let g:javascript_conceal_static     = '•'
         let g:javascript_conceal_super      = 'Ω'
-    " }
-
-    " tern_for_vim {
-        let g:tern_show_argument_hints = 'on_hold'
-        let g:tern_map_keys = 1
-
-    " }
-
-    " vim-jsdoc {
     " }
 
     " NERDCommenter {
@@ -1317,87 +1300,6 @@ augroup END
     endfunction
 
     call s:DetectLintConfigs()
-
-    "Syntastic {
-        " the recommend setting form README
-        " set statusline+=%#warningmsg#
-        " set statusline+=%{SyntasticStatuslineFlag()}
-        " set statusline+=%*
-
-        function! SyntasticCheckHook(errors)
-            if !empty(a:errors)
-                let g:syntastic_loc_list_height = min([len(a:errors), 3])
-            endif
-        endfunction
-
-        if &diff
-            let g:syntastic_always_populate_loc_list = 0
-            let g:syntastic_auto_loc_list = 0
-            let g:syntastic_check_on_open = 0
-        else
-            let g:syntastic_always_populate_loc_list = 1
-            let g:syntastic_auto_loc_list = 1
-            let g:syntastic_check_on_open = 1
-        endif
-
-
-        let g:syntastic_check_on_wq = 1
-
-        let g:syntastic_objc_compiler = 'clang'
-        let g:syntastic_php_checkers = ['phpmd']
-        let g:syntastic_vim_checkers = ['vint']
-
-        let g:syntastic_java_checkers = ['javac', 'checkstyle']
-        let g:syntastic_java_javac_config_file_enabled = 1
-
-        let g:find_file_path = get(
-            \ FindFileUp('.syntastic_javac_config', 10),
-            \ 'file',
-            \ ''
-            \ )
-
-        if strlen(g:find_file_path) > 1
-            let g:syntastic_java_javac_config_file = g:find_file_path
-        endif
-
-        if g:use_jshint_for_javascript
-            let g:syntastic_javascript_checkers = ['jshint', 'tern-lint']
-        else
-            let g:syntastic_javascript_checkers = ['eslint', 'tern-lint']
-            let g:syntastic_javascript_eslint_exec = 'eslint_d'
-        endif
-        unlet g:find_file_path
-
-        let g:syntastic_typescript_checkers = ['tslint']
-        let g:syntastic_vue_checkers = ['eslint']
-
-        let g:syntastic_mode_map = {
-                    \ 'mode': 'passive',
-                    \ 'active_filetypes': [
-                        \ 'css',
-                        \ 'html',
-                        \ 'javascript',
-                        \ 'typescript',
-                        \ 'json',
-                        \ 'less',
-                        \ 'markdown',
-                        \ 'php',
-                        \ 'python',
-                        \ 'sh',
-                        \ 'vim',
-                        \ 'xhtml',
-                        \ 'xml',
-                        \ 'zsh'
-                    \],
-                    \ 'passive_filetypes': [
-                        \ 'c',
-                        \ 'cpp',
-                        \ 'java'
-                    \]
-                \}
-
-    "}
-
 
     " ALE {
 
@@ -2099,16 +2001,7 @@ augroup END
 
  " Functions {
 
-function! UnBundle(arg, ...)
-  let l:bundle = vundle#config#init_bundle(a:arg, a:000)
-  call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-endfunction
-
-com! -nargs=+         UnBundle
-\ call UnBundle(<args>)
-
 function! InitializeDirectories()
-    let l:separator = '.'
     let l:parent = $HOME
     let l:prefix = '.vim'
     let l:dir_list = {
@@ -2122,9 +2015,10 @@ function! InitializeDirectories()
 
     for [l:dirname, l:settingname] in items(l:dir_list)
         let l:directory = l:parent . '/' . l:prefix . l:dirname . '/'
-        if exists('*mkdir')
-            if !isdirectory(l:directory)
-                call mkdir(l:directory)
+        " skip if directory already exists (common case after first run)
+        if !isdirectory(l:directory)
+            if exists('*mkdir')
+                call mkdir(l:directory, 'p')
             endif
         endif
         if !isdirectory(l:directory)
