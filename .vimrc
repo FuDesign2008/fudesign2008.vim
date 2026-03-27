@@ -21,11 +21,8 @@ set langmenu=en
             " set shell=/bin/bash
             " @see https://stackoverflow.com/questions/11415428/terminal-vim-not-loading-zshrc
             " Only use interactive shell in GUI mode to avoid issues with git diff and other tools
-            if has('gui_running')
-                set shell=zsh\ -i
-            else
-                set shell=zsh
-            endif
+            " Use non-interactive shell for faster external command execution
+            set shell=zsh
         endif
     " }
 
@@ -495,7 +492,17 @@ augroup END
         return l:version
     endfunction
 
-    let g:vimrc_vue_version = DetectVueVersion()
+    " lazy detect Vue version to avoid startup file system traversal
+    let g:vimrc_vue_version = 2
+    let s:vue_version_detected = 0
+    autocmd vimrc BufRead *.vue call s:lazy_init_vue_version()
+    function! s:lazy_init_vue_version()
+        if !s:vue_version_detected
+            let g:vimrc_vue_version = DetectVueVersion()
+            let s:vue_version_detected = 1
+        endif
+    endfunction
+
     let g:vimrc_performance_low = 0
 " }
 
@@ -1255,45 +1262,59 @@ augroup END
     "}
 
     " support https://github.com/davidtheclark/cosmiconfig
-    " try to find eslint first and then jshint in the same directory
-    let g:find_file_name = FindFilesUp([
-        \ '.eslintrc',
-        \ '.eslintrc.json',
-        \ '.eslintrc.js',
-        \ '.eslintrc.yaml',
-        \ '.eslintrc.yml',
-        \ '.jshintrc',
-        \ '.jshintrc.json',
-        \ '.jshintrc.js',
-        \ '.jshintrc.yaml',
-        \ '.jshintrc.yml',
-        \ '.flowconfig',
-        \ ], 10)
-    let g:use_jshint_for_javascript = stridx(g:find_file_name, 'jshintrc') > -1
-    let g:use_eslint = stridx(g:find_file_name, 'eslintrc') > -1
-    let g:use_flow_for_javascript = stridx(g:find_file_name, 'flowconfig') > -1
+    " optimized: single directory traversal instead of 4 separate ones
+    function! s:DetectLintConfigs() abort
+        let l:eslint = 0
+        let l:jshint = 0
+        let l:flow = 0
+        let l:tslint = 0
+        let l:stylelint = 0
+        let l:dir = fnamemodify(getcwd(), ':p:h')
+        let l:counter = 0
 
-    let g:find_file_name = FindFilesUp([
-        \ 'tslint.json',
-        \ 'tslint.yaml',
-        \ '.eslintrc',
-        \ '.eslintrc.json',
-        \ '.eslintrc.js',
-        \ '.eslintrc.yaml',
-        \ '.eslintrc.yml'
-        \ ], 10)
-    let g:use_tslint_for_typescript = stridx(g:find_file_name, 'tslint') > -1
+        while l:counter <= 5
+            if !l:eslint
+                for l:f in ['.eslintrc', '.eslintrc.json', '.eslintrc.js', '.eslintrc.yaml', '.eslintrc.yml']
+                    if filereadable(l:dir . '/' . l:f) | let l:eslint = 1 | break | endif
+                endfor
+            endif
 
-    let g:find_file_name = FindFilesUp([
-        \ '.stylelintrc',
-        \ '.stylelintrc.json',
-        \ '.stylelintrc.js',
-        \ '.stylelintrc.yaml',
-        \ '.stylelintrc.yml'
-        \], 10)
-    let g:use_stylelint_for_style = stridx(g:find_file_name, 'stylelintrc') > -1
+            if !l:jshint
+                for l:f in ['.jshintrc', '.jshintrc.json', '.jshintrc.js', '.jshintrc.yaml', '.jshintrc.yml']
+                    if filereadable(l:dir . '/' . l:f) | let l:jshint = 1 | break | endif
+                endfor
+            endif
 
-    unlet g:find_file_name
+            if !l:flow && filereadable(l:dir . '/.flowconfig')
+                let l:flow = 1
+            endif
+
+            if !l:tslint
+                for l:f in ['tslint.json', 'tslint.yaml']
+                    if filereadable(l:dir . '/' . l:f) | let l:tslint = 1 | break | endif
+                endfor
+            endif
+
+            if !l:stylelint
+                for l:f in ['.stylelintrc', '.stylelintrc.json', '.stylelintrc.js', '.stylelintrc.yaml', '.stylelintrc.yml']
+                    if filereadable(l:dir . '/' . l:f) | let l:stylelint = 1 | break | endif
+                endfor
+            endif
+
+            if l:eslint && l:jshint && l:flow && l:tslint && l:stylelint | break | endif
+
+            let l:dir = fnamemodify(l:dir, ':p:h:h')
+            let l:counter += 1
+        endwhile
+
+        let g:use_jshint_for_javascript = l:jshint
+        let g:use_eslint = l:eslint
+        let g:use_flow_for_javascript = l:flow
+        let g:use_tslint_for_typescript = l:tslint
+        let g:use_stylelint_for_style = l:stylelint
+    endfunction
+
+    call s:DetectLintConfigs()
 
     "Syntastic {
         " the recommend setting form README

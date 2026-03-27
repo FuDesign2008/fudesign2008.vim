@@ -69,7 +69,6 @@ set nocompatible        " must be first line
             \ 'programming',
             \ 'snip',
             \ 'javascript',
-            \ 'java',
             \ 'node',
             \ 'vue',
             \ 'react',
@@ -77,7 +76,6 @@ set nocompatible        " must be first line
             \ 'css',
             \ 'html',
             \ 'document',
-            \ 'haskell',
             \ 'ruby',
             \ 'python',
             \ 'php',
@@ -361,17 +359,17 @@ set nocompatible        " must be first line
             Plug 'FuDesign2008/autoHighlight.vim'
             Plug 'FuDesign2008/smartRename.vim'
 
-            Plug 'will133/vim-dirdiff'
+            Plug 'will133/vim-dirdiff', { 'on': 'DirDiff' }
             " Plug 'junkblocker/patchreview-vim'
-            Plug 'chrisbra/vim-diff-enhanced'
+            Plug 'chrisbra/vim-diff-enhanced', { 'on': 'DiffEnhanced' }
             " Plug 'Chiel92/vim-autoformat'
 
             " Plug 'KabbAmine/zeavim.vim'
 
-            Plug 'ekalinin/Dockerfile.vim'
-            Plug 'cespare/vim-toml'
+            Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
+            Plug 'cespare/vim-toml', { 'for': 'toml' }
 
-            Plug 'ashishbinu/vim-dotenv'
+            Plug 'ashishbinu/vim-dotenv', { 'for': 'dotenv' }
 
             " Plug 'christoomey/vim-system-copy'
 
@@ -429,27 +427,27 @@ set nocompatible        " must be first line
             " YouCompleteMe will use Jedi for python completion
 
             " syntax checker
-            Plug 'nvie/vim-flake8', { 'for': 'python' }
+            Plug 'nvie/vim-flake8', { 'for': 'python', 'on': ['Flake8'] }
             " document
-            Plug 'fs111/pydoc.vim', { 'for': 'python' }
+            Plug 'fs111/pydoc.vim', { 'for': 'python', 'on': ['Pydoc'] }
             Plug 'FuDesign2008/python-snippets', { 'for': 'python' }
 
         endif
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
-            Plug 'leshill/vim-json'
-            Plug 'gutenye/json5.vim'
-            Plug 'neoclide/jsonc.vim'
+            Plug 'leshill/vim-json', { 'for': 'json' }
+            Plug 'gutenye/json5.vim', { 'for': 'json5' }
+            Plug 'neoclide/jsonc.vim', { 'for': 'jsonc' }
             " Plug 'kevinoid/vim-jsonc'
 
 
-            Plug 'pangloss/vim-javascript'
+            Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
             "Plug 'jelera/vim-javascript-syntax'
 
             " support javascript and typescript
             " @see https://github.com/Galooshi/import-js/issues/503
-            Plug 'galooshi/vim-import-js'
+            Plug 'galooshi/vim-import-js', { 'for': 'javascript' }
 
             " disable othree/yajs.vim for performance
             " @see https://github.com/othree/yajs.vim#performance-issue
@@ -464,7 +462,7 @@ set nocompatible        " must be first line
 
             " Plug 'marijnh/tern_for_vim'
 
-            Plug 'heavenshell/vim-jsdoc', { 'do': 'make clean && make install' }
+            Plug 'heavenshell/vim-jsdoc', { 'do': 'make clean && make install', 'for': ['javascript', 'typescript'] }
             " Plug 'FuDesign2008/vim-jsdoc'
 
             " Plug 'Quramy/vim-js-pretty-template'
@@ -476,11 +474,11 @@ set nocompatible        " must be first line
 
             " Plug 'mxw/vim-jsx'
             " vim-jsx-pretty may be better than vim-jsx
-            Plug 'maxmellon/vim-jsx-pretty'
+            Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'javascriptreact'] }
 
-            Plug 'FuDesign2008/component-kit.vim'
+            Plug 'FuDesign2008/component-kit.vim', { 'for': ['vue', 'javascript'] }
 
-            Plug 'maksimr/vim-jsbeautify', { 'do': 'git submodule update --init --recursive' }
+            Plug 'maksimr/vim-jsbeautify', { 'do': 'git submodule update --init --recursive', 'for': ['javascript', 'html', 'css', 'json'] }
 
             " typescript
             if count(g:spf13_bundle_groups, 'typescript')
@@ -502,15 +500,15 @@ set nocompatible        " must be first line
             endif
 
             if count(g:spf13_bundle_groups, 'react')
-                Plug 'FuDesign2008/react-snippets.vim'
+                Plug 'FuDesign2008/react-snippets.vim', { 'for': ['javascript', 'javascriptreact'] }
             endif
 
             " vue
             if count(g:spf13_bundle_groups, 'vue')
                 Plug 'posva/vim-vue'
-                Plug 'FuDesign2008/vue-snippets.vim'
+                Plug 'FuDesign2008/vue-snippets.vim', { 'for': 'vue' }
                 " Plug 'FuDesign2008/element-ui.vim'
-                Plug 'FuDesign2008/element-ui-snippets.vim'
+                Plug 'FuDesign2008/element-ui-snippets.vim', { 'for': 'vue' }
             endif
 
 
@@ -522,9 +520,9 @@ set nocompatible        " must be first line
 
             " for node
             " Plug 'myhere/vim-nodejs-complete'
-            Plug 'guileen/vim-node-dict'
+            Plug 'guileen/vim-node-dict', { 'for': 'javascript' }
             " Plug 'sidorares/node-vim-debugger'
-            Plug 'moll/vim-node'
+            Plug 'moll/vim-node', { 'for': 'javascript' }
             " Plug 'digitaltoad/vim-pug'
 
         endif
@@ -543,7 +541,7 @@ set nocompatible        " must be first line
             Plug 'ap/vim-css-color'
             " Plug 'amadeus/vim-convert-color-to'
 
-            Plug 'FuDesign2008/css-snippets.vim'
+            Plug 'FuDesign2008/css-snippets.vim', { 'for': ['css', 'scss', 'less'] }
         endif
 
     " scala
@@ -574,11 +572,11 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'document')
             " useful when show code
             Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-            Plug 'FuDesign2008/vim-carbon-now-sh'
+            Plug 'FuDesign2008/vim-carbon-now-sh', { 'for': 'markdown' }
             " Plug 'jszakmeister/markdown2ctags'
 
-            Plug 'FuDesign2008/mkdInput.vim', { 'for': 'markdown' }
-            Plug 'FuDesign2008/mermaidViewer.vim'
+            Plug 'FuDesign2008/mkdInput.vim', { 'for': ['markdown', 'mermaid'] }
+            Plug 'FuDesign2008/mermaidViewer.vim', { 'for': 'mermaid' }
             Plug 'FuDesign2008/MarkdownViewer.vim', {
                     \ 'do': 'npm install',
                     \ 'for': 'markdown'
@@ -588,7 +586,7 @@ set nocompatible        " must be first line
             " Plug 'iamcco/markdown-preview.nvim', {'do': 'cd ./app && yarn install'}
             " Plug 'mzlogin/vim-markdown-toc'
             Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-            Plug 'lervag/vimtex'
+            Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
 
 
 
@@ -611,7 +609,7 @@ set nocompatible        " must be first line
         "
         if count(g:spf13_bundle_groups, 'java') && !g:is_win
             " Plug 'artur-shaik/vim-javacomplete2'
-            Plug 'udalov/kotlin-vim'
+            " Plug 'udalov/kotlin-vim'  " disabled: unused language plugin (Plan D)
         endif
 
     "iOS
@@ -642,7 +640,7 @@ set nocompatible        " must be first line
 
     " haskell
         if count(g:spf13_bundle_groups, 'haskell')
-            Plug 'neovimhaskell/haskell-vim'
+            " Plug 'neovimhaskell/haskell-vim'  " disabled: unused language plugin (Plan D)
         endif
 
 
