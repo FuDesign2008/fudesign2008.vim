@@ -33,6 +33,7 @@ set langmenu=en
         "
         " scoop log
         " Linking ~\scoop\apps\python\current => ~\scoop\apps\python\3.12.3
+        if g:is_win
         let g:python3_in_scoop=expand('~/scoop/apps/python/current')
         let g:python3_dll_in_scoop=expand('~/scoop/apps/python/current/python3.dll')
         if isdirectory(g:python3_in_scoop)
@@ -41,6 +42,8 @@ set langmenu=en
         endif
         unlet g:python3_in_scoop
         unlet g:python3_dll_in_scoop
+        endif
+
     " }
 
 " }
@@ -80,7 +83,6 @@ augroup END
     filetype plugin indent on   " Automatically detect file types.
     " open omni completion
     " @see http://vim.wikia.com/wiki/Omni_completion
-    set omnifunc=syntaxcomplete#Complete
     syntax on                   " syntax highlighting
     set synmaxcol=256
     "set mouse=a                 " automatically enable mouse usage
@@ -362,26 +364,6 @@ augroup END
     " your .vimrc.bundles.local file
 
     "if !exists('g:spf13_no_fastTabs')
-        "map <S-H> gT
-        "map <S-L> gt
-    "endif
-
-    " Stupid shift key fixes
-    "if !exists('g:spf13_no_keyfixes')
-        "if has("user_commands")
-            "command! -bang -nargs=* -complete=file E e<bang> <args>
-            "command! -bang -nargs=* -complete=file W w<bang> <args>
-            "command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-            "command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-            "command! -bang Wa wa<bang>
-            "command! -bang WA wa<bang>
-            "command! -bang Q q<bang>
-            "command! -bang QA qa<bang>
-            "command! -bang Qa qa<bang>
-        "endif
-
-        "cmap Tabe tabe
-    "endif
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -543,10 +525,6 @@ augroup END
         let g:auto_highlight_enable = 0
     " }
 
-    " superTab.vim {
-        "let g:SuperTabDefaultCompletionType = "context"
-        "let g:SuperTabLongestEnhanced = 1
-     "}
 
 
 
@@ -689,14 +667,6 @@ augroup END
         "let g:UltiSnipsJumpBackwardTrigger='<c-k>'
      "}
      "
-     " vim-javacomplete2 {
-        " autocmd vimrc FileType java set omnifunc=javacomplete#Complete
-     " }
-
-
-     " js-complete.vim {
-         "autocmd vimrc FileType javascript  :setl omnifunc=jscomplete#CompleteJS
-     "}
 
     " AutoClose.vim {
         "let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '`': '`'}
@@ -914,19 +884,11 @@ augroup END
         " autocmd vimrc FileType typescript,javacript,css,scss RainbowParentheses
     "}
 
-    " coffeescript plugin {
-        " http://www.vim.org/scripts/script.php?script_id=3590
-        autocmd vimrc BufRead,BufNewFile,BufWritePre *.coffee setf coffee
-    "}
 
     " typescript plugin {
         autocmd vimrc BufRead,BufNewFile,BufWritePre *.ts setf typescript
     " }
 
-    "react support {
-        " autocmd vimrc BufRead,BufNewFile,BufWritePre *.tsx setf typescript
-        " autocmd vimrc BufRead,BufNewFile,BufWritePre *.jsx setf javascript
-    "}
 
 
     "less.vim {
@@ -945,60 +907,13 @@ augroup END
         nnoremap <C-W>z <Plug>ZoomWin
     "}
 
-    " support https://github.com/davidtheclark/cosmiconfig
-    " optimized: single directory traversal instead of 4 separate ones
-    function! s:DetectLintConfigs() abort
-        let l:eslint = 0
-        let l:jshint = 0
-        let l:flow = 0
-        let l:tslint = 0
-        let l:stylelint = 0
-        let l:dir = fnamemodify(getcwd(), ':p:h')
-        let l:counter = 0
 
-        while l:counter <= 5
-            if !l:eslint
-                for l:f in ['.eslintrc', '.eslintrc.json', '.eslintrc.js', '.eslintrc.yaml', '.eslintrc.yml']
-                    if filereadable(l:dir . '/' . l:f) | let l:eslint = 1 | break | endif
-                endfor
-            endif
-
-            if !l:jshint
-                for l:f in ['.jshintrc', '.jshintrc.json', '.jshintrc.js', '.jshintrc.yaml', '.jshintrc.yml']
-                    if filereadable(l:dir . '/' . l:f) | let l:jshint = 1 | break | endif
-                endfor
-            endif
-
-            if !l:flow && filereadable(l:dir . '/.flowconfig')
-                let l:flow = 1
-            endif
-
-            if !l:tslint
-                for l:f in ['tslint.json', 'tslint.yaml']
-                    if filereadable(l:dir . '/' . l:f) | let l:tslint = 1 | break | endif
-                endfor
-            endif
-
-            if !l:stylelint
-                for l:f in ['.stylelintrc', '.stylelintrc.json', '.stylelintrc.js', '.stylelintrc.yaml', '.stylelintrc.yml']
-                    if filereadable(l:dir . '/' . l:f) | let l:stylelint = 1 | break | endif
-                endfor
-            endif
-
-            if l:eslint && l:jshint && l:flow && l:tslint && l:stylelint | break | endif
-
-            let l:dir = fnamemodify(l:dir, ':p:h:h')
-            let l:counter += 1
-        endwhile
-
-        let g:use_jshint_for_javascript = l:jshint
-        let g:use_eslint = l:eslint
-        let g:use_flow_for_javascript = l:flow
-        let g:use_tslint_for_typescript = l:tslint
-        let g:use_stylelint_for_style = l:stylelint
-    endfunction
-
-    call s:DetectLintConfigs()
+    " use eslint by default for linting
+    let g:use_jshint_for_javascript = 0
+    let g:use_eslint = 1
+    let g:use_flow_for_javascript = 0
+    let g:use_tslint_for_typescript = 0
+    let g:use_stylelint_for_style = 0
 
     " ALE {
 
@@ -1033,12 +948,6 @@ augroup END
 
             " *.vue do not use vls or volar for use of vim-lsp
 
-            " let g:ale_vue_vls_use_global = 1
-            " let g:ale_vue_volar_use_global = 1
-            " let g:ale_vue_volar_executable = 'vue-language-server'
-            " if g:vimrc_vue_version == 3 || g:vimrc_vue_version == 2.7
-                " let g:ale_linters['vue'] = ['stylelint', 'volar', 'eslint']
-            " endif
 
             let g:ale_disable_lsp = 1
             let g:ale_virtualtext_cursor = 'disabled'
@@ -1151,14 +1060,9 @@ augroup END
 
     " }
     " vim-scripts/LanguageTool {
-        let g:languagetool_jar=expand('~/workspace/LanguageTool-4.6/languagetool-commandline.jar')
 
     " }
 
-    " PIV {
-        "let g:DisableAutoPHPFolding = 0
-        "let g:PIVAutoClose = 0
-    " }
 
     " Misc  {
         "let g:NERDShutUp=1
@@ -1305,18 +1209,8 @@ augroup END
      " }
 
      "Matchmaker{
-         let g:matchmaker_enable_startup = 1
      "}
 
-     " Session List {
-        "set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        "nmap <leader>sl :SessionList<CR>
-        "nmap <leader>ss :SessionSave<CR>
-     " }
-
-     " Buffer explorer {
-        "nmap <leader>b :BufExplorer<CR>
-     " }
 
      " JSON {
         autocmd vimrc BufNewFile,BufRead,BufWritePre .jshintrc setf json
@@ -1328,10 +1222,6 @@ augroup END
         " autocmd vimrc FileType json syntax match Comment +\/\/.\+$+
      " }
 
-     " PyMode {
-        "let g:pymode_lint_checker = "pyflakes"
-        "let g:pymode_utils_whitespaces = 0
-     " }
 
 
 
@@ -1564,12 +1454,10 @@ augroup END
 
      " will133/vim-dirdiff' {
         let g:DirDiffExcludes = '.*,node_modules,dist,build,coverage,*.min.js,*.min.css,*.map,lock-files'
-        let g:DirDiffPreventSyntasticOpenLocationList = 1
      "}
 
 
      " mhinz/vim-startify {
-        let g:startify_change_to_vcs_root = 1
      "}
 
 
@@ -1579,22 +1467,8 @@ augroup END
         let g:GPGDefaultRecipients=['fudesign2008@163.com']
      " }
 
-     " indent_guides {
-        "if !exists('g:spf13_no_indent_guides_autocolor')
-            "let g:indent_guides_auto_colors = 1
-        "else
-            " for some colorscheme ,autocolor will not work,like 'desert','ir_black'.
-            "autocmd vimrc VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121   ctermbg=3
-            "autocmd vimrc VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-        "endif
-        "set ts=4 sw=4 et
-        "let g:indent_guides_start_level = 2
-        "let g:indent_guides_guide_size = 1
-        "let g:indent_guides_enable_on_vim_startup = 1
-     " }
 
      "  APZelos/blamer.nvim {
-        let g:blamer_enabled = 1
         let g:blamer_show_in_insert_modes = 0
      " }
 
@@ -1696,17 +1570,6 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
-"function! NERDTreeInitAsNeeded()
-    "redir => bufoutput
-    "buffers!
-    "redir END
-    "let idx = stridx(bufoutput, "NERD_tree")
-    "if idx > -1
-        "NERDTreeMirror
-        "NERDTreeFind
-        "wincmd l
-    "endif
-"endfunction
 
 
 " }
