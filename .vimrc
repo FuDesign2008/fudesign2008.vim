@@ -826,15 +826,11 @@ augroup END
         endif
 
 
-                    " \ 'Monaco:h14'
-                    " \ 'cascadia\ code:h' . g:gui_font_size,
-                    " \ 'fira\ code:h' . (g:gui_font_size)
-                    " \ 'inconsolata:h'. (g:gui_font_size + 2)
-                    " \ 'intelone\ mono:h' . g:gui_font_size,
-                    \ 'source\ code\ pro:h'. (g:gui_font_size),
-                    \ 'roboto\ mono:h' . g:gui_font_size,
-                    \ 'hack:h'. (g:gui_font_size)
+                    " \ 'source\ code\ pro:h'. (g:gui_font_size),
+                    " \ 'roboto\ mono:h' . g:gui_font_size,
+                    " \ 'hack:h'. (g:gui_font_size)
         let g:favorite_gui_fonts = [
+                    \ 'Maple\ Mono\ NF\ CN:h'. (g:gui_font_size),
                     \ 'ibm\ plex\ mono:h'. (g:gui_font_size)
                     \]
 
@@ -1484,7 +1480,7 @@ augroup END
             \ 'fs': '12px',
             \ 'wc': 'false',
             \ 'wa': 'true',
-            \ 'fm': 'Source Code Pro'
+            \ 'fm': 'Maple Mono NF CN'
             \}
      " }
 
@@ -1496,7 +1492,7 @@ augroup END
           color Tomorrow
           set number
           set norelativenumber
-          call SetGuiFont('Source\ Code\ Variable', g:gui_font_size)
+          call SetGuiFont('Maple\ Mono\ NF\ CN', g:gui_font_size)
           execute ':Goyo'
         endfunction
 
