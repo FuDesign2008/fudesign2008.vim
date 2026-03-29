@@ -1245,9 +1245,6 @@ augroup END
 
             nnoremap <c-p> :Files<Cr>
 
-            " Warm up :! to avoid first :Files cold start delay
-            silent! call system('true')
-
             unlet g:fzf_folder_via_git
             unlet g:fzf_in_scoop
         endif
