@@ -1231,7 +1231,7 @@ augroup END
 
             if filereadable('/opt/homebrew/bin/fzf')
                 " for mac os,  fzf installed by brew
-                set runtimepath+=/opt/homebrew/bin
+                set runtimepath+=/opt/homebrew/opt/fzf
             elseif isdirectory(g:fzf_in_scoop)
                 " for windows, fzf installed by scoop
                 execute 'set runtimepath+=' . g:fzf_in_scoop
