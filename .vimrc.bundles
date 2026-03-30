@@ -19,7 +19,10 @@ set nocompatible        " must be first line
             " @see http://dailyvim.tumblr.com/post/66708941289/fish
             " set shell=/bin/bash
             " @see https://stackoverflow.com/questions/11415428/terminal-vim-not-loading-zshrc
-            set shell=zsh\ -i
+            " PERF: use non-interactive shell to avoid loading .zshrc on every
+            " external command (saves ~100ms+ per :! call).
+            " Interactive shell (-i) would load oh-my-zsh, nvm, etc.
+            set shell=zsh
         endif
     " }
     "
@@ -32,6 +35,10 @@ set nocompatible        " must be first line
 " Bundles {
 
     call plug#begin('~/.vim/bundle')
+
+    " PERF: disable netrw since NERDTree is used (saves ~30ms startup)
+    let g:loaded_netrwPlugin = 1
+    let g:loaded_netrw = 1
 
 
     " Use local bundles if available {
@@ -425,7 +432,8 @@ set nocompatible        " must be first line
 
             " use ap/vim-css-color instead of skammer/vim-css-color
             " @see https://github.com/jvortmann/vim-files/issues/2
-            Plug 'ap/vim-css-color'
+            " PERF: lazy-load for relevant file types only
+            Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'less', 'html', 'vue', 'javascript', 'typescript'] }
             " Plug 'amadeus/vim-convert-color-to'
 
             Plug 'FuDesign2008/css-snippets.vim', { 'for': ['css', 'scss', 'less'] }
@@ -441,7 +449,7 @@ set nocompatible        " must be first line
         if count(g:spf13_bundle_groups, 'html')
             " Plug 'amirh/HTML-AutoCloseTag'
             Plug 'othree/html5.vim'
-            Plug 'mattn/emmet-vim'
+            Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'scss', 'less', 'vue', 'javascriptreact', 'typescriptreact', 'xml', 'svelte'] }
             "Plug 'lepture/vim-velocity'
         endif
 

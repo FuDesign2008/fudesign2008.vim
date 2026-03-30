@@ -159,29 +159,26 @@ augroup END
 
     " 根据文件大小动态选择 diff 算法
     " 大文件使用 myers 算法（速度快），小文件使用 patience 算法（精度高）
-    function! s:optimize_diff_algorithm()
-        if &diff && line('$') > 5000
-            setlocal diffopt+=algorithm:myers
-            setlocal diffopt-=algorithm:patience
-        endif
-    endfunction
-
-    autocmd vimrc BufWinEnter * call s:optimize_diff_algorithm()
-
-    " diff 模式下优化滚动行为
-    autocmd vimrc BufWinEnter * if &diff | setlocal scrollbind scrolloff=0 | endif
-
     " 大文件 diff 时禁用语法高亮等功能以提升性能
-    function! s:optimize_diff_performance()
-        if &diff && line('$') > 5000
-            syntax clear
-            setlocal nocursorline
-            setlocal nocursorcolumn
-            setlocal lazyredraw
+    " PERF: merged 3 BufWinEnter * autocmds into 1 function call
+    function! s:on_buf_win_enter()
+        if &diff
+            " optimize diff algorithm for large files
+            if line('$') > 5000
+                setlocal diffopt+=algorithm:myers
+                setlocal diffopt-=algorithm:patience
+                " disable expensive features for large diffs
+                syntax clear
+                setlocal nocursorline
+                setlocal nocursorcolumn
+                setlocal lazyredraw
+            endif
+            " sync scroll in diff mode
+            setlocal scrollbind scrolloff=0
         endif
     endfunction
 
-    autocmd vimrc BufWinEnter * call s:optimize_diff_performance()
+    autocmd vimrc BufWinEnter * call s:on_buf_win_enter()
 
     " If you have vim >=8.0 or Neovim >= 0.1.5
     " if has('termguicolors')
@@ -835,7 +832,17 @@ augroup END
                     \]
 
 
-        let g:random_theme_start = 'all:auto'
+        " PERF: defer random theme plugin entirely to after initial render.
+        " Prevents randomtheme.vim from being sourced during startup (~165ms).
+        " Instead, block auto-loading and manually source + trigger after render.
+        let g:random_theme_loaded = 1
+        autocmd vimrc VimEnter * call timer_start(100, {-> s:DeferredRandomTheme()})
+
+        function! s:DeferredRandomTheme()
+            unlet! g:random_theme_loaded
+            let g:random_theme_start = 'all:auto'
+            source ~/.vim/bundle/randomTheme.vim/after/plugin/randomtheme.vim
+        endfunction
 
     " }
 
@@ -904,6 +911,22 @@ augroup END
     "}
 
 
+    " Airline performance optimization {
+        " Only enable extensions we actually use (skip scanning 69 extensions)
+        let g:airline_extensions = ['branch', 'tabline', 'ale', 'fzf']
+        " Disable powerline fonts if not needed (avoids font fallback overhead)
+        " let g:airline_powerline_fonts = 0
+        " Skip empty sections to speed up rendering
+        let g:airline#extensions#default#layout = [
+            \ [ 'a', 'b', 'c' ],
+            \ [ 'x', 'y', 'z' ]
+            \ ]
+        " Disable word count (expensive on large files)
+        let g:airline#extensions#wordcount#enabled = 0
+        " Cache highlighting groups
+        let g:airline_highlighting_cache = 1
+    " }
+
     " use eslint by default for linting
     let g:use_jshint_for_javascript = 0
     let g:use_eslint = 1
@@ -970,7 +993,7 @@ augroup END
             let g:ale_sign_error = '✗'
             let g:ale_sign_warning = '!'
 
-            let g:ale_lint_on_enter=1
+            let g:ale_lint_on_enter=0
             let g:ale_lint_on_filetype_changed=1
 
             if g:vimrc_performance_low
@@ -1112,7 +1135,8 @@ augroup END
             endif
         endfunction
 
-        autocmd vimrc VimEnter * nested :call OpenTagbarIfAvailable()
+        " PERF: defer Tagbar auto-open to after initial render
+        autocmd vimrc VimEnter * call timer_start(200, { -> OpenTagbarIfAvailable() })
 
         " from https://github.com/jszakmeister/markdown2ctags
         " Add support for markdown files in tagbar.
@@ -1524,6 +1548,10 @@ augroup END
         if &term ==? 'xterm' || &term ==? 'screen'
             set t_Co=256                 " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
+
+        " Terminal performance optimizations
+        set ttyfast                      " Assume fast terminal connection for smoother redraw
+        set ttimeoutlen=10               " Minimize delay after pressing <Esc> (key code timeout)
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
 
