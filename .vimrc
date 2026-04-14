@@ -849,7 +849,7 @@ augroup END
     " FuDesign2008/openUrl.vim {
 
         " the url prefix for jira issue item
-        let g:open_jira_prefix='http://jira.corp.youdao.com/browse/'
+        let g:open_jira_prefix='https://jira.mail.netease.com/browse/'
 
     " }
 
